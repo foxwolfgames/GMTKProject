@@ -1,5 +1,7 @@
 using UnityEngine;
 
+// Boilerplate from: https://gist.github.com/anastasiadevana/2783a15edf1a969c62186e4c2ec0fa8b
+
 // Place this somewhere in your project (do NOT place in an "Editor" folder)
 
 public class ButtonInvoke : PropertyAttribute

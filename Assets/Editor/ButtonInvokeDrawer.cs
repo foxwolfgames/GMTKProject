@@ -1,6 +1,8 @@
 using UnityEditor;
 using UnityEngine;
 
+// Boilerplate from: https://gist.github.com/anastasiadevana/2783a15edf1a969c62186e4c2ec0fa8b
+
 // Place this in a folder called "Editor" somewhere in your project.
 
 [CustomPropertyDrawer(typeof(ButtonInvoke))]
