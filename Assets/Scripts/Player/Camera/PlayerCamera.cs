@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    public float sensX;
-    public float sensY;
     public Transform orientation;
+    public Transform player;
+    public Transform playerObject;
+    public Rigidbody rb;
 
-    private float rotationX;
-    private float rotationY;
+    public float rotationSpeed;
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -19,15 +20,17 @@ public class PlayerCamera : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        float mouseInputX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
-        float mouseInputY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
+        Vector3 viewDir = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
+        orientation.forward = viewDir.normalized;
 
-        rotationY += mouseInputX;
-        rotationX -= mouseInputY;
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxisRaw("Vertical");
 
-        rotationX = Mathf.Clamp(rotationX, -40f, 70f);
+        Vector3 inputDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-        transform.rotation = Quaternion.Euler(rotationX, rotationY, 0);
-        orientation.rotation = Quaternion.Euler(0, rotationY, 0);
+        if(inputDir != Vector3.zero)
+        {
+            playerObject.forward = Vector3.Slerp(playerObject.forward, inputDir.normalized, Time.deltaTime * rotationSpeed);
+        }
     }
 }
