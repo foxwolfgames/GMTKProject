@@ -17,8 +17,12 @@ public class PlayerCamera : MonoBehaviour
         Cursor.visible = false;
     }
 
-    // Update is called once per frame
     private void Update()
+    {
+        HandleInput();
+    }
+
+    private void HandleInput()
     {
         Vector3 viewDir = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
         orientation.forward = viewDir.normalized;
@@ -28,7 +32,7 @@ public class PlayerCamera : MonoBehaviour
 
         Vector3 inputDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-        if(inputDir != Vector3.zero)
+        if (inputDir != Vector3.zero)
         {
             playerObject.forward = Vector3.Slerp(playerObject.forward, inputDir.normalized, Time.deltaTime * rotationSpeed);
         }
