@@ -151,9 +151,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1cdbe92f55945b49cfccc9ca8ccdfac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectMask:
+  buttonInvokePrintDebug: 0
+  scaleItemMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
 --- !u!1 &6944341488112148596
 GameObject:
   m_ObjectHideFlags: 0

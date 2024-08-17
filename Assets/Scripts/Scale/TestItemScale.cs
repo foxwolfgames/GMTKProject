@@ -3,17 +3,14 @@ using UnityEngine;
 
 public class TestItemScale : MonoBehaviour
 {
+    [ButtonInvoke("TestItemScalePrintDebug", customLabel: "Print console debug")] public bool buttonInvokePrintDebug;
     public LayerMask scaleItemMask;
     private readonly HashSet<Collider> _insideObjects = new();
-    
-    void Update()
-    {
-        Debug.Log("Objects inside scale: " + _insideObjects.Count + " (" + name + ")");   
-    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer != scaleItemMask)
+        Debug.Log(other.gameObject.layer + " " + other.gameObject.name);
+        if (!other.gameObject.IsInLayerMask(scaleItemMask))
         {
             return;
         }
@@ -23,11 +20,16 @@ public class TestItemScale : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer != scaleItemMask)
+        if (!other.gameObject.IsInLayerMask(scaleItemMask))
         {
             return;
         }
         
         _insideObjects.Remove(other);
+    }
+
+    private void TestItemScalePrintDebug()
+    {
+        Debug.Log("Items inside scale: " + _insideObjects.Count);
     }
 }
