@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public Transform orientation;
+    [Header("Current Stats")]
+    public float speed;
 
     [Header("Movement")]
     public float movementSpeed;
@@ -14,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask groundMask;
-    bool isGrounded;
+    public bool isGrounded;
 
     private float horizontalInput;
     private float verticalInput;
@@ -26,24 +28,29 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        speed = 0;
     }
 
     private void Update()
     {
-        GroundCheck();
-        rb.drag = isGrounded ? groundDrag : 0;
+        Debug.DrawRay(transform.position + new Vector3(0, 0.2f, 0), Vector3.down * (playerHeight * 0.5f + 0.2f), Color.red);
+        isGrounded = Physics.Raycast(transform.position + new Vector3(0, 0.2f, 0), Vector3.down, playerHeight * 0.5f + 0.2f, groundMask);
+        if (isGrounded)
+            rb.drag = groundDrag;
+        else
+            rb.drag = 0;
+
+        SpeedControl();
 
         HandleInput();
+
+        speed = rb.velocity.magnitude;
     }
 
 
     private void FixedUpdate()
     {
         MovePlayer();
-    }
-    private void GroundCheck()
-    {
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, groundMask);
     }
     private void HandleInput()
     {
@@ -55,6 +62,17 @@ public class PlayerMovement : MonoBehaviour
     private void MovePlayer()
     {
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-        rb.AddForce(moveDirection.normalized * movementSpeed, ForceMode.Force);
+        rb.AddForce(moveDirection.normalized * movementSpeed * 10f, ForceMode.Force);
+    }
+
+    private void SpeedControl()
+    {
+        Vector3 flatVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+        if(flatVelocity.magnitude > movementSpeed)
+        {
+            Vector3 cappedVelocity = flatVelocity.normalized * movementSpeed;
+            rb.velocity = new Vector3(cappedVelocity.x, rb.velocity.y, cappedVelocity.z);
+        }
     }
 }

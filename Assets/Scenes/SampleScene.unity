@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 73147604}
   - component: {fileID: 73147603}
   - component: {fileID: 73147602}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ramp1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1481,7 +1481,7 @@ GameObject:
   - component: {fileID: 900850464}
   - component: {fileID: 900850463}
   - component: {fileID: 900850462}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ramp3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2301,7 +2301,7 @@ GameObject:
   - component: {fileID: 1502709474}
   - component: {fileID: 1502709473}
   - component: {fileID: 1502709472}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ramp2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2654,7 +2654,7 @@ GameObject:
   - component: {fileID: 1539461094}
   - component: {fileID: 1539461093}
   - component: {fileID: 1539461092}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3447,8 +3447,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07cc6c79f7b3f448bff0addbd5019db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 20
   orientation: {fileID: 210464492}
+  movementSpeed: 20
+  groundDrag: 5
+  playerHeight: 2
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 64
+  isGrounded: 0
 --- !u!1 &1762883612
 GameObject:
   m_ObjectHideFlags: 3
@@ -3749,7 +3755,7 @@ GameObject:
   - component: {fileID: 2084538083}
   - component: {fileID: 2084538082}
   - component: {fileID: 2084538081}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
