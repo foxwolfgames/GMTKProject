@@ -6,13 +6,13 @@ public class EventRegister
 {
     public event EventHandler<TestItemScaleBoardUpdateEvent> TestItemScaleBoardUpdateEventHandler;
 
-    protected virtual void OnTestItemScaleBoardUpdateEvent(TestItemScaleBoardUpdateEvent e)
+    protected virtual void OnTestItemScaleBoardUpdateEvent(TestItemScaleBoardUpdateEvent @event)
     {
-        TestItemScaleBoardUpdateEventHandler?.Invoke(this, e);
+        TestItemScaleBoardUpdateEventHandler?.Invoke(this, @event);
     }
         
-    public void InvokeTestItemScaleBoardUpdateEvent(TestItemScaleBoardUpdateEvent e)
+    public void InvokeTestItemScaleBoardUpdateEvent(TestItemScaleBoardUpdateEvent @event)
     {
-        OnTestItemScaleBoardUpdateEvent(e);
+        OnTestItemScaleBoardUpdateEvent(@event);
     }
 }

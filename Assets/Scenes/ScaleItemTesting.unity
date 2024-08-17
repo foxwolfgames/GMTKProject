@@ -491,14 +491,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestItemScale
       objectReference: {fileID: 0}
-    - target: {fileID: 5946778817624722609, guid: 67de0b947ce0843548c2c1ad0e65e52a, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-    - target: {fileID: 6721079869977226965, guid: 67de0b947ce0843548c2c1ad0e65e52a, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8492880872874715306, guid: 67de0b947ce0843548c2c1ad0e65e52a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -542,7 +534,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3009888267286978690, guid: 67de0b947ce0843548c2c1ad0e65e52a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 67de0b947ce0843548c2c1ad0e65e52a, type: 3}
 --- !u!1001 &1592856832
 PrefabInstance:
@@ -846,6 +841,7 @@ Rigidbody:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1118864510}
   - {fileID: 40353367}
   - {fileID: 741676649}
   - {fileID: 1851694648}
@@ -854,4 +850,3 @@ SceneRoots:
   - {fileID: 1133525802}
   - {fileID: 1592856832}
   - {fileID: 2022932752}
-  - {fileID: 1118864510}
