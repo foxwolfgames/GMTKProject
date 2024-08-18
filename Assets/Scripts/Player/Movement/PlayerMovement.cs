@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement")]
     private float currentSpeed;
-    public float movementSpeed = 10f;
+    public float walkingSpeed = 10f;
     public float sprintingSpeed;
     private bool isSprinting = false;
     public float groundDrag = 5f;
@@ -53,13 +53,14 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         jump = jumpCount;
-        currentSpeed = movementSpeed;
-        sprintingSpeed = movementSpeed * 1.5f;
+        currentSpeed = walkingSpeed;
+        sprintingSpeed = walkingSpeed * 1.5f;
     }
 
     private void Update()
     {
         GroundCheck();
+        StateHandler();
         SpeedControl();
 
         // Handle jumping
@@ -89,10 +90,19 @@ public class PlayerMovement : MonoBehaviour
 
     private void StateHandler()
     {
-        if(isGrounded && isSprinting)
+        if (isGrounded && isSprinting) // Sprinting
         {
             movementState = MovementState.sprinting;
             currentSpeed = sprintingSpeed;
+        }
+        else if (isGrounded) // Walking
+        {
+            movementState = MovementState.walking;
+            currentSpeed = walkingSpeed;
+        }
+        else
+        {
+            movementState = MovementState.midair;
         }
     }
 
