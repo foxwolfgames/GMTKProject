@@ -44,3 +44,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca69085188d4c35bed0f2d7b0ec3d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shatterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7856674049504909008, guid: cabdb9100e20afa41814142508ac6229, type: 3}
+        m_TargetAssemblyTypeName: MusicNoteShatter, Assembly-CSharp
+        m_MethodName: Test
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6082499481661723086, guid: 48886b6f79666fc49b30ced0bd2580b9, type: 3}
+        m_TargetAssemblyTypeName: GlassBehavior, Assembly-CSharp
+        m_MethodName: OnShatter
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
