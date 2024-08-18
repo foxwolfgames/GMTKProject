@@ -7,15 +7,19 @@ using UnityEngine.Serialization;
 public class PlayerPickUp : MonoBehaviour
 {
     public float rayTraceDistance = 3f;
-    public LayerMask traceMask; // Layer of pick-up-able item
-    
-    private bool isGrabbing = false;
+
+    [SerializeField] private bool isGrabInput = false;
+    [SerializeField] private bool isGrabbing = false;
     private float rbAngularDrag = 0f;
+
     [Header("References")]
-    public LayerMask playerLayerMask; // Layer of what stops colliding with object when picked up
+    [SerializeField, Tooltip("Layer of pick-up-able item")]
+    public LayerMask traceMask;
+    [SerializeField, Tooltip("Layer of what stops colliding with object when picked up")]
+    public LayerMask playerLayerMask;
     private LayerMask previousExclusionLayerMask;
-    [SerializeField, Range(0, 31)]
-    public int playerLayer = 8; // Set layer to player so that the player stops jumping on top of object when grabbing it
+    [SerializeField, Range(0, 31), Tooltip("Layer of player so that the player stops jumping on top of object when grabbing it")]
+    public int playerLayer = 8;
     private int previousLayer;
     public Transform holdPoint;
     public Rigidbody targetRB = null;
@@ -32,14 +36,16 @@ public class PlayerPickUp : MonoBehaviour
     public bool isGrabOffCD = true;
     public void ReceiveInput(bool grabInput)
     {
-        isGrabbing = grabInput;
-        if (isGrabbing && isGrabOffCD)
+        isGrabInput = grabInput;
+        if (isGrabInput && !isGrabbing && isGrabOffCD)
         {
             TryGrabObject();
+            isGrabbing = true;
         }
-        else
+        else if(!isGrabInput && isGrabbing)
         {
             ReleaseObject();
+            isGrabbing = false;
         }
     }
     private void Update()
