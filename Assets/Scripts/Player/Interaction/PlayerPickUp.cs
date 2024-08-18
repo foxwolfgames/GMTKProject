@@ -60,21 +60,18 @@ public class PlayerPickUp : MonoBehaviour
     {
         if (!targetRB)
         {
-            if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, rayTraceDistance, traceMask))
+            Ray ray = new Ray(transform.position, transform.forward);
+            if (Physics.SphereCast(transform.position, 1f, transform.forward, out RaycastHit hit, rayTraceDistance, traceMask))
             {
-                Rigidbody rb = hit.collider.attachedRigidbody;
-                if (rb.gameObject.CompareTag(ScaleGame.GrabbableObjectTag))
-                {
-                    targetRB = rb;
+                targetRB = hit.collider.attachedRigidbody;
 
-                    // Save previous settings
-                    rbAngularDrag = targetRB.angularDrag;
-                    previousLayerMask = targetRB.excludeLayers;
+                // Save previous settings
+                rbAngularDrag = targetRB.angularDrag;
+                previousLayerMask = targetRB.excludeLayers;
 
-                    // Change settings
-                    targetRB.angularDrag = angularDrag;
-                    targetRB.excludeLayers = playerLayerMask;
-                }
+                // Change settings
+                targetRB.angularDrag = angularDrag;
+                targetRB.excludeLayers = playerLayerMask;
             }
         }
     }

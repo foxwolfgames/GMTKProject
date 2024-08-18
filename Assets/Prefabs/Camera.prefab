@@ -208,7 +208,7 @@ MonoBehaviour:
     m_Bits: 256
   holdPoint: {fileID: 380508721708124776}
   targetRB: {fileID: 0}
-  maxHoldForce: 50
+  maxHoldForce: 100
   spring: 50
   damping: 5
   angularDrag: 2
