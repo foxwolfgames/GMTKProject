@@ -45,7 +45,6 @@ public class PlayerMovement : MonoBehaviour
         jump = jumpCount;
     }
 
-    // Update is called once per frame
     private void Update()
     {
         GroundCheck();
