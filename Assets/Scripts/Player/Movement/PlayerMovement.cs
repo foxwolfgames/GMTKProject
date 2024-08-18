@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isJumpOffCD = true;
 
     [Header("Ground Check")]
-    public LayerMask groundMask;
+    public LayerMask playerMask;
     public bool isGrounded;
     public float groundJumpAllowance = 0.2f;
 
@@ -121,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
     {
         bool wasGrounded = isGrounded;
         Debug.DrawRay(transform.position + new Vector3(0, groundJumpAllowance, 0), Vector3.down * groundJumpAllowance * 2f, Color.red);
-        isGrounded = Physics.Raycast(transform.position + new Vector3(0, groundJumpAllowance, 0), Vector3.down, groundJumpAllowance * 2f, groundMask);
+        isGrounded = Physics.Raycast(transform.position + new Vector3(0, groundJumpAllowance, 0), Vector3.down, groundJumpAllowance * 2f, ~playerMask);
         if (isGrounded)
             rb.drag = groundDrag;
         else
