@@ -165,6 +165,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ThrowAction",
+                    "type": "Button",
+                    "id": "98f6f58a-aa2b-4a49-8b1a-5e97d6c8b020",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -176,6 +185,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "GrabAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "653eb55e-45d2-448a-b005-890d9c55bfce",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ThrowAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
