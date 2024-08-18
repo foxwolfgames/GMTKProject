@@ -157,6 +157,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScaleItemApple
       objectReference: {fileID: 0}
+    - target: {fileID: 5481958557469860996, guid: 2ccefb50a44a946a998590afc6fba966, type: 3}
+      propertyPath: type
+      value: 
+      objectReference: {fileID: 11400000, guid: fccb6bf2007d84f0b91df6e526f6bada, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5226308848646807419, guid: 2ccefb50a44a946a998590afc6fba966, type: 3}
