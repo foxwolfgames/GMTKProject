@@ -12,5 +12,6 @@ public class ScaleItem : MonoBehaviour
     {
         mass = type.baseMass;
         _rb = GetComponent<Rigidbody>();
+        _rb.mass = mass;
     }
 }

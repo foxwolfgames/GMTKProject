@@ -10,4 +10,7 @@ public class ScaleItemSO : ScriptableObject
     
     [Tooltip("Mass on the scale")]
     public float baseMass;
+
+    [Tooltip("Whether this object is 'glass' meaning it can be broken by objects.")]
+    public bool isGlass = false;
 }
