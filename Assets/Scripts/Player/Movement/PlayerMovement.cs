@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Vector2 horizontalInput;
-    private bool isJumping;
     private Vector3 moveDirection;
     private Rigidbody rb;
 
@@ -17,18 +16,25 @@ public class PlayerMovement : MonoBehaviour
     public int jump = 1;
 
     [Header("Movement")]
+    private float currentSpeed;
     public float movementSpeed = 10f;
+    public float sprintingSpeed;
+    private bool isSprinting = false;
     public float groundDrag = 5f;
     public float jumpForce = 12f;
     public float jumpCooldown = .25f;
     public float airMultiplier = .4f;
     public int jumpCount = 1;
+    private bool isJumping;
     private bool isJumpOffCD = true;
 
     [Header("Ground Check")]
     public LayerMask groundMask;
     public bool isGrounded;
     public float groundJumpAllowance = 0.2f;
+
+    public MovementState movementState;
+    public enum MovementState { walking, sprinting, midair }
 
     public void ReceiveMovementInput(Vector2 horizontalValue)
     {
@@ -38,11 +44,17 @@ public class PlayerMovement : MonoBehaviour
     {
         isJumping = jumpInput;
     }
+    public void ReceiveSprintInput(bool sprintInput)
+    {
+        isSprinting = sprintInput;
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         jump = jumpCount;
+        currentSpeed = movementSpeed;
+        sprintingSpeed = movementSpeed * 1.5f;
     }
 
     private void Update()
@@ -75,13 +87,22 @@ public class PlayerMovement : MonoBehaviour
         Move();
     }
 
+    private void StateHandler()
+    {
+        if(isGrounded && isSprinting)
+        {
+            movementState = MovementState.sprinting;
+            currentSpeed = sprintingSpeed;
+        }
+    }
+
     private void SpeedControl()
     {
         Vector3 flatVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        if (flatVelocity.magnitude > movementSpeed)
+        if (flatVelocity.magnitude > currentSpeed)
         {
-            Vector3 cappedVelocity = flatVelocity.normalized * movementSpeed;
+            Vector3 cappedVelocity = flatVelocity.normalized * currentSpeed;
             rb.velocity = new Vector3(cappedVelocity.x, rb.velocity.y, cappedVelocity.z);
         }
     }
@@ -107,11 +128,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (isGrounded)
         {
-            rb.AddForce(moveDirection.normalized * movementSpeed * 10f, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * currentSpeed * 10f, ForceMode.Force);
         }
         else
         {
-            rb.AddForce(moveDirection.normalized * movementSpeed * 10f * airMultiplier, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * currentSpeed * 10f * airMultiplier, ForceMode.Force);
         }
     }
 
