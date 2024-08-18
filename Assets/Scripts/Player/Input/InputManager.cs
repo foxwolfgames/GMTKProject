@@ -15,6 +15,7 @@ public class InputManager : MonoBehaviour
     private Vector2 horizontalInput;
     private Vector2 cameraInput;
     private bool jumpInput;
+    private bool sprintInput;
     private bool grabInput;
 
     private void Awake()
@@ -29,6 +30,8 @@ public class InputManager : MonoBehaviour
         playerMovement.CameraMovementY.performed += ctx => cameraInput.y = ctx.ReadValue<float>();
         playerMovement.Jump.performed += ctx => jumpInput = true;
         playerMovement.Jump.canceled += ctx => jumpInput = false;
+        playerMovement.Sprint.performed += ctx => sprintInput = true;
+        playerMovement.Sprint.canceled += ctx => sprintInput = false;
 
         playerInteraction.GrabAction.performed += ctx => grabInput = true;
         playerInteraction.GrabAction.canceled += ctx => grabInput = false;
@@ -39,6 +42,7 @@ public class InputManager : MonoBehaviour
         movementScript.ReceiveMovementInput(horizontalInput);
         cameraScript.ReceiveInput(cameraInput);
         movementScript.ReceiveJumpInput(jumpInput);
+        movementScript.ReceiveSprintInput(sprintInput);
 
         pickupScript.ReceiveInput(grabInput);
     }
