@@ -2,9 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerPickUp : MonoBehaviour
 {
+    public float rayTraceDistance = 3f;
+    public LayerMask traceMask;
+    
     private bool isGrabbing = false;
     private float rbAngularDrag = 0f;
     [Header("References")]
@@ -56,12 +60,12 @@ public class PlayerPickUp : MonoBehaviour
     {
         if (!targetRB)
         {
-            RaycastHit hit;
-            if(Physics.Raycast(transform.position, transform.forward, out hit, 2f))
+            if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, rayTraceDistance, traceMask))
             {
-                if(hit.collider.CompareTag("GrabbableObject"))
+                Rigidbody rb = hit.collider.attachedRigidbody;
+                if (rb.gameObject.CompareTag(ScaleGame.GrabbableObjectTag))
                 {
-                    targetRB = hit.collider.GetComponentInParent<Rigidbody>();
+                    targetRB = rb;
 
                     // Save previous settings
                     rbAngularDrag = targetRB.angularDrag;
