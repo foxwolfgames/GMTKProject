@@ -7,6 +7,11 @@ public class TestItemScale : MonoBehaviour
     public LayerMask scaleItemMask;
     private readonly HashSet<Collider> _insideObjects = new();
 
+    void Start()
+    {
+        InvokeUpdateEvent();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log(other.gameObject.layer + " " + other.gameObject.name);
@@ -16,6 +21,7 @@ public class TestItemScale : MonoBehaviour
         }
         
         _insideObjects.Add(other);
+        InvokeUpdateEvent();
     }
 
     private void OnTriggerExit(Collider other)
@@ -26,6 +32,26 @@ public class TestItemScale : MonoBehaviour
         }
         
         _insideObjects.Remove(other);
+        InvokeUpdateEvent();
+    }
+
+    private float GetTotalMassOfItems()
+    {
+        float totalMass = 0f;
+        foreach (var insideCollider in _insideObjects)
+        {
+            if (insideCollider.attachedRigidbody.gameObject.TryGetComponent<ScaleItem>(out ScaleItem item))
+            {
+                totalMass += item.mass;
+            }
+        }
+
+        return totalMass;
+    }
+
+    private void InvokeUpdateEvent()
+    {
+        new TestItemScaleBoardUpdateEvent(_insideObjects.Count, GetTotalMassOfItems()).Invoke();
     }
 
     private void TestItemScalePrintDebug()
