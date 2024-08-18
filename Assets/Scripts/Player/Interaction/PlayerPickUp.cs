@@ -7,13 +7,16 @@ using UnityEngine.Serialization;
 public class PlayerPickUp : MonoBehaviour
 {
     public float rayTraceDistance = 3f;
-    public LayerMask traceMask;
+    public LayerMask traceMask; // Layer of pick-up-able item
     
     private bool isGrabbing = false;
     private float rbAngularDrag = 0f;
     [Header("References")]
-    public LayerMask playerLayerMask;
-    private LayerMask previousLayerMask;
+    public LayerMask playerLayerMask; // Layer of what stops colliding with object when picked up
+    private LayerMask previousExclusionLayerMask;
+    [SerializeField, Range(0, 31)]
+    public int playerLayer = 8; // Set layer to player so that the player stops jumping on top of object when grabbing it
+    private int previousLayer;
     public Transform holdPoint;
     public Rigidbody targetRB = null;
 
@@ -22,7 +25,7 @@ public class PlayerPickUp : MonoBehaviour
     public float spring = 50f;
     public float damping = 5f;
     public float angularDrag = 2f;
-    public float distanceTolerance = 1f;
+    //public float distanceTolerance = 1f;
 
     [Header("Cooldown")]
     public float grabCooldown = .25f;
@@ -67,10 +70,12 @@ public class PlayerPickUp : MonoBehaviour
 
                 // Save previous settings
                 rbAngularDrag = targetRB.angularDrag;
-                previousLayerMask = targetRB.excludeLayers;
+                previousLayer = targetRB.gameObject.layer;
+                previousExclusionLayerMask = targetRB.excludeLayers;
 
                 // Change settings
                 targetRB.angularDrag = angularDrag;
+                SetLayersRecursion(targetRB.gameObject, playerLayer);
                 targetRB.excludeLayers = playerLayerMask;
             }
         }
@@ -81,7 +86,8 @@ public class PlayerPickUp : MonoBehaviour
         {
             // Restore previous settings
             targetRB.angularDrag = rbAngularDrag;
-            targetRB.excludeLayers = previousLayerMask;
+            SetLayersRecursion(targetRB.gameObject, previousLayer);
+            targetRB.excludeLayers = previousExclusionLayerMask;
 
             rbAngularDrag = 0f;
             targetRB = null;
@@ -94,5 +100,14 @@ public class PlayerPickUp : MonoBehaviour
     private void ResetGrabCooldown()
     {
         isGrabOffCD = true;
+    }
+
+    private void SetLayersRecursion(GameObject _object, int layerToSet)
+    {
+        _object.layer = layerToSet;
+        foreach(Transform childObject in _object.transform)
+        {
+            SetLayersRecursion(childObject.gameObject, layerToSet);
+        }
     }
 }

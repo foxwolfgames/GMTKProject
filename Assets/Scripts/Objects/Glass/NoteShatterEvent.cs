@@ -17,5 +17,4 @@ public class NoteShatterEvent : IEvent
     {
         ScaleGame.Instance.EventRegister.InvokeNoteShatterEvent(this);
     }
-
 }
