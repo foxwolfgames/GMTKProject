@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1ad461d7d8d51446b55f5e8473452f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicNote: {fileID: 3526786965755062926, guid: cabdb9100e20afa41814142508ac6229, type: 3}
+  musicNote: {fileID: 3526786965755062926, guid: 778e5d9891691fc4f9e9a58292d346ee, type: 3}
+  musicNoteShatter: {fileID: 3526786965755062926, guid: cabdb9100e20afa41814142508ac6229, type: 3}
   number: 7
   spawnCooldown: 0.25

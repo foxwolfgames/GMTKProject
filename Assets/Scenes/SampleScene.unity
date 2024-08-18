@@ -1172,6 +1172,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: MusicNotesSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 7875776564938163737, guid: d9f325fc9e4229646ac9a291205d626b, type: 3}
+      propertyPath: spawnCooldown1
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7875776564938163737, guid: d9f325fc9e4229646ac9a291205d626b, type: 3}
+      propertyPath: spawnCooldown2
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
