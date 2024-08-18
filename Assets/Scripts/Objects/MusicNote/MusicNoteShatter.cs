@@ -6,20 +6,19 @@ using UnityEngine.Events;
 
 public class MusicNoteShatter : MonoBehaviour
 {
-    public UnityEvent<Vector3, float> shatterEvent;
     public float shatterRadius = 7f;
     private void OnCollisionEnter(Collision collision)
     {
         // Check if the collided object has a different tag
         if (!collision.gameObject.CompareTag("MusicNote"))
         {
-            shatterEvent.Invoke(transform.position, shatterRadius);
+            ScaleGame.Instance.NotifyGlassObject(transform.position, shatterRadius);
             Destroy(gameObject);
         }
     }
 
     public void Test(Vector3 v, float f)
     {
-        print("Shatter!");
+        print("Shatter");
     }
 }
