@@ -490,7 +490,7 @@ GameObject:
   - component: {fileID: 8670899387406889665}
   - component: {fileID: 4778418973420211149}
   - component: {fileID: 7781658064462953283}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
