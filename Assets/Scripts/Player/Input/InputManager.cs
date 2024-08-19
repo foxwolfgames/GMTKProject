@@ -14,8 +14,6 @@ public class InputManager : MonoBehaviour
 
     private Vector2 horizontalInput;
     private Vector2 cameraInput;
-    private bool jumpInput, sprintInput;
-    private bool grabInput, throwInput;
 
     private void Awake()
     {
@@ -27,23 +25,20 @@ public class InputManager : MonoBehaviour
         playerMovement.HorizontalMovement.performed += ctx => horizontalInput = ctx.ReadValue<Vector2>();
         playerMovement.CameraMovementX.performed += ctx => cameraInput.x = ctx.ReadValue<float>();
         playerMovement.CameraMovementY.performed += ctx => cameraInput.y = ctx.ReadValue<float>();
-        playerMovement.Jump.performed += ctx => jumpInput = true;
-        playerMovement.Jump.canceled += ctx => jumpInput = false;
-        playerMovement.Sprint.performed += ctx => sprintInput = true;
-        playerMovement.Sprint.canceled += ctx => sprintInput = false;
+        playerMovement.Jump.performed += ctx => movementScript.ReceiveJumpInput(true);
+        playerMovement.Jump.canceled += ctx => movementScript.ReceiveJumpInput(false);
+        playerMovement.Sprint.performed += ctx => movementScript.ReceiveSprintInput(true);
+        playerMovement.Sprint.canceled += ctx => movementScript.ReceiveSprintInput(false);
 
         playerInteraction.GrabAction.performed += ctx => pickupScript.TryGrabObject();
         playerInteraction.GrabAction.canceled += ctx => pickupScript.ReleaseObject();
         playerInteraction.ThrowAction.performed += ctx => pickupScript.ThrowObject();
-        playerInteraction.ThrowAction.canceled += ctx => throwInput = false;
     }
 
     private void Update()
     {
         movementScript.ReceiveMovementInput(horizontalInput);
         cameraScript.ReceiveInput(cameraInput);
-        movementScript.ReceiveJumpInput(jumpInput);
-        movementScript.ReceiveSprintInput(sprintInput);
 
     }
 

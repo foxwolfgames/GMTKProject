@@ -61,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         bool wasGrounded = isGrounded;
+
         GroundCheck();
         StateHandler();
         SpeedControl();
@@ -156,4 +157,5 @@ public class PlayerMovement : MonoBehaviour
     {
         isJumpOffCD = true;
     }
+
 }
