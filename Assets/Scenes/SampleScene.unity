@@ -130,6 +130,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 176647684357394637, guid: 4ecbc20a9301e4c9186bf708aeff9c18, type: 3}
+      propertyPath: soundClips.Array.data[0].volume
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 992652161379356323, guid: 4ecbc20a9301e4c9186bf708aeff9c18, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

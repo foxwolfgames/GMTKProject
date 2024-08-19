@@ -33,7 +33,7 @@ public class InputManager : MonoBehaviour
         playerMovement.Sprint.canceled += ctx => movementScript.ReceiveSprintInput(false);
 
         playerInteraction.GrabAction.performed += ctx => pickupScript.TryGrabObject();
-        playerInteraction.GrabAction.canceled += ctx => pickupScript.ReleaseObject();
+        playerInteraction.GrabAction.canceled += ctx => pickupScript.ReleaseObject(true);
         playerInteraction.ThrowAction.performed += ctx => pickupScript.ThrowObject();
 
         canPauseActions.PauseGame.performed += _ => new PauseEvent().Invoke();

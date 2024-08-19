@@ -83,13 +83,17 @@ public class PlayerPickUp : MonoBehaviour
                 targetRB.angularDrag = angularDrag;
                 SetLayersRecursion(targetRB.gameObject, playerLayer);
                 targetRB.excludeLayers = playerLayerMask;
+                
+                // MARK: Audio
+                ScaleGame.Instance.Audio.PlaySound(Sounds.SFX_GAMEPLAY_PICKUP_ITEM, targetRB.transform);
+                ScaleGame.Instance.Audio.PlaySound(Sounds.SFX_GAMEPLAY_PICKUP_HOLDING, targetRB.transform);
             }
         }
 
         triedGrabbing = true;
     }
 
-    public void ReleaseObject()
+    public void ReleaseObject(bool isDropping)
     {
         triedGrabbing = false;
         if (targetRB)
@@ -98,6 +102,13 @@ public class PlayerPickUp : MonoBehaviour
             targetRB.angularDrag = rbAngularDrag;
             SetLayersRecursion(targetRB.gameObject, previousLayer);
             targetRB.excludeLayers = previousExclusionLayerMask;
+            
+            // MARK: Audio
+            if (isDropping)
+            {
+                ScaleGame.Instance.Audio.PlaySound(Sounds.SFX_GAMEPLAY_PICKUP_DROP, targetRB.transform);
+            }
+            new StopSoundEvent(Sounds.SFX_GAMEPLAY_PICKUP_HOLDING).Invoke();
 
             rbAngularDrag = 0f;
             targetRB = null;
@@ -116,7 +127,10 @@ public class PlayerPickUp : MonoBehaviour
             //print(targetRB.velocity.magnitude);
             //targetRB.velocity = Vector3.ClampMagnitude(targetRB.velocity, maxObjectVelocity);
 
-            ReleaseObject();
+            // MARK: Audio
+            ScaleGame.Instance.Audio.PlaySound(Sounds.SFX_GAMEPLAY_PICKUP_THROW, targetRB.transform);
+            
+            ReleaseObject(false);
         }
     }
 
