@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CannonSlot : MonoBehaviour
 {
+    [SerializeField]
     private Collider launchObject;
 
     [SerializeField, Range(0, 31)]
     public int objectLayer = 10;
+    public string playerTag = "Player";
     public Transform firePoint;
     [SerializeField] private float fireForce = 100f;
     [SerializeField] private ForceMode forceMode = ForceMode.VelocityChange;
@@ -15,10 +18,18 @@ public class CannonSlot : MonoBehaviour
     {
         if(other.attachedRigidbody)
         {
-            if (!launchObject)
+            if (!launchObject && other.gameObject.tag != playerTag)
             {
                 launchObject = other;
             }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other == launchObject)
+        {
+            launchObject = null;
         }
     }
 
