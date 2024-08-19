@@ -107,4 +107,17 @@ public class EventRegister
     {
         OnUnpauseEvent(@event);
     }
+    
+    // Pause the game from intro or in-game
+    public event EventHandler<PauseEvent> PauseEventHandler;
+    
+    protected virtual void OnPauseEvent(PauseEvent @event)
+    {
+        PauseEventHandler?.Invoke(this, @event);
+    }
+    
+    public void InvokePauseEvent(PauseEvent @event)
+    {
+        OnPauseEvent(@event);
+    }
 }

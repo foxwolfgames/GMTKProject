@@ -1,6 +1,6 @@
 public class ScaleGameLoop
 {
-    public StateMachine GameStateMachine = new();
+    public readonly StateMachine GameStateMachine = new();
 
     private MenuState _menuState;
     private IntroState _introState;

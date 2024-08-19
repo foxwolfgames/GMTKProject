@@ -2,7 +2,13 @@ using UnityEngine.SceneManagement;
 
 public class IntroState : IState
 {
+    public bool IsActive = false;
     public bool IsPaused = false;
+    
+    public IntroState()
+    {
+        ScaleGame.Instance.EventRegister.PauseEventHandler += OnPauseEvent;
+    }
     
     public void Tick()
     {
@@ -18,7 +24,11 @@ public class IntroState : IState
             IsPaused = false;
             return;
         }
+
+        // EXPECTED FLOW: MenuState -> IntroState
         
+        // Designate this state as active in-game state
+        IsActive = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
@@ -26,6 +36,15 @@ public class IntroState : IState
     {
         // Don't do anything if we are transitioning to the PauseState
         if (IsPaused) return;
+
+        // Designate this state as inactive
+        IsActive = false;
+        ResetState();
+    }
+
+    private void ResetState()
+    {
+        IsPaused = false;
     }
 
     public bool CanTransitionPause(PauseState pauseState)
@@ -36,5 +55,12 @@ public class IntroState : IState
         // Set the destination state for when we unpause
         pauseState.PreviousState = this;
         return true;
+    }
+    
+    private void OnPauseEvent(object _, PauseEvent @event)
+    {
+        // Check if this is the active state to pause from
+        if (!IsActive) return;
+        IsPaused = true;
     }
 }

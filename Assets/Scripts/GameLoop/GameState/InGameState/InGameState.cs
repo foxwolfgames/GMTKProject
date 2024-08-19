@@ -2,21 +2,44 @@ using System;
 
 public class InGameState : IState
 {
+    public bool IsActive = false;
     public bool IsPaused = false;
+    
+    public InGameState()
+    {
+        ScaleGame.Instance.EventRegister.PauseEventHandler += OnPauseEvent;
+    }
     
     public void Tick()
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 
     public void OnEnter()
     {
-        throw new NotImplementedException();
+        if (IsPaused)
+        {
+            IsPaused = false;
+            return;
+        }
+        
+        // EXPECTED FLOW: IntroState -> InGameState
+        
+        // Designate this state as active in-game state
+        IsActive = true;
     }
 
     public void OnExit()
     {
-        throw new NotImplementedException();
+        if (IsPaused) return;
+        
+        IsActive = false;
+        ResetState();
+    }
+
+    private void ResetState()
+    {
+        IsPaused = false;
     }
 
     public bool CanTransitionPause(PauseState pauseState)
@@ -27,5 +50,12 @@ public class InGameState : IState
         // Set the destination state for when we unpause
         pauseState.PreviousState = this;
         return true;
+    }
+    
+    private void OnPauseEvent(object _, PauseEvent @event)
+    {
+        // Check if this is the active state to pause from
+        if (!IsActive) return;
+        IsPaused = true;
     }
 }

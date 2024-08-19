@@ -18,6 +18,7 @@ public class PauseState : IState
 
     public void OnEnter()
     {
+        Debug.Log("Game paused");
         Time.timeScale = 0f;
         AudioListener.pause = true;
         IsActive = true;
@@ -25,6 +26,7 @@ public class PauseState : IState
 
     public void OnExit()
     {
+        Debug.Log("Game unpaused");
         Time.timeScale = 1f;
         AudioListener.pause = false;
         IsActive = false;

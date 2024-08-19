@@ -222,6 +222,62 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""CanPauseActions"",
+            ""id"": ""f7e4b19f-4e1a-442f-8f6b-56dcfd2b9721"",
+            ""actions"": [
+                {
+                    ""name"": ""PauseGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""5c488c05-ad82-4388-b5aa-a6802eb49a24"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""cb550fe9-ec6c-40e5-8552-3470f10b712f"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""InPauseMenuActions"",
+            ""id"": ""aed90ffd-3db3-40b8-b22a-9dd5f6817b25"",
+            ""actions"": [
+                {
+                    ""name"": ""UnpauseGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""65a2b25b-1240-493c-a54f-4a066e161a8c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""df1f1fac-edf2-4714-9bf5-c0e6f4ba9a65"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UnpauseGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -237,6 +293,12 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_PlayerInteraction = asset.FindActionMap("PlayerInteraction", throwIfNotFound: true);
         m_PlayerInteraction_GrabAction = m_PlayerInteraction.FindAction("GrabAction", throwIfNotFound: true);
         m_PlayerInteraction_ThrowAction = m_PlayerInteraction.FindAction("ThrowAction", throwIfNotFound: true);
+        // CanPauseActions
+        m_CanPauseActions = asset.FindActionMap("CanPauseActions", throwIfNotFound: true);
+        m_CanPauseActions_PauseGame = m_CanPauseActions.FindAction("PauseGame", throwIfNotFound: true);
+        // InPauseMenuActions
+        m_InPauseMenuActions = asset.FindActionMap("InPauseMenuActions", throwIfNotFound: true);
+        m_InPauseMenuActions_UnpauseGame = m_InPauseMenuActions.FindAction("UnpauseGame", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -426,6 +488,98 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         }
     }
     public PlayerInteractionActions @PlayerInteraction => new PlayerInteractionActions(this);
+
+    // CanPauseActions
+    private readonly InputActionMap m_CanPauseActions;
+    private List<ICanPauseActionsActions> m_CanPauseActionsActionsCallbackInterfaces = new List<ICanPauseActionsActions>();
+    private readonly InputAction m_CanPauseActions_PauseGame;
+    public struct CanPauseActionsActions
+    {
+        private @InputActions m_Wrapper;
+        public CanPauseActionsActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @PauseGame => m_Wrapper.m_CanPauseActions_PauseGame;
+        public InputActionMap Get() { return m_Wrapper.m_CanPauseActions; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(CanPauseActionsActions set) { return set.Get(); }
+        public void AddCallbacks(ICanPauseActionsActions instance)
+        {
+            if (instance == null || m_Wrapper.m_CanPauseActionsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_CanPauseActionsActionsCallbackInterfaces.Add(instance);
+            @PauseGame.started += instance.OnPauseGame;
+            @PauseGame.performed += instance.OnPauseGame;
+            @PauseGame.canceled += instance.OnPauseGame;
+        }
+
+        private void UnregisterCallbacks(ICanPauseActionsActions instance)
+        {
+            @PauseGame.started -= instance.OnPauseGame;
+            @PauseGame.performed -= instance.OnPauseGame;
+            @PauseGame.canceled -= instance.OnPauseGame;
+        }
+
+        public void RemoveCallbacks(ICanPauseActionsActions instance)
+        {
+            if (m_Wrapper.m_CanPauseActionsActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(ICanPauseActionsActions instance)
+        {
+            foreach (var item in m_Wrapper.m_CanPauseActionsActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_CanPauseActionsActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public CanPauseActionsActions @CanPauseActions => new CanPauseActionsActions(this);
+
+    // InPauseMenuActions
+    private readonly InputActionMap m_InPauseMenuActions;
+    private List<IInPauseMenuActionsActions> m_InPauseMenuActionsActionsCallbackInterfaces = new List<IInPauseMenuActionsActions>();
+    private readonly InputAction m_InPauseMenuActions_UnpauseGame;
+    public struct InPauseMenuActionsActions
+    {
+        private @InputActions m_Wrapper;
+        public InPauseMenuActionsActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @UnpauseGame => m_Wrapper.m_InPauseMenuActions_UnpauseGame;
+        public InputActionMap Get() { return m_Wrapper.m_InPauseMenuActions; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(InPauseMenuActionsActions set) { return set.Get(); }
+        public void AddCallbacks(IInPauseMenuActionsActions instance)
+        {
+            if (instance == null || m_Wrapper.m_InPauseMenuActionsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_InPauseMenuActionsActionsCallbackInterfaces.Add(instance);
+            @UnpauseGame.started += instance.OnUnpauseGame;
+            @UnpauseGame.performed += instance.OnUnpauseGame;
+            @UnpauseGame.canceled += instance.OnUnpauseGame;
+        }
+
+        private void UnregisterCallbacks(IInPauseMenuActionsActions instance)
+        {
+            @UnpauseGame.started -= instance.OnUnpauseGame;
+            @UnpauseGame.performed -= instance.OnUnpauseGame;
+            @UnpauseGame.canceled -= instance.OnUnpauseGame;
+        }
+
+        public void RemoveCallbacks(IInPauseMenuActionsActions instance)
+        {
+            if (m_Wrapper.m_InPauseMenuActionsActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IInPauseMenuActionsActions instance)
+        {
+            foreach (var item in m_Wrapper.m_InPauseMenuActionsActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_InPauseMenuActionsActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public InPauseMenuActionsActions @InPauseMenuActions => new InPauseMenuActionsActions(this);
     public interface IPlayerMovementActions
     {
         void OnHorizontalMovement(InputAction.CallbackContext context);
@@ -438,5 +592,13 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     {
         void OnGrabAction(InputAction.CallbackContext context);
         void OnThrowAction(InputAction.CallbackContext context);
+    }
+    public interface ICanPauseActionsActions
+    {
+        void OnPauseGame(InputAction.CallbackContext context);
+    }
+    public interface IInPauseMenuActionsActions
+    {
+        void OnUnpauseGame(InputAction.CallbackContext context);
     }
 }
