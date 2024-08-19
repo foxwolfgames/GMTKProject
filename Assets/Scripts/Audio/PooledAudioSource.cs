@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PooledAudioSource : MonoBehaviour
@@ -9,6 +10,7 @@ public class PooledAudioSource : MonoBehaviour
     void Start()
     {
         ScaleGame.Instance.EventRegister.ChangeVolumeEventHandler += OnChangeVolumeEvent;
+        ScaleGame.Instance.EventRegister.StopSoundEventHandler += OnStopSoundEvent;
     }
     
     void Update()
@@ -21,13 +23,17 @@ public class PooledAudioSource : MonoBehaviour
 
     public void PlayClip(SoundClip clip)
     {
+        // Activate this object
         gameObject.SetActive(true);
         currentSoundClip = clip;
-        audioSource.AssignVolume(ScaleGame.Instance.Audio.VolumeValues[clip.audioType], clip.volume);
-        audioSource.pitch = clip.pitch;
-        audioSource.dopplerLevel = clip.dimensionality;
-        audioSource.clip = clip.NextClip();
+        // Update the audio source
+        audioSource.AssignVolume(ScaleGame.Instance.Audio.VolumeValues[currentSoundClip.audioType], currentSoundClip.volume);
+        audioSource.pitch = currentSoundClip.pitch;
+        audioSource.dopplerLevel = currentSoundClip.dimensionality;
+        audioSource.clip = currentSoundClip.NextClip();
+        audioSource.loop = currentSoundClip.loop;
         audioSource.Play();
+        // Flag as playing
         _isPlaying = true;
     }
 
@@ -38,6 +44,17 @@ public class PooledAudioSource : MonoBehaviour
         if (@event.AudioType == currentSoundClip.audioType)
         {
             audioSource.AssignVolume(@event.VolumePercentage, currentSoundClip.volume);
+        }
+    }
+
+    private void OnStopSoundEvent(object _, StopSoundEvent @event)
+    {
+        if (!_isPlaying) return;
+
+        if (currentSoundClip.name == @event.SoundName)
+        {
+            // Update loop will take care of deactivating the object
+            audioSource.Stop();
         }
     }
 }

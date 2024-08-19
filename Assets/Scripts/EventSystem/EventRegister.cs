@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 // Must be attached to master game object
 
@@ -80,5 +81,18 @@ public class EventRegister
     public void InvokeChangeVolumeEvent(ChangeVolumeEvent @event)
     {
         OnChangeVolumeEvent(@event);
+    }
+    
+    // Forcefully stop a sound
+    public event EventHandler<StopSoundEvent> StopSoundEventHandler;
+    
+    protected virtual void OnStopSoundEvent(StopSoundEvent @event)
+    {
+        StopSoundEventHandler?.Invoke(this, @event);
+    }
+    
+    public void InvokeStopSoundEvent(StopSoundEvent @event)
+    {
+        OnStopSoundEvent(@event);
     }
 }

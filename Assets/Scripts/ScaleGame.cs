@@ -14,8 +14,8 @@ public class ScaleGame : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            GameLoop.Awake();
             Audio = GetComponent<AudioManager>();
+            GameLoop.Awake();
         }
         else
         {
