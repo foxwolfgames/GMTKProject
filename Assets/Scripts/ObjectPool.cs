@@ -8,8 +8,9 @@ public class ObjectPool : MonoBehaviour
     public List<GameObject> pooledObjects;
     public GameObject objectToPool1;
     public GameObject objectToPool2;
+    public GameObject objectToPool3;
     private GameObject temp;
-    private int numItemsPooled = 2;
+    private int numItemsPooled = 3;
     public int amountToPool;
     //shouldExpand = object pool for this object can be extended automatically
     public bool shouldExpand = true;
@@ -27,6 +28,7 @@ public class ObjectPool : MonoBehaviour
         {
             instantiateObjectToPool(objectToPool1);
             instantiateObjectToPool(objectToPool2);
+            instantiateObjectToPool(objectToPool3);
         }
     }
 
