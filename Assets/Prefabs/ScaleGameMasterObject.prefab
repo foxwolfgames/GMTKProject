@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 992652161379356323}
   - component: {fileID: 6253645019191941555}
+  - component: {fileID: 176647684357394637}
   m_Layer: 0
   m_Name: ScaleGameMasterObject
   m_TagString: Untagged
@@ -44,30 +45,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca69085188d4c35bed0f2d7b0ec3d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shatterEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7856674049504909008, guid: cabdb9100e20afa41814142508ac6229, type: 3}
-        m_TargetAssemblyTypeName: MusicNoteShatter, Assembly-CSharp
-        m_MethodName: Test
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6082499481661723086, guid: 48886b6f79666fc49b30ced0bd2580b9, type: 3}
-        m_TargetAssemblyTypeName: GlassBehavior, Assembly-CSharp
-        m_MethodName: OnShatter
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  Audio: {fileID: 0}
+--- !u!114 &176647684357394637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7500605977245830039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b33a76148aa1430aabebca95f5f21062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledAudioSourcePrefab: {fileID: 1307833274497036940, guid: 8f0575f314c91483298db5c41dbb1acb, type: 3}
+  soundClips:
+  - name: 0
+    audioType: 1
+    clips:
+    - {fileID: 8300000, guid: f35b677d1ce734cfe940d079920a26d8, type: 3}
+    loop: 1
+    volume: 1
+    pitch: 1
+    dimensionality: 0
+  - name: 1
+    audioType: 2
+    clips:
+    - {fileID: 8300000, guid: fe5a918c4e7454da28b8e613b8739c75, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    dimensionality: 0
+  - name: 2
+    audioType: 2
+    clips:
+    - {fileID: 8300000, guid: fe5a918c4e7454da28b8e613b8739c75, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    dimensionality: 0
+  - name: 3
+    audioType: 2
+    clips:
+    - {fileID: 8300000, guid: fe5a918c4e7454da28b8e613b8739c75, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    dimensionality: 0

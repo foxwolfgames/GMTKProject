@@ -11,7 +11,7 @@ public class EventRegister
     {
         TestItemScaleBoardUpdateEventHandler?.Invoke(this, @event);
     }
-        
+
     public void InvokeTestItemScaleBoardUpdateEvent(TestItemScaleBoardUpdateEvent @event)
     {
         OnTestItemScaleBoardUpdateEvent(@event);
@@ -42,7 +42,7 @@ public class EventRegister
     {
         OnScaleDetectionZoneExitEvent(@event);
     }
-    
+
     // Note Shatter
     public event EventHandler<NoteShatterEvent> NoteShatterEventHandler;
 
@@ -54,5 +54,44 @@ public class EventRegister
     public void InvokeNoteShatterEvent(NoteShatterEvent @event)
     {
         OnNoteShatterEvent(@event);
+    }
+
+    // Press "Play" button on main menu
+    public event EventHandler<PressPlayEvent> PressPlayEventHandler;
+
+    protected virtual void OnPressPlayEvent(PressPlayEvent @event)
+    {
+        PressPlayEventHandler?.Invoke(this, @event);
+    }
+
+    public void InvokePressPlayEvent(PressPlayEvent @event)
+    {
+        OnPressPlayEvent(@event);
+    }
+
+    // Changing the volume on a volume slider
+    public event EventHandler<ChangeVolumeEvent> ChangeVolumeEventHandler;
+
+    protected virtual void OnChangeVolumeEvent(ChangeVolumeEvent @event)
+    {
+        ChangeVolumeEventHandler?.Invoke(this, @event);
+    }
+
+    public void InvokeChangeVolumeEvent(ChangeVolumeEvent @event)
+    {
+        OnChangeVolumeEvent(@event);
+    }
+
+    // Forcefully stop a sound
+    public event EventHandler<StopSoundEvent> StopSoundEventHandler;
+
+    protected virtual void OnStopSoundEvent(StopSoundEvent @event)
+    {
+        StopSoundEventHandler?.Invoke(this, @event);
+    }
+
+    public void InvokeStopSoundEvent(StopSoundEvent @event)
+    {
+        OnStopSoundEvent(@event);
     }
 }

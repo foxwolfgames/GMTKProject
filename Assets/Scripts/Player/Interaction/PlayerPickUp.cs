@@ -1,42 +1,44 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PlayerPickUp : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField, Tooltip("Layer of pick-up-able item")]
+    [Header("References")] [SerializeField, Tooltip("Layer of pick-up-able item")]
     private LayerMask traceMask;
+
     [SerializeField, Tooltip("Layer of what stops colliding with object when picked up")]
     private LayerMask playerLayerMask;
-    [SerializeField, Range(0, 31), Tooltip("Layer of player so that the player stops jumping on top of object when grabbing it")]
+
+    [SerializeField, Range(0, 31),
+     Tooltip("Layer of player so that the player stops jumping on top of object when grabbing it")]
     private int playerLayer = 8;
+
     public Transform holdPoint;
     public Rigidbody targetRB = null;
+
     [SerializeField] private bool triedGrabbing = false;
+
     // Hold previous values
     private float rbAngularDrag = 0f;
     private int previousLayer;
     private LayerMask previousExclusionLayerMask;
 
-    [Header("Hold Force")]
-    public float rayTraceDistance = 3f;
+    [Header("Hold Force")] public float rayTraceDistance = 3f;
     public float maxHoldForce = 10f;
     public float spring = 50f;
     public float damping = 5f;
+
     public float angularDrag = 2f;
+
     //public float distanceTolerance = 1f;
     [SerializeField] private ForceMode holdForceMode = ForceMode.Force;
 
     [Header("Throw Force")]
     public float throwForce = 10f;
     public float maxObjectVelocity = 30f;
+    
     [SerializeField] private ForceMode throwForceMode = ForceMode.Impulse;
 
-    [Header("Grab Cooldown")]
-    public float grabCooldown = .25f;
+    [Header("Grab Cooldown")] public float grabCooldown = .25f;
     public bool isGrabOffCD = true;
 
     private void Update()
@@ -48,7 +50,10 @@ public class PlayerPickUp : MonoBehaviour
     {
         if (targetRB)
         {
-            Vector3 direction = holdPoint.position - targetRB.gameObject.transform.position; // Don't normalize, makes the force greater when object is further from holdPoint
+            Vector3
+                direction = holdPoint.position -
+                            targetRB.gameObject.transform
+                                .position; // Don't normalize, makes the force greater when object is further from holdPoint
 
             Vector3 springForce = direction * spring;
             Vector3 dampingForce = targetRB.velocity * damping;
@@ -64,7 +69,8 @@ public class PlayerPickUp : MonoBehaviour
     {
         if (!targetRB && !triedGrabbing && isGrabOffCD)
         {
-            if (Physics.SphereCast(transform.position, 1f, transform.forward, out RaycastHit hit, rayTraceDistance, traceMask))
+            if (Physics.SphereCast(transform.position, 1f, transform.forward, out RaycastHit hit, rayTraceDistance,
+                    traceMask))
             {
                 targetRB = hit.collider.attachedRigidbody;
 
@@ -79,8 +85,10 @@ public class PlayerPickUp : MonoBehaviour
                 targetRB.excludeLayers = playerLayerMask;
             }
         }
+
         triedGrabbing = true;
     }
+
     public void ReleaseObject()
     {
         triedGrabbing = false;
@@ -101,7 +109,7 @@ public class PlayerPickUp : MonoBehaviour
 
     public void ThrowObject()
     {
-        if(targetRB)
+        if (targetRB)
         {
             Vector3 direction = (holdPoint.position - transform.position).normalized;
             targetRB.AddForce(direction * throwForce, throwForceMode);
@@ -120,7 +128,7 @@ public class PlayerPickUp : MonoBehaviour
     private void SetLayersRecursion(GameObject _object, int layerToSet)
     {
         _object.layer = layerToSet;
-        foreach(Transform childObject in _object.transform)
+        foreach (Transform childObject in _object.transform)
         {
             SetLayersRecursion(childObject.gameObject, layerToSet);
         }
