@@ -25,8 +25,9 @@ public class PlayerMovement : MonoBehaviour
     public float jumpCooldown = .25f;
     public float airMultiplier = .4f;
     public int jumpCount = 1;
-    private bool isJumping;
-    private bool isJumpOffCD = true;
+    [SerializeField] private bool isJumpInput;
+    [SerializeField] private bool isJumping = false;
+    [SerializeField] private bool isJumpOffCD = true;
 
     [Header("Ground Check")]
     public LayerMask playerMask;
@@ -42,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void ReceiveJumpInput(bool jumpInput)
     {
-        isJumping = jumpInput;
+        isJumpInput = jumpInput;
     }
     public void ReceiveSprintInput(bool sprintInput)
     {
@@ -59,26 +60,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        bool wasGrounded = isGrounded;
+
         GroundCheck();
         StateHandler();
         SpeedControl();
 
         // Handle jumping
-        if (isJumping && isJumpOffCD)
+        if((!wasGrounded && isGrounded) || !isJumpInput)
+            isJumping = false;
+        if (isJumpInput && isJumpOffCD && !isJumping && jump > 0)
         {
-            if (jump > 0)
-            {
-                jump--;
-                Jump();
-                isJumpOffCD = false;
-                Invoke(nameof(ResetJumpCooldown), jumpCooldown);
-            }
-            else if (isGrounded)
-            {
-                Jump();
-                isJumpOffCD = false;
-                Invoke(nameof(ResetJumpCooldown), jumpCooldown);
-            }
+            Jump();
         }
         speed = rb.velocity.magnitude;
     }
@@ -148,14 +141,21 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
+        if (jump > 0)
+            jump--;
+        isJumping = true;
+
         // Reset y velocity before jumping to ensure jumping is consistent
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+
+        isJumpOffCD = false;
+        Invoke(nameof(ResetJumpCooldown), jumpCooldown);
     }
 
     private void ResetJumpCooldown()
     {
         isJumpOffCD = true;
     }
+
 }
