@@ -25,5 +25,8 @@ public enum Sounds
     SFX_GAMEPLAY_PICKUP_THROW,
     
     // SFX: Drop item
-    SFX_GAMEPLAY_PICKUP_DROP
+    SFX_GAMEPLAY_PICKUP_DROP,
+    
+    // SFX: Arena crowd ambience
+    SFX_AMBIENCE_ARENA_CROWD
 }

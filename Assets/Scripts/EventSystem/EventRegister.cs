@@ -161,4 +161,17 @@ public class EventRegister
     {
         OnGameStopEvent(@event);
     }
+    
+    // Development event for forcefully entering the arena
+    public event EventHandler<DevEnterArenaEvent> DevEnterArenaEventHandler;
+    
+    protected virtual void OnDevEnterArenaEvent(DevEnterArenaEvent @event)
+    {
+        DevEnterArenaEventHandler?.Invoke(this, @event);
+    }
+    
+    public void InvokeDevEnterArenaEvent(DevEnterArenaEvent @event)
+    {
+        OnDevEnterArenaEvent(@event);
+    }
 }

@@ -7,11 +7,13 @@ public class IntroState : IState
     
     public bool IsActive = false;
     public bool IsPaused = false;
+    public bool Dev_ShouldEnterArena = false;
     
     public IntroState()
     {
         ScaleGame.Instance.EventRegister.PauseEventHandler += OnPauseEvent;
         ScaleGame.Instance.EventRegister.GameStopEventHandler += OnGameStopEvent;
+        ScaleGame.Instance.EventRegister.DevEnterArenaEventHandler += OnDevEnterArenaEvent;
     }
     
     public void Tick()
@@ -41,7 +43,7 @@ public class IntroState : IState
         // Designate this state as active in-game state
         IsActive = true;
         new GameStartEvent().Invoke();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene((int) Scenes.LOBBY);
         ScaleGame.Instance.Audio.PlaySound(Sounds.SFX_AMBIENCE_INTRO_AREA_CROWD, _crowdAmbiencePosition);
     }
 
@@ -62,6 +64,7 @@ public class IntroState : IState
     {
         IsActive = false;
         IsPaused = false;
+        Dev_ShouldEnterArena = false;
     }
 
     public bool CanTransitionPause(PauseState pauseState)
@@ -72,6 +75,11 @@ public class IntroState : IState
         // Set the destination state for when we unpause
         pauseState.PreviousState = this;
         return true;
+    }
+
+    public bool CanTransitionDevEnterArena()
+    {
+        return Dev_ShouldEnterArena;
     }
     
     private void OnPauseEvent(object _, PauseEvent @event)
@@ -85,5 +93,10 @@ public class IntroState : IState
     {
         ResetState();
         new StopSoundEvent(Sounds.SFX_AMBIENCE_INTRO_AREA_CROWD).Invoke();
+    }
+
+    public void OnDevEnterArenaEvent(object _, DevEnterArenaEvent @event)
+    {
+        Dev_ShouldEnterArena = true;
     }
 }

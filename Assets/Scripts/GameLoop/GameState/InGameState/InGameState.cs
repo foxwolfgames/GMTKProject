@@ -1,4 +1,6 @@
 using System;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InGameState : IState
 {
@@ -34,6 +36,8 @@ public class InGameState : IState
         
         // Designate this state as active in-game state
         IsActive = true;
+        SceneManager.LoadScene((int) Scenes.ARENA);
+        ScaleGame.Instance.Audio.PlaySound(Sounds.SFX_AMBIENCE_ARENA_CROWD, Vector3.zero);
     }
 
     public void OnExit()
@@ -73,5 +77,6 @@ public class InGameState : IState
     private void OnGameStopEvent(object _, GameStopEvent @event)
     {
         ResetState();
+        new StopSoundEvent(Sounds.SFX_AMBIENCE_ARENA_CROWD).Invoke();
     }
 }
