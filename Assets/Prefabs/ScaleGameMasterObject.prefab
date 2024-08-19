@@ -81,3 +81,10 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     dimensionality: 0
+  - name: 3
+    audioType: 2
+    clips:
+    - {fileID: 8300000, guid: fe5a918c4e7454da28b8e613b8739c75, type: 3}
+    volume: 1
+    pitch: 1
+    dimensionality: 0
