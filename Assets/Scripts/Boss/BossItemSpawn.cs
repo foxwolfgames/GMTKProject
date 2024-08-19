@@ -53,7 +53,7 @@ public class BossItemSpawn : MonoBehaviour
     private Vector3 NextSpawnPosition()
     {
         Vector3 spawnPosition = spawnPoint.position;
-        spawnPosition.y += itemHeight * (activeBossItems.Count + 2);
+        spawnPosition.y += itemHeight * bossItem.transform.localScale.y * (activeBossItems.Count + 1);
         return spawnPosition;
     }
     private void ResetForces(GameObject itemToSpawn)

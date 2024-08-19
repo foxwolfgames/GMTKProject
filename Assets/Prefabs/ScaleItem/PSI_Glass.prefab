@@ -157,7 +157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5261597180208002211, guid: 2ccefb50a44a946a998590afc6fba966, type: 3}
       propertyPath: m_Name
-      value: ScaleItemGlass
+      value: PSI_Glass
       objectReference: {fileID: 0}
     - target: {fileID: 5481958557469860996, guid: 2ccefb50a44a946a998590afc6fba966, type: 3}
       propertyPath: type
@@ -170,8 +170,28 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7886059490524415770, guid: 2ccefb50a44a946a998590afc6fba966, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8319433860297592346}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5261597180208002211, guid: 2ccefb50a44a946a998590afc6fba966, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1438129579273398343}
   m_SourcePrefab: {fileID: 100100000, guid: 2ccefb50a44a946a998590afc6fba966, type: 3}
+--- !u!1 &2016743639917621101 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5261597180208002211, guid: 2ccefb50a44a946a998590afc6fba966, type: 3}
+  m_PrefabInstance: {fileID: 5978558629583772622}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1438129579273398343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016743639917621101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf3914ded83386043847e66390d1c4b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4578175338376436948 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7886059490524415770, guid: 2ccefb50a44a946a998590afc6fba966, type: 3}

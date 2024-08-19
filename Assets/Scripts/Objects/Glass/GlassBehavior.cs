@@ -17,7 +17,7 @@ public class GlassBehavior : MonoBehaviour
         if (Vector3.Distance(transform.position, @event.Position) <= @event.Radius)
         {
             print("Destroying");
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
