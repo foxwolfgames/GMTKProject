@@ -35,6 +35,7 @@ public class InputManager : MonoBehaviour
         playerInteraction.GrabAction.performed += ctx => pickupScript.TryGrabObject();
         playerInteraction.GrabAction.canceled += ctx => pickupScript.ReleaseObject();
         playerInteraction.ThrowAction.performed += ctx => pickupScript.ThrowObject();
+        playerInteraction.ThrowAction.canceled += ctx => throwInput = false;
     }
 
     private void Update()
