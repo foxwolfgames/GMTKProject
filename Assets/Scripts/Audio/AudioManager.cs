@@ -68,7 +68,8 @@ public class AudioManager : MonoBehaviour
         pooledAudioSource.GetComponent<PooledAudioSource>().PlayClip(clip);
     }
 
-    // Play a sound on a parent
+    // Play a sound on a parent transform
+    // NOTE POTENTIAL BUG: If the parent is destroyed before sound ends, what will happen to the pooled object???
     public void PlaySound(Sounds clipName, Transform parent)
     {
         SoundClip clip = GetSound(clipName);
