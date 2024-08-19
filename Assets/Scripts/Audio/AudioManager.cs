@@ -7,7 +7,7 @@ public class AudioManager : MonoBehaviour
 {
     private static AudioManager _instance;
 
-    private const int AudioSourcePoolSize = 20;
+    private const int AudioSourcePoolSize = 30;
     private const float DefaultVolume = 0.5f;
     public GameObject pooledAudioSourcePrefab;
     private List<GameObject> _pooledAudioSources = new();
