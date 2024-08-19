@@ -2,14 +2,13 @@ using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
-using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
     private const int AudioSourcePoolSize = 20;
     public GameObject pooledAudioSourcePrefab;
     private List<GameObject> _pooledAudioSources = new();
-    
+
     public readonly Dictionary<AudioType, float> VolumeValues = new();
     public float VolumeMasterPercentage => VolumeValues[AudioType.MASTER];
     public float VolumeMusicPercentage => VolumeValues[AudioType.MUSIC];
@@ -18,11 +17,12 @@ public class AudioManager : MonoBehaviour
 
     // Initialize all sounds in inspector
     public SoundClip[] soundClips;
+
     /// <summary>
     /// Sound lookup table, initialized based on soundClips
     /// </summary>
     private readonly Dictionary<Sounds, SoundClip> _sounds = new();
-    
+
     public AudioManager()
     {
         foreach (AudioType audioType in Enum.GetValues(typeof(AudioType)))
@@ -41,7 +41,7 @@ public class AudioManager : MonoBehaviour
     {
         ScaleGame.Instance.EventRegister.ChangeVolumeEventHandler += OnChangeVolumeEvent;
     }
-    
+
     // Play a sound @ 0,0,0 using the audio source object pool
     public void PlaySound(Sounds clipName)
     {
@@ -63,7 +63,7 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("No available audio sources in the pool");
             return;
         }
-        
+
         pooledAudioSource.GetComponent<PooledAudioSource>().PlayClip(clip);
     }
 
@@ -75,7 +75,7 @@ public class AudioManager : MonoBehaviour
         {
             throw new NotImplementedException();
         }
-        
+
         // TODO
         // Setup our audio source
         audioSource.AssignVolume(VolumeValues[clip.audioType], clip.volume);

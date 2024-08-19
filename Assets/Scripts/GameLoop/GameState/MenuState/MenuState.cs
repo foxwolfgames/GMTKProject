@@ -3,8 +3,10 @@ using UnityEngine;
 public class MenuState : IState
 {
     private bool _hasPressedPlay = false;
-    
-    public void Tick() { }
+
+    public void Tick()
+    {
+    }
 
     public void OnEnter()
     {

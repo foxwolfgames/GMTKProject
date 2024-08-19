@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class PooledAudioSource : MonoBehaviour
@@ -12,7 +11,7 @@ public class PooledAudioSource : MonoBehaviour
         ScaleGame.Instance.EventRegister.ChangeVolumeEventHandler += OnChangeVolumeEvent;
         ScaleGame.Instance.EventRegister.StopSoundEventHandler += OnStopSoundEvent;
     }
-    
+
     void Update()
     {
         if (_isPlaying && !audioSource.isPlaying)
@@ -27,7 +26,8 @@ public class PooledAudioSource : MonoBehaviour
         gameObject.SetActive(true);
         currentSoundClip = clip;
         // Update the audio source
-        audioSource.AssignVolume(ScaleGame.Instance.Audio.VolumeValues[currentSoundClip.audioType], currentSoundClip.volume);
+        audioSource.AssignVolume(ScaleGame.Instance.Audio.VolumeValues[currentSoundClip.audioType],
+            currentSoundClip.volume);
         audioSource.pitch = currentSoundClip.pitch;
         audioSource.dopplerLevel = currentSoundClip.dimensionality;
         audioSource.clip = currentSoundClip.NextClip();
@@ -40,7 +40,7 @@ public class PooledAudioSource : MonoBehaviour
     private void OnChangeVolumeEvent(object _, ChangeVolumeEvent @event)
     {
         if (!_isPlaying) return;
-        
+
         if (@event.AudioType == currentSoundClip.audioType)
         {
             audioSource.AssignVolume(@event.VolumePercentage, currentSoundClip.volume);

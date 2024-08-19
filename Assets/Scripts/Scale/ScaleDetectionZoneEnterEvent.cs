@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using UnityEngine;
 
 public class ScaleDetectionZoneEnterEvent : IEvent
@@ -11,7 +10,7 @@ public class ScaleDetectionZoneEnterEvent : IEvent
         Collider = collider;
         SideData = sideData;
     }
-    
+
     public void Invoke()
     {
         ScaleGame.Instance.EventRegister.InvokeScaleDetectionZoneEnterEvent(this);

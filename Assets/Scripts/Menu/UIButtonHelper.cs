@@ -8,6 +8,6 @@ public class UIButtonHelper : MonoBehaviour, ISelectHandler
         if (eventData.selectedObject != gameObject) return;
         ScaleGame.Instance.Audio.PlaySound(Sounds.SFX_UI_BUTTON_CLICK);
     }
-    
+
     // TODO: sound on hover?
 }

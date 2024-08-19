@@ -10,7 +10,7 @@ public class ScaleDetectionZoneExitEvent : IEvent
         Collider = collider;
         SideData = sideData;
     }
-    
+
     public void Invoke()
     {
         ScaleGame.Instance.EventRegister.InvokeScaleDetectionZoneExitEvent(this);

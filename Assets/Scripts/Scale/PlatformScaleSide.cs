@@ -18,7 +18,7 @@ public class PlatformScaleSide : MonoBehaviour
     {
         if (@event.SideData != type)
         {
-            return; 
+            return;
         }
 
         GameObject obj = @event.Collider.attachedRigidbody.gameObject;

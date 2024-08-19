@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -8,15 +6,12 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveDirection;
     private Rigidbody rb;
 
-    [Header("References")]
-    public Transform orientation;
+    [Header("References")] public Transform orientation;
 
-    [Header("Current Stats")]
-    public float speed = 0;
+    [Header("Current Stats")] public float speed = 0;
     public int jump = 1;
 
-    [Header("Movement")]
-    private float currentSpeed;
+    [Header("Movement")] private float currentSpeed;
     public float walkingSpeed = 10f;
     public float sprintingSpeed;
     private bool isSprinting = false;
@@ -29,26 +24,34 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool isJumping = false;
     [SerializeField] private bool isJumpOffCD = true;
 
-    [Header("Ground Check")]
-    public LayerMask playerMask;
+    [Header("Ground Check")] public LayerMask playerMask;
     public bool isGrounded;
     public float groundJumpAllowance = 0.2f;
 
     public MovementState movementState;
-    public enum MovementState { walking, sprinting, midair }
+
+    public enum MovementState
+    {
+        walking,
+        sprinting,
+        midair
+    }
 
     public void ReceiveMovementInput(Vector2 horizontalValue)
     {
         horizontalInput = horizontalValue;
     }
+
     public void ReceiveJumpInput(bool jumpInput)
     {
         isJumpInput = jumpInput;
     }
+
     public void ReceiveSprintInput(bool sprintInput)
     {
         isSprinting = sprintInput;
     }
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -67,12 +70,13 @@ public class PlayerMovement : MonoBehaviour
         SpeedControl();
 
         // Handle jumping
-        if((!wasGrounded && isGrounded) || !isJumpInput)
+        if ((!wasGrounded && isGrounded) || !isJumpInput)
             isJumping = false;
         if (isJumpInput && isJumpOffCD && !isJumping && jump > 0)
         {
             Jump();
         }
+
         speed = rb.velocity.magnitude;
     }
 
@@ -113,8 +117,10 @@ public class PlayerMovement : MonoBehaviour
     private void GroundCheck()
     {
         bool wasGrounded = isGrounded;
-        Debug.DrawRay(transform.position + new Vector3(0, groundJumpAllowance, 0), Vector3.down * groundJumpAllowance * 2f, Color.red);
-        isGrounded = Physics.Raycast(transform.position + new Vector3(0, groundJumpAllowance, 0), Vector3.down, groundJumpAllowance * 2f, ~playerMask);
+        Debug.DrawRay(transform.position + new Vector3(0, groundJumpAllowance, 0),
+            Vector3.down * groundJumpAllowance * 2f, Color.red);
+        isGrounded = Physics.Raycast(transform.position + new Vector3(0, groundJumpAllowance, 0), Vector3.down,
+            groundJumpAllowance * 2f, ~playerMask);
         if (isGrounded)
             rb.drag = groundDrag;
         else
@@ -157,5 +163,4 @@ public class PlayerMovement : MonoBehaviour
     {
         isJumpOffCD = true;
     }
-
 }
