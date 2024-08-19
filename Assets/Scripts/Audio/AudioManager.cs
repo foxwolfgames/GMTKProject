@@ -6,7 +6,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     private static AudioManager _instance;
-    
+
     private const int AudioSourcePoolSize = 30;
     private const float DefaultVolume = 0.5f;
     public GameObject pooledAudioSourcePrefab;
@@ -76,8 +76,9 @@ public class AudioManager : MonoBehaviour
         pooledAudioSource.GetComponent<PooledAudioSource>().PlayClip(clip);
     }
 
-    // Play a sound using another audio source
-    public void PlaySound(Sounds clipName, AudioSource audioSource)
+    // Play a sound on a parent transform
+    // NOTE POTENTIAL BUG: If the parent is destroyed before sound ends, what will happen to the pooled object???
+    public void PlaySound(Sounds clipName, Transform parent)
     {
         SoundClip clip = GetSound(clipName);
         if (clip == null)
@@ -85,12 +86,14 @@ public class AudioManager : MonoBehaviour
             throw new NotImplementedException();
         }
 
-        // TODO
-        // Setup our audio source
-        audioSource.AssignVolume(VolumeValues[clip.audioType], clip.volume);
-        audioSource.pitch = clip.pitch;
-        audioSource.dopplerLevel = clip.dimensionality;
-        throw new NotImplementedException();
+        GameObject pooledAudioSource = GetPooledAudioSource();
+        if (!pooledAudioSource)
+        {
+            Debug.LogWarning("No available audio sources in the pool");
+            return;
+        }
+
+        pooledAudioSource.GetComponent<PooledAudioSource>().PlayClip(clip, parent);
     }
 
     [CanBeNull]

@@ -22,13 +22,22 @@ public class PooledAudioSource : MonoBehaviour
         if (_isPlaying && !audioSource.isPlaying && !_isPaused)
         {
             gameObject.SetActive(false);
+            transform.parent = null;
         }
     }
 
-    public void PlayClip(SoundClip clip)
+    public void PlayClip(SoundClip clip, Transform parent = null)
     {
         // Activate this object
         gameObject.SetActive(true);
+        
+        // Set the parent if it exists
+        if (parent)
+        {
+            transform.position = parent.position;
+            transform.SetParent(parent);
+        }
+        
         _isPaused = false;
         currentSoundClip = clip;
         // Update the audio source

@@ -115,3 +115,47 @@ MonoBehaviour:
     dimensionality: 0.25
     useLowPassFilter: 1
     lowPassFilterCutoffFrequency: 2250
+  - name: 5
+    audioType: 2
+    clips:
+    - {fileID: 8300000, guid: b0252c3337c7c4106b460d9b65d5bf43, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    ignorePause: 0
+    dimensionality: 0.9
+    useLowPassFilter: 0
+    lowPassFilterCutoffFrequency: 2250
+  - name: 6
+    audioType: 2
+    clips:
+    - {fileID: 8300000, guid: 5dcd6fc3d5b814f838a0efab20ac6f1c, type: 3}
+    loop: 1
+    volume: 1
+    pitch: 1
+    ignorePause: 0
+    dimensionality: 0.9
+    useLowPassFilter: 0
+    lowPassFilterCutoffFrequency: 2250
+  - name: 7
+    audioType: 2
+    clips:
+    - {fileID: 8300000, guid: 77290ede70b2a478bab80c08418a7bc4, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    ignorePause: 0
+    dimensionality: 0.9
+    useLowPassFilter: 0
+    lowPassFilterCutoffFrequency: 2250
+  - name: 8
+    audioType: 2
+    clips:
+    - {fileID: 8300000, guid: 10aa20821261343729f4a374528ddc89, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    ignorePause: 0
+    dimensionality: 0.9
+    useLowPassFilter: 0
+    lowPassFilterCutoffFrequency: 2250
