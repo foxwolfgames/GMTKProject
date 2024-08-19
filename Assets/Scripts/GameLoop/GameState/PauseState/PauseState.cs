@@ -1,14 +1,17 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseState : IState
 {
     public IState PreviousState;
     public bool IsActive = false;
     public bool ShouldUnpause = false;
+    public bool ShouldQuitToMenu = false;
 
     public PauseState()
     {
         ScaleGame.Instance.EventRegister.UnpauseEventHandler += OnUnpauseEvent;
+        ScaleGame.Instance.EventRegister.QuitToMenuEventHandler += OnQuitToMenuEvent;
     }
     
     public void Tick()
@@ -18,6 +21,8 @@ public class PauseState : IState
 
     public void OnEnter()
     {
+        // NOTE: We expect previous state to already be set by the time we enter the pause menu
+        
         Debug.Log("Game paused");
         Time.timeScale = 0f;
         // NOTE: This actually stops all audio sources (we don't want this!!!)
@@ -27,28 +32,43 @@ public class PauseState : IState
 
     public void OnExit()
     {
+        if (ShouldQuitToMenu)
+        {
+            ResetState();
+            return;
+        }
+
         Debug.Log("Game unpaused");
         Time.timeScale = 1f;
         // AudioListener.pause = false;
-        IsActive = false;
         ResetState();
     }
 
     private void ResetState()
     {
+        IsActive = false;
         ShouldUnpause = false;
         PreviousState = null;
+        ShouldQuitToMenu = false;
     }
 
     public bool CanTransitionUnpause(IState destinationState)
     {
-        // Don't unpause if we aren't supposed to
-        if (!ShouldUnpause) return false;
-        
-        // Don't allow this transition if we are testing the transition to unpause for another state
-        if (destinationState != PreviousState) return false;
+        return ShouldUnpause && destinationState == PreviousState;
+    }
 
-        return true;
+    public bool CanTransitionQuitToMenu()
+    {
+        if (ShouldQuitToMenu)
+        {
+            // TODO: refactor this
+            SceneManager.LoadScene(0);
+            new GameStopEvent().Invoke();
+            Time.timeScale = 1f;
+            return true;
+        }
+
+        return false;
     }
     
     private void OnUnpauseEvent(object _, UnpauseEvent @event)
@@ -57,5 +77,13 @@ public class PauseState : IState
         if (!IsActive) return;
 
         ShouldUnpause = true;
+    }
+    
+    private void OnQuitToMenuEvent(object _, QuitToMenuEvent @event)
+    {
+        // Check if we are actually in the pause menu
+        if (!IsActive) return;
+
+        ShouldQuitToMenu = true;
     }
 }

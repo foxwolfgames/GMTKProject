@@ -120,4 +120,45 @@ public class EventRegister
     {
         OnPauseEvent(@event);
     }
+    
+    // Go back to the main menu from the pause menu
+    public event EventHandler<QuitToMenuEvent> QuitToMenuEventHandler;
+    
+    protected virtual void OnQuitToMenuEvent(QuitToMenuEvent @event)
+    {
+        QuitToMenuEventHandler?.Invoke(this, @event);
+    }
+    
+    public void InvokeQuitToMenuEvent(QuitToMenuEvent @event)
+    {
+        OnQuitToMenuEvent(@event);
+    }
+    
+    // Game start event
+    // When we enter a state that contains a player controller, invoke this event
+    public event EventHandler<GameStartEvent> GameStartEventHandler;
+    
+    protected virtual void OnGameStartEvent(GameStartEvent @event)
+    {
+        GameStartEventHandler?.Invoke(this, @event);
+    }
+    
+    public void InvokeGameStartEvent(GameStartEvent @event)
+    {
+        OnGameStartEvent(@event);
+    }
+    
+    // Game stop event
+    // When we leave a state that contains a player controller, invoke this event
+    public event EventHandler<GameStopEvent> GameStopEventHandler;
+    
+    protected virtual void OnGameStopEvent(GameStopEvent @event)
+    {
+        GameStopEventHandler?.Invoke(this, @event);
+    }
+    
+    public void InvokeGameStopEvent(GameStopEvent @event)
+    {
+        OnGameStopEvent(@event);
+    }
 }
