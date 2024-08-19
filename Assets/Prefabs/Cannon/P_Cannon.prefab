@@ -246,7 +246,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 813b51d288f0c404e834d0ff7d899a38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  launchObject: {fileID: 0}
   objectLayer: 10
+  playerLayer: 8
   firePoint: {fileID: 7989790972886505994}
   fireForce: 100
   forceMode: 2
