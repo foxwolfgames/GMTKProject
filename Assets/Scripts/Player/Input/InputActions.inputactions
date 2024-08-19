@@ -200,6 +200,62 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "CanPauseActions",
+            "id": "f7e4b19f-4e1a-442f-8f6b-56dcfd2b9721",
+            "actions": [
+                {
+                    "name": "PauseGame",
+                    "type": "Button",
+                    "id": "5c488c05-ad82-4388-b5aa-a6802eb49a24",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "cb550fe9-ec6c-40e5-8552-3470f10b712f",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PauseGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "InPauseMenuActions",
+            "id": "aed90ffd-3db3-40b8-b22a-9dd5f6817b25",
+            "actions": [
+                {
+                    "name": "UnpauseGame",
+                    "type": "Button",
+                    "id": "65a2b25b-1240-493c-a54f-4a066e161a8c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "df1f1fac-edf2-4714-9bf5-c0e6f4ba9a65",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UnpauseGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

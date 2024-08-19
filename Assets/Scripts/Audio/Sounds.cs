@@ -10,5 +10,8 @@ public enum Sounds
     SFX_UI_BUTTON_HOVER,
 
     // SFX: Slider value changed
-    SFX_UI_SLIDER_CHANGED
+    SFX_UI_SLIDER_CHANGED,
+    
+    // SFX: Intro area crowd ambience
+    SFX_AMBIENCE_INTRO_AREA_CROWD
 }
