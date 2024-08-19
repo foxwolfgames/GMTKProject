@@ -12,7 +12,7 @@ public class MusicNoteShatter : MonoBehaviour
         // Check if the collided object has a different tag
         if (!collision.gameObject.CompareTag("MusicNote"))
         {
-            ScaleGame.Instance.NotifyGlassObject(transform.position, shatterRadius);
+            new NoteShatterEvent(transform.position, shatterRadius).Invoke();
             Destroy(gameObject);
         }
     }

@@ -350,6 +350,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5298734983602192634, guid: de0a18331e0687c488264d3f37ff0815, type: 3}
+      propertyPath: holdPoint
+      value: 
+      objectReference: {fileID: 5243799349721131006}
+    - target: {fileID: 5298734983602192634, guid: de0a18331e0687c488264d3f37ff0815, type: 3}
+      propertyPath: playerLayer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5298734983602192634, guid: de0a18331e0687c488264d3f37ff0815, type: 3}
+      propertyPath: maxHoldForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5298734983602192634, guid: de0a18331e0687c488264d3f37ff0815, type: 3}
+      propertyPath: traceMask.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 5298734983602192634, guid: de0a18331e0687c488264d3f37ff0815, type: 3}
+      propertyPath: distanceTolerance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5298734983602192634, guid: de0a18331e0687c488264d3f37ff0815, type: 3}
+      propertyPath: playerLayerMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -369,6 +393,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d742ccf0a350bc4409cb1f6f217fe9c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &5243799349721131006 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 380508721708124776, guid: de0a18331e0687c488264d3f37ff0815, type: 3}
+  m_PrefabInstance: {fileID: 5585133223716105622}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5404603856392210557 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 469328195320178155, guid: de0a18331e0687c488264d3f37ff0815, type: 3}

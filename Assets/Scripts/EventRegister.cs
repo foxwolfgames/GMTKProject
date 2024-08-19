@@ -4,6 +4,7 @@ using System;
 
 public class EventRegister
 {
+    // 
     public event EventHandler<TestItemScaleBoardUpdateEvent> TestItemScaleBoardUpdateEventHandler;
 
     protected virtual void OnTestItemScaleBoardUpdateEvent(TestItemScaleBoardUpdateEvent @event)
@@ -16,6 +17,7 @@ public class EventRegister
         OnTestItemScaleBoardUpdateEvent(@event);
     }
 
+    // 
     public event EventHandler<ScaleDetectionZoneEnterEvent> ScaleDetectionZoneEnterEventHandler;
 
     protected virtual void OnScaleDetectionZoneEnterEvent(ScaleDetectionZoneEnterEvent @event)
@@ -28,6 +30,7 @@ public class EventRegister
         OnScaleDetectionZoneEnterEvent(@event);
     }
 
+    // 
     public event EventHandler<ScaleDetectionZoneExitEvent> ScaleDetectionZoneExitEventHandler;
 
     protected virtual void OnScaleDetectionZoneExitEvent(ScaleDetectionZoneExitEvent @event)
@@ -38,5 +41,18 @@ public class EventRegister
     public void InvokeScaleDetectionZoneExitEvent(ScaleDetectionZoneExitEvent @event)
     {
         OnScaleDetectionZoneExitEvent(@event);
+    }
+    
+    // Note Shatter
+    public event EventHandler<NoteShatterEvent> NoteShatterEventHandler;
+
+    protected virtual void OnNoteShatterEvent(NoteShatterEvent @event)
+    {
+        NoteShatterEventHandler?.Invoke(this, @event);
+    }
+
+    public void InvokeNoteShatterEvent(NoteShatterEvent @event)
+    {
+        OnNoteShatterEvent(@event);
     }
 }

@@ -9,9 +9,6 @@ public class ScaleGame : MonoBehaviour
     
     public static ScaleGame Instance;
 
-    public UnityEvent<Vector3, float> shatterEvent = new UnityEvent<Vector3, float>();
-
-
     private void Awake()
     {
         if (Instance == null)
@@ -23,20 +20,5 @@ public class ScaleGame : MonoBehaviour
             // Destroy any other instances of this
             Destroy(gameObject);
         }
-    }
-
-    public void RegisterGlassObject(GlassBehavior glassBehavior)
-    {
-        shatterEvent.AddListener(glassBehavior.OnShatter);
-    }
-
-    public void UnregisterGlassObject(GlassBehavior glassBehavior)
-    {
-        shatterEvent.RemoveListener(glassBehavior.OnShatter);
-    }
-
-    public void NotifyGlassObject(Vector3 originLocation, float originRadius)
-    {
-        shatterEvent.Invoke(originLocation, originRadius);
     }
 }

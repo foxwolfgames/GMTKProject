@@ -187,6 +187,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ThrowAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""98f6f58a-aa2b-4a49-8b1a-5e97d6c8b020"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -198,6 +207,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""GrabAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""653eb55e-45d2-448a-b005-890d9c55bfce"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ThrowAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -216,6 +236,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         // PlayerInteraction
         m_PlayerInteraction = asset.FindActionMap("PlayerInteraction", throwIfNotFound: true);
         m_PlayerInteraction_GrabAction = m_PlayerInteraction.FindAction("GrabAction", throwIfNotFound: true);
+        m_PlayerInteraction_ThrowAction = m_PlayerInteraction.FindAction("ThrowAction", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -356,11 +377,13 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerInteraction;
     private List<IPlayerInteractionActions> m_PlayerInteractionActionsCallbackInterfaces = new List<IPlayerInteractionActions>();
     private readonly InputAction m_PlayerInteraction_GrabAction;
+    private readonly InputAction m_PlayerInteraction_ThrowAction;
     public struct PlayerInteractionActions
     {
         private @InputActions m_Wrapper;
         public PlayerInteractionActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @GrabAction => m_Wrapper.m_PlayerInteraction_GrabAction;
+        public InputAction @ThrowAction => m_Wrapper.m_PlayerInteraction_ThrowAction;
         public InputActionMap Get() { return m_Wrapper.m_PlayerInteraction; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -373,6 +396,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @GrabAction.started += instance.OnGrabAction;
             @GrabAction.performed += instance.OnGrabAction;
             @GrabAction.canceled += instance.OnGrabAction;
+            @ThrowAction.started += instance.OnThrowAction;
+            @ThrowAction.performed += instance.OnThrowAction;
+            @ThrowAction.canceled += instance.OnThrowAction;
         }
 
         private void UnregisterCallbacks(IPlayerInteractionActions instance)
@@ -380,6 +406,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @GrabAction.started -= instance.OnGrabAction;
             @GrabAction.performed -= instance.OnGrabAction;
             @GrabAction.canceled -= instance.OnGrabAction;
+            @ThrowAction.started -= instance.OnThrowAction;
+            @ThrowAction.performed -= instance.OnThrowAction;
+            @ThrowAction.canceled -= instance.OnThrowAction;
         }
 
         public void RemoveCallbacks(IPlayerInteractionActions instance)
@@ -408,5 +437,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     public interface IPlayerInteractionActions
     {
         void OnGrabAction(InputAction.CallbackContext context);
+        void OnThrowAction(InputAction.CallbackContext context);
     }
 }
