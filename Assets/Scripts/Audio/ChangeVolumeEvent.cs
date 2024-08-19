@@ -1,6 +1,7 @@
 public class ChangeVolumeEvent : IEvent
 {
     public readonly AudioType AudioType;
+
     // From 0.0f -> 1.0f;
     public readonly float VolumePercentage;
 
@@ -9,7 +10,7 @@ public class ChangeVolumeEvent : IEvent
         AudioType = audioType;
         VolumePercentage = volumePercentage;
     }
-    
+
     public void Invoke()
     {
         ScaleGame.Instance.EventRegister.InvokeChangeVolumeEvent(this);

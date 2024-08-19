@@ -16,7 +16,7 @@ public class ScaleGameLoop
 
         // Initialize transitions
         GameStateMachine.AddTransition(menuState, introState, menuState.CanTransitionPressPlay);
-        
+
         // Set initial state
         GameStateMachine.SetState(menuState);
     }

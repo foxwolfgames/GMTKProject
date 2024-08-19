@@ -1,17 +1,19 @@
+using System;
+
 public class InGameState : IState
 {
     public void Tick()
     {
-        throw new System.NotImplementedException();
+        throw new NotImplementedException();
     }
 
     public void OnEnter()
     {
-        throw new System.NotImplementedException();
+        throw new NotImplementedException();
     }
 
     public void OnExit()
     {
-        throw new System.NotImplementedException();
+        throw new NotImplementedException();
     }
 }

@@ -28,7 +28,8 @@ public class ButtonInvoke : PropertyAttribute
     /// <param name="methodParameter">Optional parameter to pass into the method.</param>
     /// <param name="displayIn">Should the button show in play mode, edit mode, or both.</param>
     /// <param name="customLabel">Optional custom label.</param>
-    public ButtonInvoke(string methodName, object methodParameter = null, DisplayIn displayIn = DisplayIn.PlayMode, string customLabel = "")
+    public ButtonInvoke(string methodName, object methodParameter = null, DisplayIn displayIn = DisplayIn.PlayMode,
+        string customLabel = "")
     {
         this.methodName = methodName;
         this.methodParameter = methodParameter;

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.AI;
-using Object = System.Object;
 
 // Boilerplate from: https://game.courses/bots-ai-statemachines/
 

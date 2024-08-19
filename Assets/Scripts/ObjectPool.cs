@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +10,9 @@ public class ObjectPool : MonoBehaviour
     public GameObject objectToPool3;
     private GameObject temp;
     private int numItemsPooled = 3;
+
     public int amountToPool;
+
     //shouldExpand = object pool for this object can be extended automatically
     public bool shouldExpand = true;
 
@@ -24,7 +25,7 @@ public class ObjectPool : MonoBehaviour
     void Start()
     {
         pooledObjects = new List<GameObject>();
-        for(int i = 0; i < amountToPool; i++)
+        for (int i = 0; i < amountToPool; i++)
         {
             instantiateObjectToPool(objectToPool1);
             instantiateObjectToPool(objectToPool2);
@@ -35,27 +36,25 @@ public class ObjectPool : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public GameObject GetPooledObject()
     {
-        for(int i = 0; i < amountToPool * numItemsPooled; i++)
+        for (int i = 0; i < amountToPool * numItemsPooled; i++)
         {
             if (!pooledObjects[i].activeInHierarchy)
             {
                 return pooledObjects[i];
             }
         }
+
         return null;
     }
 
     public void instantiateObjectToPool(GameObject obj)
     {
-
         temp = Instantiate(obj);
         temp.SetActive(false);
         pooledObjects.Add(temp);
     }
-
 }

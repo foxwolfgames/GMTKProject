@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class TestItemScale : MonoBehaviour
 {
-    [ButtonInvoke("TestItemScalePrintDebug", customLabel: "Print console debug")] public bool buttonInvokePrintDebug;
+    [ButtonInvoke("TestItemScalePrintDebug", customLabel: "Print console debug")]
+    public bool buttonInvokePrintDebug;
+
     public LayerMask scaleItemMask;
     private readonly HashSet<Collider> _insideObjects = new();
 
@@ -19,7 +21,7 @@ public class TestItemScale : MonoBehaviour
         {
             return;
         }
-        
+
         _insideObjects.Add(other);
         InvokeUpdateEvent();
     }
@@ -30,7 +32,7 @@ public class TestItemScale : MonoBehaviour
         {
             return;
         }
-        
+
         _insideObjects.Remove(other);
         InvokeUpdateEvent();
     }

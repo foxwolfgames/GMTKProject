@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 
 // Must be attached to master game object
 
@@ -12,7 +11,7 @@ public class EventRegister
     {
         TestItemScaleBoardUpdateEventHandler?.Invoke(this, @event);
     }
-        
+
     public void InvokeTestItemScaleBoardUpdateEvent(TestItemScaleBoardUpdateEvent @event)
     {
         OnTestItemScaleBoardUpdateEvent(@event);
@@ -43,7 +42,7 @@ public class EventRegister
     {
         OnScaleDetectionZoneExitEvent(@event);
     }
-    
+
     // Note Shatter
     public event EventHandler<NoteShatterEvent> NoteShatterEventHandler;
 
@@ -56,7 +55,7 @@ public class EventRegister
     {
         OnNoteShatterEvent(@event);
     }
-    
+
     // Press "Play" button on main menu
     public event EventHandler<PressPlayEvent> PressPlayEventHandler;
 
@@ -69,7 +68,7 @@ public class EventRegister
     {
         OnPressPlayEvent(@event);
     }
-    
+
     // Changing the volume on a volume slider
     public event EventHandler<ChangeVolumeEvent> ChangeVolumeEventHandler;
 
@@ -82,15 +81,15 @@ public class EventRegister
     {
         OnChangeVolumeEvent(@event);
     }
-    
+
     // Forcefully stop a sound
     public event EventHandler<StopSoundEvent> StopSoundEventHandler;
-    
+
     protected virtual void OnStopSoundEvent(StopSoundEvent @event)
     {
         StopSoundEventHandler?.Invoke(this, @event);
     }
-    
+
     public void InvokeStopSoundEvent(StopSoundEvent @event)
     {
         OnStopSoundEvent(@event);

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
@@ -17,8 +15,8 @@ public class PlayerCamera : MonoBehaviour
     {
         mouseX = mouseInput.x * sensX;
         mouseY = mouseInput.y * sensY;
-
     }
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
