@@ -42,10 +42,14 @@ public class InputManager : MonoBehaviour
     
     private void Start()
     {
+        Debug.Log("InputManager (start)");
         // Assuming that this start is called after the player controller has been initialized
+        
         SetupInGameControls();
         ScaleGame.Instance.EventRegister.PauseEventHandler += OnPauseEvent;
         ScaleGame.Instance.EventRegister.UnpauseEventHandler += OnUnpauseEvent;
+        ScaleGame.Instance.EventRegister.GameStartEventHandler += OnGameStartEvent;
+        ScaleGame.Instance.EventRegister.GameStopEventHandler += OnGameStopEvent;
     }
 
     private void SetupInGameControls()
@@ -76,12 +80,18 @@ public class InputManager : MonoBehaviour
 
     private void OnEnable()
     {
+        Debug.Log("InputManager enabled (onEnable)");
         controls.Enable();
     }
 
     private void OnDestroy()
     {
+        Debug.Log("InputManager disabled (destroyed)");
         controls.Disable();
+        ScaleGame.Instance.EventRegister.PauseEventHandler -= OnPauseEvent;
+        ScaleGame.Instance.EventRegister.UnpauseEventHandler -= OnUnpauseEvent;
+        ScaleGame.Instance.EventRegister.GameStartEventHandler -= OnGameStartEvent;
+        ScaleGame.Instance.EventRegister.GameStopEventHandler -= OnGameStopEvent;
     }
 
     private void OnPauseEvent(object _, PauseEvent @event)
@@ -92,5 +102,17 @@ public class InputManager : MonoBehaviour
     private void OnUnpauseEvent(object _, UnpauseEvent @event)
     {
         SetupInGameControls();
+    }
+    
+    private void OnGameStartEvent(object _, GameStartEvent @event)
+    {
+        Debug.Log("InputManager enabled (game start)");
+        controls.Enable();
+    }
+    
+    private void OnGameStopEvent(object _, GameStopEvent @event)
+    {
+        Debug.Log("InputManager disabled (game stop)");
+        controls.Disable();
     }
 }

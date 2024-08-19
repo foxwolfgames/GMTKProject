@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuState : IState
 {
@@ -10,9 +11,9 @@ public class MenuState : IState
 
     public void OnEnter()
     {
+        ResetMenuState();
         ScaleGame.Instance.EventRegister.PressPlayEventHandler += OnPressPlayEvent;
         ScaleGame.Instance.Audio.PlaySound(Sounds.MUSIC_TITLE);
-        ResetMenuState();
     }
 
     public void OnExit()
