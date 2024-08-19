@@ -32,7 +32,10 @@ public class PlayerPickUp : MonoBehaviour
     //public float distanceTolerance = 1f;
     [SerializeField] private ForceMode holdForceMode = ForceMode.Force;
 
-    [Header("Throw Force")] public float throwForce = 10f;
+    [Header("Throw Force")]
+    public float throwForce = 10f;
+    public float maxObjectVelocity = 30f;
+    
     [SerializeField] private ForceMode throwForceMode = ForceMode.Impulse;
 
     [Header("Grab Cooldown")] public float grabCooldown = .25f;
@@ -110,6 +113,8 @@ public class PlayerPickUp : MonoBehaviour
         {
             Vector3 direction = (holdPoint.position - transform.position).normalized;
             targetRB.AddForce(direction * throwForce, throwForceMode);
+            //print(targetRB.velocity.magnitude);
+            //targetRB.velocity = Vector3.ClampMagnitude(targetRB.velocity, maxObjectVelocity);
 
             ReleaseObject();
         }
