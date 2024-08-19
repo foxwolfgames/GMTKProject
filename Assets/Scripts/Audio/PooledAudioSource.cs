@@ -32,6 +32,7 @@ public class PooledAudioSource : MonoBehaviour
         audioSource.dopplerLevel = currentSoundClip.dimensionality;
         audioSource.clip = currentSoundClip.NextClip();
         audioSource.loop = currentSoundClip.loop;
+        audioSource.ignoreListenerPause = currentSoundClip.ignorePause;
         audioSource.Play();
         // Flag as playing
         _isPlaying = true;

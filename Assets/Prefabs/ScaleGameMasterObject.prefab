@@ -67,6 +67,7 @@ MonoBehaviour:
     loop: 1
     volume: 1
     pitch: 1
+    ignorePause: 0
     dimensionality: 0
   - name: 1
     audioType: 2
@@ -75,6 +76,7 @@ MonoBehaviour:
     loop: 0
     volume: 1
     pitch: 1
+    ignorePause: 1
     dimensionality: 0
   - name: 2
     audioType: 2
@@ -83,6 +85,7 @@ MonoBehaviour:
     loop: 0
     volume: 1
     pitch: 1
+    ignorePause: 1
     dimensionality: 0
   - name: 3
     audioType: 2
@@ -91,4 +94,5 @@ MonoBehaviour:
     loop: 0
     volume: 1
     pitch: 1
+    ignorePause: 1
     dimensionality: 0
