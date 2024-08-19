@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 6288129755627070913}
   - component: {fileID: 6082499481661723086}
   m_Layer: 0
-  m_Name: GlassCube
+  m_Name: P_GlassCube
   m_TagString: Glass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
