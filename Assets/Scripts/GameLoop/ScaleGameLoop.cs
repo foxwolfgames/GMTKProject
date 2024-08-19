@@ -1,24 +1,29 @@
 public class ScaleGameLoop
 {
-    public StateMachine GameStateMachine;
+    public readonly StateMachine GameStateMachine = new();
 
-    public ScaleGameLoop()
-    {
-        GameStateMachine = new();
-    }
+    private MenuState _menuState;
+    private IntroState _introState;
+    private InGameState _inGameState;
+    private PauseState _pauseState;
 
     public void Awake()
     {
         // Initialize game states
-        MenuState menuState = new();
-        IntroState introState = new();
-        InGameState inGameState = new();
+        _menuState = new MenuState();
+        _introState = new IntroState();
+        _inGameState = new InGameState();
+        _pauseState = new PauseState();
 
         // Initialize transitions
-        GameStateMachine.AddTransition(menuState, introState, menuState.CanTransitionPressPlay);
+        GameStateMachine.AddTransition(_menuState, _introState, _menuState.CanTransitionPressPlay);
+        GameStateMachine.AddTransition(_introState, _pauseState, () => _introState.CanTransitionPause(_pauseState));
+        GameStateMachine.AddTransition(_inGameState, _pauseState, () => _inGameState.CanTransitionPause(_pauseState));
+        GameStateMachine.AddTransition(_pauseState, _introState, () => _pauseState.CanTransitionUnpause(_introState));
+        GameStateMachine.AddTransition(_pauseState, _inGameState, () => _pauseState.CanTransitionUnpause(_inGameState));
 
         // Set initial state
-        GameStateMachine.SetState(menuState);
+        GameStateMachine.SetState(_menuState);
     }
 
     public void Update()

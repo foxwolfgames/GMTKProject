@@ -6,6 +6,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     private const int AudioSourcePoolSize = 20;
+    private const float DefaultVolume = 0.5f;
     public GameObject pooledAudioSourcePrefab;
     private List<GameObject> _pooledAudioSources = new();
 
@@ -27,7 +28,7 @@ public class AudioManager : MonoBehaviour
     {
         foreach (AudioType audioType in Enum.GetValues(typeof(AudioType)))
         {
-            VolumeValues.Add(audioType, 1.0f);
+            VolumeValues.Add(audioType, 0.5f);
         }
     }
 
@@ -58,7 +59,7 @@ public class AudioManager : MonoBehaviour
         }
 
         GameObject pooledAudioSource = GetPooledAudioSource();
-        if (pooledAudioSource == null)
+        if (!pooledAudioSource)
         {
             Debug.LogWarning("No available audio sources in the pool");
             return;
