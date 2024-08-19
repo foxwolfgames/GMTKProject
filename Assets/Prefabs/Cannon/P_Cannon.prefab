@@ -248,7 +248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchObject: {fileID: 0}
   objectLayer: 10
-  playerLayer: 8
+  playerTag: Player
   firePoint: {fileID: 7989790972886505994}
-  fireForce: 100
+  fireForce: 50
   forceMode: 2
