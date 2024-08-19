@@ -6,7 +6,10 @@ public class ObjectPool : MonoBehaviour
 {
     public static ObjectPool SharedInstance;
     public List<GameObject> pooledObjects;
-    public GameObject objectToPool;
+    public GameObject objectToPool1;
+    public GameObject objectToPool2;
+    private GameObject temp;
+    private int numItemsPooled = 2;
     public int amountToPool;
     //shouldExpand = object pool for this object can be extended automatically
     public bool shouldExpand = true;
@@ -20,12 +23,10 @@ public class ObjectPool : MonoBehaviour
     void Start()
     {
         pooledObjects = new List<GameObject>();
-        GameObject temp;
         for(int i = 0; i < amountToPool; i++)
         {
-            temp = Instantiate(objectToPool);
-            temp.SetActive(false);
-            pooledObjects.Add(temp);
+            instantiateObjectToPool(objectToPool1);
+            instantiateObjectToPool(objectToPool2);
         }
     }
 
@@ -37,7 +38,7 @@ public class ObjectPool : MonoBehaviour
 
     public GameObject GetPooledObject()
     {
-        for(int i = 0; i < amountToPool; i++)
+        for(int i = 0; i < amountToPool * numItemsPooled; i++)
         {
             if (!pooledObjects[i].activeInHierarchy)
             {
@@ -45,6 +46,14 @@ public class ObjectPool : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public void instantiateObjectToPool(GameObject obj)
+    {
+
+        temp = Instantiate(obj);
+        temp.SetActive(false);
+        pooledObjects.Add(temp);
     }
 
 }
