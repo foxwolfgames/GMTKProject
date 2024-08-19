@@ -81,4 +81,17 @@ public class EventRegister
     {
         OnChangeVolumeEvent(@event);
     }
+    
+    // Forcefully stop a sound
+    public event EventHandler<StopSoundEvent> StopSoundEventHandler;
+    
+    protected virtual void OnStopSoundEvent(StopSoundEvent @event)
+    {
+        StopSoundEventHandler?.Invoke(this, @event);
+    }
+    
+    public void InvokeStopSoundEvent(StopSoundEvent @event)
+    {
+        OnStopSoundEvent(@event);
+    }
 }
