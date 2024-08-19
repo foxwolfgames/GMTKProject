@@ -20,7 +20,8 @@ public class PauseState : IState
     {
         Debug.Log("Game paused");
         Time.timeScale = 0f;
-        AudioListener.pause = true;
+        // NOTE: This actually stops all audio sources (we don't want this!!!)
+        // AudioListener.pause = true;
         IsActive = true;
     }
 
@@ -28,7 +29,7 @@ public class PauseState : IState
     {
         Debug.Log("Game unpaused");
         Time.timeScale = 1f;
-        AudioListener.pause = false;
+        // AudioListener.pause = false;
         IsActive = false;
         ResetState();
     }

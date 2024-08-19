@@ -4,17 +4,22 @@ public class PooledAudioSource : MonoBehaviour
 {
     public SoundClip currentSoundClip;
     public AudioSource audioSource;
+    public AudioLowPassFilter lowPassFilter;
     private bool _isPlaying;
+    // Second flag to prevent the object from being deactivated when audio source is paused
+    private bool _isPaused;
 
     void Start()
     {
         ScaleGame.Instance.EventRegister.ChangeVolumeEventHandler += OnChangeVolumeEvent;
         ScaleGame.Instance.EventRegister.StopSoundEventHandler += OnStopSoundEvent;
+        ScaleGame.Instance.EventRegister.PauseEventHandler += OnPauseEvent;
+        ScaleGame.Instance.EventRegister.UnpauseEventHandler += OnUnpauseEvent;
     }
 
     void Update()
     {
-        if (_isPlaying && !audioSource.isPlaying)
+        if (_isPlaying && !audioSource.isPlaying && !_isPaused)
         {
             gameObject.SetActive(false);
         }
@@ -24,15 +29,19 @@ public class PooledAudioSource : MonoBehaviour
     {
         // Activate this object
         gameObject.SetActive(true);
+        _isPaused = false;
         currentSoundClip = clip;
         // Update the audio source
-        audioSource.AssignVolume(ScaleGame.Instance.Audio.VolumeValues[currentSoundClip.audioType],
-            currentSoundClip.volume);
+        AssignDefaultVolume();
         audioSource.pitch = currentSoundClip.pitch;
-        audioSource.dopplerLevel = currentSoundClip.dimensionality;
+        audioSource.spatialBlend = currentSoundClip.dimensionality;
         audioSource.clip = currentSoundClip.NextClip();
         audioSource.loop = currentSoundClip.loop;
         audioSource.ignoreListenerPause = currentSoundClip.ignorePause;
+
+        lowPassFilter.enabled = currentSoundClip.useLowPassFilter;
+        lowPassFilter.cutoffFrequency = currentSoundClip.lowPassFilterCutoffFrequency;
+
         audioSource.Play();
         // Flag as playing
         _isPlaying = true;
@@ -55,7 +64,30 @@ public class PooledAudioSource : MonoBehaviour
         if (currentSoundClip.name == @event.SoundName)
         {
             // Update loop will take care of deactivating the object
+            _isPaused = false;
             audioSource.Stop();
         }
+    }
+
+    private void OnPauseEvent(object _, PauseEvent @event)
+    {
+        if (!_isPlaying) return;
+        if (currentSoundClip.ignorePause) return;
+        _isPaused = true;
+        audioSource.Pause();
+    }
+
+    private void OnUnpauseEvent(object _, UnpauseEvent @event)
+    {
+        if (!_isPlaying) return;
+        if (currentSoundClip.ignorePause) return;
+        _isPaused = false;
+        audioSource.UnPause();
+    }
+
+    private void AssignDefaultVolume()
+    {
+        audioSource.AssignVolume(ScaleGame.Instance.Audio.VolumeValues[currentSoundClip.audioType],
+            currentSoundClip.volume);
     }
 }

@@ -1,7 +1,10 @@
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class IntroState : IState
 {
+    private Vector3 _crowdAmbiencePosition = new(0, 10, 0);
+    
     public bool IsActive = false;
     public bool IsPaused = false;
     
@@ -30,6 +33,7 @@ public class IntroState : IState
         // Designate this state as active in-game state
         IsActive = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        ScaleGame.Instance.Audio.PlaySound(Sounds.SFX_AMBIENCE_INTRO_AREA_CROWD, _crowdAmbiencePosition);
     }
 
     public void OnExit()
@@ -39,6 +43,7 @@ public class IntroState : IState
 
         // Designate this state as inactive
         IsActive = false;
+        new StopSoundEvent(Sounds.SFX_AMBIENCE_INTRO_AREA_CROWD).Invoke();
         ResetState();
     }
 

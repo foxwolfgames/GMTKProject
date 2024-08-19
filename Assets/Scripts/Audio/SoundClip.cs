@@ -20,6 +20,9 @@ public class SoundClip
     [Range(0f, 1f)]
     public float dimensionality;
 
+    public bool useLowPassFilter = false;
+    public float lowPassFilterCutoffFrequency = 1000f;
+
     public AudioClip NextClip()
     {
         return clips[Random.Range(0, clips.Length)];
