@@ -206,6 +206,7 @@ MonoBehaviour:
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  playerLayer: 8
   holdPoint: {fileID: 380508721708124776}
   targetRB: {fileID: 0}
   maxHoldForce: 100

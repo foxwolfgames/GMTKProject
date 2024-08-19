@@ -94,17 +94,19 @@ MonoBehaviour:
   orientation: {fileID: 7616680290081682113}
   speed: 0
   jump: 1
-  movementSpeed: 10
+  walkingSpeed: 10
+  sprintingSpeed: 0
   groundDrag: 5
   jumpForce: 12
   jumpCooldown: 0.25
   airMultiplier: 0.4
   jumpCount: 1
-  groundMask:
+  playerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 256
   isGrounded: 0
   groundJumpAllowance: 0.2
+  movementState: 0
 --- !u!1 &3202529300059142424
 GameObject:
   m_ObjectHideFlags: 0

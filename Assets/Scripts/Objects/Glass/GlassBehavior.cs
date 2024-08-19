@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class GlassBehavior : MonoBehaviour
 {
-    private void OnEnable()
+    private void Start()
     {
-        ScaleGame.Instance.RegisterGlassObject(this);
+        ScaleGame.Instance.EventRegister.NoteShatterEventHandler += OnNoteShatterEvent;
     }
 
     private void OnDisable()
     {
-        ScaleGame.Instance.UnregisterGlassObject(this);
+        ScaleGame.Instance.EventRegister.NoteShatterEventHandler -= OnNoteShatterEvent;
     }
-    public void OnShatter(Vector3 shatterOrigin, float shatterRadius)
-    {
 
-        if (Vector3.Distance(transform.position, shatterOrigin) <= shatterRadius)
+    private void OnNoteShatterEvent(object _, NoteShatterEvent @event)
+    {
+        if (Vector3.Distance(transform.position, @event.Position) <= @event.Radius)
         {
             print("Destroying");
             Destroy(gameObject);

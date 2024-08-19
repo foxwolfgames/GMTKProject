@@ -151,9 +151,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e02900c09fbe4519af26344ca2f7ff5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 0
   type: {fileID: 11400000, guid: 9cc51514096c2400abb71d9d1693a09d, type: 2}
-  _rb: {fileID: 6589293737726958920}
+  mass: 0
+  rb: {fileID: 6589293737726958920}
 --- !u!54 &6589293737726958920
 Rigidbody:
   m_ObjectHideFlags: 0

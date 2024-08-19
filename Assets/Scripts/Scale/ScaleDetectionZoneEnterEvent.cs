@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class ScaleDetectionZoneEnterEvent : IEvent
