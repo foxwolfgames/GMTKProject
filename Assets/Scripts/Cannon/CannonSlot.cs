@@ -43,6 +43,7 @@ public class CannonSlot : MonoBehaviour
     private void Launch()
     {
         launchObject.transform.position = transform.position;
+        launchObject.attachedRigidbody.drag = 0;
         Vector3 direction = (firePoint.position - transform.position).normalized;
         launchObject.attachedRigidbody.AddForce(direction * fireForce, forceMode);
 
