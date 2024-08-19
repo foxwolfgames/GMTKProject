@@ -1,13 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public void Start()
+    {
+        ScaleGame.Instance.Audio.PlaySound(Sounds.MUSIC_TITLE);
+    }
+    
     public void Play()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        new PressPlayEvent().Invoke();
     }
 
     public void Quit()
