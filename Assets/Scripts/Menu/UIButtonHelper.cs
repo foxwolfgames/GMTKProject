@@ -1,13 +1,17 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class UIButtonHelper : MonoBehaviour, ISelectHandler
+public class UIButtonHelper : MonoBehaviour
 {
-    public void OnSelect(BaseEventData eventData)
+    public Button button;
+
+    void Start()
     {
-        if (eventData.selectedObject != gameObject) return;
+        button.onClick.AddListener(OnClick);
+    }
+    
+    private void OnClick()
+    {
         ScaleGame.Instance.Audio.PlaySound(Sounds.SFX_UI_BUTTON_CLICK);
     }
-
-    // TODO: sound on hover?
 }

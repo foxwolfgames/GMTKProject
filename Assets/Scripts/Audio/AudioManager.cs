@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    private const int AudioSourcePoolSize = 20;
+    private static AudioManager _instance;
+    
+    private const int AudioSourcePoolSize = 30;
     private const float DefaultVolume = 0.5f;
     public GameObject pooledAudioSourcePrefab;
     private List<GameObject> _pooledAudioSources = new();
@@ -28,14 +30,20 @@ public class AudioManager : MonoBehaviour
     {
         foreach (AudioType audioType in Enum.GetValues(typeof(AudioType)))
         {
-            VolumeValues.Add(audioType, 0.5f);
+            VolumeValues.Add(audioType, DefaultVolume);
         }
     }
 
     private void Awake()
     {
-        InitializeSoundsFromInspectorValues();
-        InitializeAudioSourcePool();
+        if (_instance == null)
+        {
+            _instance = this;
+            InitializeSoundsFromInspectorValues();
+            InitializeAudioSourcePool();
+        }
+        
+        // ScaleGame singleton will take care of destroying this GameObject
     }
 
     void Start()

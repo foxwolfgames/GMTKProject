@@ -8,22 +8,29 @@ public class InGameState : IState
     public InGameState()
     {
         ScaleGame.Instance.EventRegister.PauseEventHandler += OnPauseEvent;
+        ScaleGame.Instance.EventRegister.GameStopEventHandler += OnGameStopEvent;
     }
     
     public void Tick()
     {
-        //throw new NotImplementedException();
+        if (IsPaused) return;
+        if (!IsActive) return;
     }
 
     public void OnEnter()
     {
+        // When entering from being paused, just reset the flag and load as normal
         if (IsPaused)
         {
+            // FLOW: PauseState -> InGameState
             IsPaused = false;
             return;
         }
         
         // EXPECTED FLOW: IntroState -> InGameState
+        
+        // Clean up just in case
+        ResetState();
         
         // Designate this state as active in-game state
         IsActive = true;
@@ -31,14 +38,18 @@ public class InGameState : IState
 
     public void OnExit()
     {
+        // InGameState -> PauseState
         if (IsPaused) return;
         
-        IsActive = false;
+        // InGameState -> ??? State
+        
+        // Clean up just in case
         ResetState();
     }
 
     private void ResetState()
     {
+        IsActive = false;
         IsPaused = false;
     }
 
@@ -57,5 +68,10 @@ public class InGameState : IState
         // Check if this is the active state to pause from
         if (!IsActive) return;
         IsPaused = true;
+    }
+
+    private void OnGameStopEvent(object _, GameStopEvent @event)
+    {
+        ResetState();
     }
 }
