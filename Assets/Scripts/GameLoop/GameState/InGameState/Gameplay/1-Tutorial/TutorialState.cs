@@ -51,10 +51,12 @@ public class TutorialState : IState
         _bridgeLoweringCompleted = true;
         ScaleGame.Instance.Audio.PlaySound(Sounds.MUSIC_GAME_TUTORIAL);
         _gameManager.ArenaOrchestrator.platform.SetRedButtonPosition(RedButtonPositions.SKIP_TUTORIAL);
+        _gameManager.ArenaOrchestrator.dialogueController.PlayNarrative();
     }
     
     private void OnTutorialRedButtonPressedEvent(object _, TutorialRedButtonPressedEvent @event)
     {
         _redButtonPressed = true;
+        _gameManager.ArenaOrchestrator.dialogueController.AdvancePanel();
     }
 }

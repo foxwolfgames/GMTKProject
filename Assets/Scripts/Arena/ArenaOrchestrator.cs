@@ -4,6 +4,7 @@ public class ArenaOrchestrator : MonoBehaviour
 {
     public ArenaPlatform platform;
     public ArenaBridge bridge;
+    public DialogueController dialogueController;
     
     public void Start()
     {
