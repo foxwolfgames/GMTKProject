@@ -71,6 +71,7 @@ MonoBehaviour:
     dimensionality: 0
     useLowPassFilter: 0
     lowPassFilterCutoffFrequency: 1000
+    soundClipStrategy: 0
   - name: 1
     audioType: 2
     clips:
@@ -82,6 +83,7 @@ MonoBehaviour:
     dimensionality: 0
     useLowPassFilter: 0
     lowPassFilterCutoffFrequency: 1000
+    soundClipStrategy: 0
   - name: 2
     audioType: 2
     clips:
@@ -93,6 +95,7 @@ MonoBehaviour:
     dimensionality: 0
     useLowPassFilter: 0
     lowPassFilterCutoffFrequency: 1000
+    soundClipStrategy: 0
   - name: 3
     audioType: 2
     clips:
@@ -104,17 +107,19 @@ MonoBehaviour:
     dimensionality: 0
     useLowPassFilter: 0
     lowPassFilterCutoffFrequency: 1000
+    soundClipStrategy: 0
   - name: 4
     audioType: 2
     clips:
     - {fileID: 8300000, guid: 2292c2c2ac1564858a3d14b230c3d792, type: 3}
     loop: 1
-    volume: 1
+    volume: 0.75
     pitch: 1
     ignorePause: 0
     dimensionality: 0.25
     useLowPassFilter: 1
     lowPassFilterCutoffFrequency: 2250
+    soundClipStrategy: 0
   - name: 5
     audioType: 2
     clips:
@@ -126,6 +131,7 @@ MonoBehaviour:
     dimensionality: 0.9
     useLowPassFilter: 0
     lowPassFilterCutoffFrequency: 2250
+    soundClipStrategy: 0
   - name: 6
     audioType: 2
     clips:
@@ -137,6 +143,7 @@ MonoBehaviour:
     dimensionality: 0.9
     useLowPassFilter: 0
     lowPassFilterCutoffFrequency: 2250
+    soundClipStrategy: 0
   - name: 7
     audioType: 2
     clips:
@@ -148,6 +155,7 @@ MonoBehaviour:
     dimensionality: 0.9
     useLowPassFilter: 0
     lowPassFilterCutoffFrequency: 2250
+    soundClipStrategy: 0
   - name: 8
     audioType: 2
     clips:
@@ -159,6 +167,7 @@ MonoBehaviour:
     dimensionality: 0.9
     useLowPassFilter: 0
     lowPassFilterCutoffFrequency: 2250
+    soundClipStrategy: 0
   - name: 9
     audioType: 2
     clips:
@@ -170,6 +179,7 @@ MonoBehaviour:
     dimensionality: 0.1
     useLowPassFilter: 0
     lowPassFilterCutoffFrequency: 2250
+    soundClipStrategy: 0
   - name: 10
     audioType: 1
     clips:
@@ -181,17 +191,19 @@ MonoBehaviour:
     dimensionality: 0
     useLowPassFilter: 0
     lowPassFilterCutoffFrequency: 2250
+    soundClipStrategy: 0
   - name: 11
     audioType: 1
     clips:
     - {fileID: 8300000, guid: a090a8052be8649118684173f271a48d, type: 3}
-    loop: 1
+    loop: 0
     volume: 0.75
     pitch: 1
     ignorePause: 0
     dimensionality: 0
     useLowPassFilter: 0
     lowPassFilterCutoffFrequency: 2250
+    soundClipStrategy: 0
   - name: 12
     audioType: 1
     clips:
@@ -203,6 +215,7 @@ MonoBehaviour:
     dimensionality: 0
     useLowPassFilter: 0
     lowPassFilterCutoffFrequency: 2250
+    soundClipStrategy: 0
   - name: 13
     audioType: 2
     clips:
@@ -214,6 +227,7 @@ MonoBehaviour:
     dimensionality: 0.3
     useLowPassFilter: 0
     lowPassFilterCutoffFrequency: 2250
+    soundClipStrategy: 0
   - name: 14
     audioType: 2
     clips:
@@ -225,3 +239,129 @@ MonoBehaviour:
     dimensionality: 0.9
     useLowPassFilter: 0
     lowPassFilterCutoffFrequency: 2250
+    soundClipStrategy: 0
+  - name: 15
+    audioType: 3
+    clips:
+    - {fileID: 8300000, guid: 19d36041b9c094b59990b5a151afe387, type: 3}
+    - {fileID: 8300000, guid: 5bab0288535534bb2ba0c4ceae7d0560, type: 3}
+    - {fileID: 8300000, guid: 0b7c58ff2ac5943b79547fe0f05a34c7, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    ignorePause: 0
+    dimensionality: 0.3
+    useLowPassFilter: 1
+    lowPassFilterCutoffFrequency: 2000
+    soundClipStrategy: 1
+  - name: 16
+    audioType: 3
+    clips:
+    - {fileID: 8300000, guid: 2daea8e3108ec46a2be8b0b1dfe1cca7, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    ignorePause: 0
+    dimensionality: 0.15
+    useLowPassFilter: 0
+    lowPassFilterCutoffFrequency: 2000
+    soundClipStrategy: 0
+  - name: 17
+    audioType: 3
+    clips:
+    - {fileID: 8300000, guid: 5777e3728fadd476899a9b4c60f3bbef, type: 3}
+    - {fileID: 8300000, guid: 497227e0e6c034fa2b8d48a991561e3f, type: 3}
+    - {fileID: 8300000, guid: ee121f3a9724b44b880cb9a6ea9ba7f9, type: 3}
+    - {fileID: 8300000, guid: 3d3ecbbbb18254e629aaa11d7fb1c76f, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    ignorePause: 0
+    dimensionality: 0.15
+    useLowPassFilter: 0
+    lowPassFilterCutoffFrequency: 2000
+    soundClipStrategy: 1
+  - name: 18
+    audioType: 3
+    clips:
+    - {fileID: 8300000, guid: 99ec7a14421c94cfaacc5a927dae9d9a, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    ignorePause: 0
+    dimensionality: 0.3
+    useLowPassFilter: 1
+    lowPassFilterCutoffFrequency: 2000
+    soundClipStrategy: 0
+  - name: 19
+    audioType: 1
+    clips:
+    - {fileID: 8300000, guid: e4be2c86e22d24ac5ba10ab5c05d49cc, type: 3}
+    loop: 0
+    volume: 0.75
+    pitch: 1
+    ignorePause: 0
+    dimensionality: 0
+    useLowPassFilter: 0
+    lowPassFilterCutoffFrequency: 2000
+    soundClipStrategy: 0
+  - name: 20
+    audioType: 1
+    clips:
+    - {fileID: 8300000, guid: cd33922e5229d4ff8add2a64cdbffb21, type: 3}
+    loop: 1
+    volume: 0.75
+    pitch: 1
+    ignorePause: 0
+    dimensionality: 0
+    useLowPassFilter: 0
+    lowPassFilterCutoffFrequency: 2000
+    soundClipStrategy: 0
+  - name: 21
+    audioType: 1
+    clips:
+    - {fileID: 8300000, guid: 7701b297015fa43b589b7ca3c1d806b1, type: 3}
+    loop: 0
+    volume: 0.75
+    pitch: 1
+    ignorePause: 0
+    dimensionality: 0
+    useLowPassFilter: 0
+    lowPassFilterCutoffFrequency: 2000
+    soundClipStrategy: 0
+  - name: 22
+    audioType: 1
+    clips:
+    - {fileID: 8300000, guid: 0915529490d474c77b2175350fb23e52, type: 3}
+    loop: 1
+    volume: 0.75
+    pitch: 1
+    ignorePause: 0
+    dimensionality: 0
+    useLowPassFilter: 0
+    lowPassFilterCutoffFrequency: 2000
+    soundClipStrategy: 0
+  - name: 23
+    audioType: 1
+    clips:
+    - {fileID: 8300000, guid: a14acf354113e4b15920414f06838c7d, type: 3}
+    loop: 0
+    volume: 0.75
+    pitch: 1
+    ignorePause: 0
+    dimensionality: 0
+    useLowPassFilter: 0
+    lowPassFilterCutoffFrequency: 2000
+    soundClipStrategy: 0
+  - name: 24
+    audioType: 1
+    clips:
+    - {fileID: 8300000, guid: 5e364b5abe3e64ae392204e958146ca7, type: 3}
+    loop: 1
+    volume: 0.75
+    pitch: 1
+    ignorePause: 0
+    dimensionality: 0
+    useLowPassFilter: 0
+    lowPassFilterCutoffFrequency: 2000
+    soundClipStrategy: 0

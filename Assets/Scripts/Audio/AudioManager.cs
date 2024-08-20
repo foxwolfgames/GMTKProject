@@ -30,7 +30,15 @@ public class AudioManager : MonoBehaviour
     {
         foreach (AudioType audioType in Enum.GetValues(typeof(AudioType)))
         {
-            VolumeValues.Add(audioType, DefaultVolume);
+            switch (audioType)
+            {
+                case AudioType.VOICE_LINES:
+                    VolumeValues.Add(audioType, 0.85f);
+                    break;
+                default:
+                    VolumeValues.Add(audioType, DefaultVolume);
+                    break;
+            }
         }
     }
 
