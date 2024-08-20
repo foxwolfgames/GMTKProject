@@ -70,12 +70,16 @@ public class DialogueController : MonoBehaviour
     public void PlayNarrative()
     {
         canvas.gameObject.SetActive(true);
-        Debug.Log("Narrative Shown");
         for (int c = 0; c < canvas.transform.childCount; c++)
         {
             canvas.transform.GetChild(c).gameObject.SetActive(false);
         }
         TransitionPanel();
+    }
+
+    public void HideNarrative()
+    {
+        canvas.gameObject.SetActive(false);
     }
 
     public void SkipNarrative()

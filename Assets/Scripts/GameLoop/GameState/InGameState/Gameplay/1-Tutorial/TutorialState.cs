@@ -75,6 +75,7 @@ public class TutorialState : IState
     private void OnTutorialRedButtonPressedEvent(object _, TutorialRedButtonPressedEvent @event)
     {
         _redButtonPressed = true;
+        _gameManager.ArenaOrchestrator.dialogueController.HideNarrative();
     }
     
     private void OnGameStopEvent(object _, GameStopEvent @event)
