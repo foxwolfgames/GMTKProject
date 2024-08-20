@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_BOSS
+  m_Name: M_Cannon
   m_Shader: {fileID: 4800000, guid: 128c5f1edaefa4c4fb3f9f7a4615edb2, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -46,11 +46,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: bc56fb3ec78df3747a36ee49e9b34df1, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9942e97837dfba64f9ea45e169452f33, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 1f8ebe0acd9d5dd4e92f9412b9d7983c, type: 3}
+        m_Texture: {fileID: 2800000, guid: e1270643a8b674e4ebaee3c91cf9b4ce, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -81,12 +81,12 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Offset: 0
-    - _OtlWidth: 5
+    - _OtlWidth: 1.89
     - _Parallax: 0.02
     - _Segmented: 1
-    - _ShnIntense: 0.122
+    - _ShnIntense: 0.095
     - _ShnOverlap: 0
-    - _ShnRange: 0.024
+    - _ShnRange: 0.127
     - _ShnSmooth: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -99,5 +99,5 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _OtlColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShnColor: {r: 1, g: 0.7216981, b: 0.9443989, a: 1}
+    - _ShnColor: {r: 1, g: 0.78400534, b: 0.6556604, a: 1}
   m_BuildTextureStacks: []
