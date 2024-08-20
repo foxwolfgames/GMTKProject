@@ -27,6 +27,7 @@ public class PooledAudioSource : MonoBehaviour
 
         if (_isPlaying && !audioSource.isPlaying && !_isPaused)
         {
+            new SoundFinishedEvent(currentSoundClip.name).Invoke();
             trackedParent = null;
             gameObject.SetActive(false);
         }

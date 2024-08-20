@@ -239,4 +239,17 @@ public class EventRegister
     {
         OnTutorialRedButtonPressedEvent(@event);
     }
+    
+    // Audio: Fired when a audio source is finished
+    public event EventHandler<SoundFinishedEvent> SoundFinishedEventHandler;
+    
+    protected virtual void OnSoundFinishedEvent(SoundFinishedEvent @event)
+    {
+        SoundFinishedEventHandler?.Invoke(this, @event);
+    }
+    
+    public void InvokeSoundFinishedEvent(SoundFinishedEvent @event)
+    {
+        OnSoundFinishedEvent(@event);
+    }
 }

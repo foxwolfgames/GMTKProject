@@ -23,8 +23,26 @@ public class SoundClip
     public bool useLowPassFilter = false;
     public float lowPassFilterCutoffFrequency = 1000f;
 
+    public SoundClipStrategy soundClipStrategy = SoundClipStrategy.RANDOM;
+    private int _clipIndex = 0;
+
     public AudioClip NextClip()
     {
-        return clips[Random.Range(0, clips.Length)];
+        switch (soundClipStrategy)
+        {
+            case SoundClipStrategy.SEQUENTIAL:
+                AudioClip clip = clips[_clipIndex];
+                _clipIndex = (_clipIndex + 1) % clips.Length;
+                return clip;
+            case SoundClipStrategy.RANDOM:
+            default:
+                return clips[Random.Range(0, clips.Length)];
+        }
     }
+}
+
+public enum SoundClipStrategy
+{
+    RANDOM,
+    SEQUENTIAL
 }
