@@ -62,7 +62,7 @@ public class PauseState : IState
         if (ShouldQuitToMenu)
         {
             // TODO: refactor this
-            SceneManager.LoadScene(0);
+            ScaleGame.Instance.LoadSceneAsyncAndStopAllAudioSources(Scenes.MAIN_MENU);
             new GameStopEvent().Invoke();
             Time.timeScale = 1f;
             return true;

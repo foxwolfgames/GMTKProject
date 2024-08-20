@@ -73,6 +73,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
+        pooledAudioSource.transform.position = position;
         pooledAudioSource.GetComponent<PooledAudioSource>().PlayClip(clip);
     }
 

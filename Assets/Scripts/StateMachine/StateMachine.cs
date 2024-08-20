@@ -47,7 +47,7 @@ public class StateMachine
         if (_currentTransitions == null)
             _currentTransitions = EmptyTransitions;
 
-        _currentState.OnEnter();
+        _currentState?.OnEnter();
     }
 
     public void AddTransition(IState from, IState to, Func<bool> predicate)

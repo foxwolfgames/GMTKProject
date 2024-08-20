@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScaleGame : MonoBehaviour
 {
@@ -27,5 +29,33 @@ public class ScaleGame : MonoBehaviour
     void Update()
     {
         GameLoop.Update();
+    }
+    
+    public void LoadSceneAsyncAndStopAllAudioSources(Scenes scene)
+    {
+        StartCoroutine(LoadScene((int) scene));
+    }
+
+    IEnumerator LoadScene(int sceneIndex)
+    {
+        yield return null;
+        
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneIndex);
+        asyncOperation.allowSceneActivation = false;
+
+        while (!asyncOperation.isDone)
+        {
+            Scene scene = SceneManager.GetActiveScene();
+            foreach (GameObject obj in scene.GetRootGameObjects())
+            {
+                if (obj.TryGetComponent<PooledAudioSource>(out PooledAudioSource pas))
+                {
+                    pas.audioSource.Stop();
+                }
+            }
+
+            asyncOperation.allowSceneActivation = true;
+            yield return null;
+        }
     }
 }

@@ -174,4 +174,43 @@ public class EventRegister
     {
         OnDevEnterArenaEvent(@event);
     }
+    
+    // Gameplay // Pre-tutorial // enter main platform from bridge
+    public event EventHandler<PreTutorialEnterPlatformEvent> PreTutorialEnterPlatformEventHandler;
+    
+    protected virtual void OnPreTutorialEnterPlatformEvent(PreTutorialEnterPlatformEvent @event)
+    {
+        PreTutorialEnterPlatformEventHandler?.Invoke(this, @event);
+    }
+    
+    public void InvokePreTutorialEnterPlatformEvent(PreTutorialEnterPlatformEvent @event)
+    {
+        OnPreTutorialEnterPlatformEvent(@event);
+    }
+    
+    // Gameplay: When arena orchestrator Start() is called, register arena orchestrator
+    public event EventHandler<ArenaOrchestratorRegisterEvent> ArenaOrchestratorRegisterEventHandler;
+    
+    protected virtual void OnArenaOrchestatorRegisterEvent(ArenaOrchestratorRegisterEvent @event)
+    {
+        ArenaOrchestratorRegisterEventHandler?.Invoke(this, @event);
+    }
+    
+    public void InvokeArenaOrchestratorRegisterEvent(ArenaOrchestratorRegisterEvent @event)
+    {
+        OnArenaOrchestatorRegisterEvent(@event);
+    }
+    
+    // Gameplay: Fire event when arena bridge is lowered after entering tutorial zone
+    public event EventHandler<ArenaBridgeLoweringCompletedEvent> ArenaBridgeLoweringCompletedEventHandler;
+    
+    protected virtual void OnArenaBridgeLoweringCompletedEvent(ArenaBridgeLoweringCompletedEvent @event)
+    {
+        ArenaBridgeLoweringCompletedEventHandler?.Invoke(this, @event);
+    }
+    
+    public void InvokeArenaBridgeLoweringCompletedEvent(ArenaBridgeLoweringCompletedEvent @event)
+    {
+        OnArenaBridgeLoweringCompletedEvent(@event);
+    }
 }
