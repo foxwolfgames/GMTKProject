@@ -3,6 +3,9 @@ public class TutorialState : IState
     private GameManager _gameManager;
     private bool _bridgeLoweringCompleted = false;
     private bool _redButtonPressed = false;
+
+    // MARK: While bridge is lowering, camera should shake
+    private bool CameraShouldShake => !_bridgeLoweringCompleted;
     
     public TutorialState(GameManager gameManager)
     {
@@ -11,7 +14,10 @@ public class TutorialState : IState
 
     public void Tick()
     {
-        //throw new System.NotImplementedException();
+        if (CameraShouldShake)
+        {
+            // TODO: Make camera shake
+        }
     }
 
     public void OnEnter()
