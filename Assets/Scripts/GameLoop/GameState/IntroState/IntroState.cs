@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -5,9 +6,11 @@ public class IntroState : IState
 {
     private Vector3 _crowdAmbiencePosition = new(0, 10, 0);
     
+    private const float TimeBetweenVoiceLines = 10f;
     public bool IsActive = false;
     public bool IsPaused = false;
     public bool Dev_ShouldEnterArena = false;
+    private float _timeSinceLastVoiceLine = 0f;
     
     public IntroState()
     {
@@ -23,6 +26,13 @@ public class IntroState : IState
         
         // Stop ticking if this state is not active
         if (!IsActive) return;
+        
+        _timeSinceLastVoiceLine += Time.deltaTime;
+        if (_timeSinceLastVoiceLine >= TimeBetweenVoiceLines)
+        {
+            _timeSinceLastVoiceLine = 0f;
+            ScaleGame.Instance.Audio.PlaySound(Sounds.VOICE_ANNOUNCER_LOBBY_IDLE, _crowdAmbiencePosition);
+        }
     }
 
     public void OnEnter()
@@ -45,6 +55,7 @@ public class IntroState : IState
         new GameStartEvent().Invoke();
         ScaleGame.Instance.LoadSceneAsyncAndStopAllAudioSources(Scenes.LOBBY);
         ScaleGame.Instance.Audio.PlaySound(Sounds.SFX_AMBIENCE_INTRO_AREA_CROWD, _crowdAmbiencePosition);
+        ScaleGame.Instance.DelayedDelegate(2, () => ScaleGame.Instance.Audio.PlaySound(Sounds.VOICE_ANNOUNCER_ENTER_LOBBY, _crowdAmbiencePosition));
     }
 
     public void OnExit()
@@ -93,6 +104,8 @@ public class IntroState : IState
     {
         ResetState();
         new StopSoundEvent(Sounds.SFX_AMBIENCE_INTRO_AREA_CROWD).Invoke();
+        new StopSoundEvent(Sounds.VOICE_ANNOUNCER_LOBBY_IDLE).Invoke();
+        new StopSoundEvent(Sounds.VOICE_ANNOUNCER_ENTER_LOBBY).Invoke();
     }
 
     public void OnDevEnterArenaEvent(object _, DevEnterArenaEvent @event)
