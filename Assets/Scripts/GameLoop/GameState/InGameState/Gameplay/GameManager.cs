@@ -33,6 +33,7 @@ public class GameManager
         // Initialize transitions
         StateMachine.AddTransition(_preTutorialState, _tutorialState, _preTutorialState.CanTransitionEnterPlatform);
         StateMachine.AddTransition(_tutorialState, _survivalState, _tutorialState.CanTransitionRedButtonPressed);
+        StateMachine.AddTransition(_survivalState, _bossPhaseState, _survivalState.CanTransitionTimeElapsed);
 
         StateMachine.AddAnyTransition(_gameOverState, CanTransitionGameOver);
     }

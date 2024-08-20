@@ -120,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
         Debug.DrawRay(transform.position + new Vector3(0, groundJumpAllowance, 0),
             Vector3.down * groundJumpAllowance * 2f, Color.red);
         isGrounded = Physics.Raycast(transform.position + new Vector3(0, groundJumpAllowance, 0), Vector3.down,
-            groundJumpAllowance * 2f, ~playerMask);
+            groundJumpAllowance * 2f, ~playerMask, QueryTriggerInteraction.Ignore);
         if (isGrounded)
             rb.drag = groundDrag;
         else
