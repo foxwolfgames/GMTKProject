@@ -17,7 +17,8 @@ public class GlassBehavior : BossItemBehavior
         if (Vector3.Distance(transform.position, @event.Position) <= @event.Radius)
         {
             print("Destroying");
-            spawnScript.RemoveItem(gameObject);
+            if(spawnScript)
+                spawnScript.RemoveItem(gameObject);
             gameObject.SetActive(false);
         }
     }

@@ -4039,7 +4039,7 @@ PrefabInstance:
       objectReference: {fileID: 811891507}
     - target: {fileID: 3218217643868179879, guid: 5032880b899dab74abee50f33b7f8de5, type: 3}
       propertyPath: m_VersionIndex
-      value: 3509
+      value: 3572
       objectReference: {fileID: 0}
     - target: {fileID: 3577377977622408449, guid: 5032880b899dab74abee50f33b7f8de5, type: 3}
       propertyPath: m_Mesh
@@ -4055,7 +4055,7 @@ PrefabInstance:
       objectReference: {fileID: 1770396509}
     - target: {fileID: 4139539958159763764, guid: 5032880b899dab74abee50f33b7f8de5, type: 3}
       propertyPath: m_VersionIndex
-      value: 827
+      value: 890
       objectReference: {fileID: 0}
     - target: {fileID: 4399361797166387673, guid: 5032880b899dab74abee50f33b7f8de5, type: 3}
       propertyPath: m_Mesh
@@ -4071,7 +4071,7 @@ PrefabInstance:
       objectReference: {fileID: 1822971254}
     - target: {fileID: 4710670839934715289, guid: 5032880b899dab74abee50f33b7f8de5, type: 3}
       propertyPath: m_VersionIndex
-      value: 1475
+      value: 1538
       objectReference: {fileID: 0}
     - target: {fileID: 4877966783976993408, guid: 5032880b899dab74abee50f33b7f8de5, type: 3}
       propertyPath: m_Mesh
@@ -4149,6 +4149,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossScale
       objectReference: {fileID: 0}
+    - target: {fileID: 8781351008652037333, guid: 5032880b899dab74abee50f33b7f8de5, type: 3}
+      propertyPath: endValue
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8896434320698525261, guid: 5032880b899dab74abee50f33b7f8de5, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -4167,7 +4171,7 @@ PrefabInstance:
       objectReference: {fileID: 2032363128}
     - target: {fileID: 9163638541035037856, guid: 5032880b899dab74abee50f33b7f8de5, type: 3}
       propertyPath: m_VersionIndex
-      value: 847
+      value: 910
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
