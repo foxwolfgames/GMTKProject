@@ -12,7 +12,7 @@ public class CannonSlot : MonoBehaviour
     public int objectLayer = 10;
     public string playerTag = "Player";
     public Transform firePoint;
-    [SerializeField] private float fireForce = 100f;
+     public float fireForce = 50f;
     [SerializeField] private ForceMode forceMode = ForceMode.VelocityChange;
     private void OnTriggerEnter(Collider other)
     {
@@ -42,7 +42,13 @@ public class CannonSlot : MonoBehaviour
 
     private void Launch()
     {
+        // Reset position and velocities
         launchObject.transform.position = transform.position;
+        launchObject.transform.rotation = transform.rotation;
+        launchObject.attachedRigidbody.velocity = Vector3.zero;
+        launchObject.attachedRigidbody.angularVelocity = Vector3.zero;
+        launchObject.attachedRigidbody.drag = 0;
+
         Vector3 direction = (firePoint.position - transform.position).normalized;
         launchObject.attachedRigidbody.AddForce(direction * fireForce, forceMode);
 

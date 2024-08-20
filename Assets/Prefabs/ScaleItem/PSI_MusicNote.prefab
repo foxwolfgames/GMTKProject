@@ -155,7 +155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5261597180208002211, guid: 2ccefb50a44a946a998590afc6fba966, type: 3}
       propertyPath: m_Name
-      value: SIP_MusicNote
+      value: PSI_MusicNote
       objectReference: {fileID: 0}
     - target: {fileID: 5481958557469860996, guid: 2ccefb50a44a946a998590afc6fba966, type: 3}
       propertyPath: type
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46fe3112114dbe241a3ddf8272c67a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shatterRadius: 7
+  shatterRadius: 5
 --- !u!96 &-1019086701785487863
 TrailRenderer:
   serializedVersion: 3

@@ -10,7 +10,7 @@ public class MusicNoteShatter : MonoBehaviour
         if (!collision.gameObject.CompareTag("MusicNote"))
         {
             new NoteShatterEvent(transform.position, shatterRadius).Invoke();
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
