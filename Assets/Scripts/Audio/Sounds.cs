@@ -56,4 +56,12 @@ public enum Sounds
     
     // Voice lines: Announcer when entering lobby
     VOICE_ANNOUNCER_ENTER_LOBBY,
+    
+    // Music: Boss phase music
+    MUSIC_BOSS_PHASE_1_INTRO,
+    MUSIC_BOSS_PHASE_1_LOOP,
+    MUSIC_BOSS_PHASE_2_INTRO,
+    MUSIC_BOSS_PHASE_2_LOOP,
+    MUSIC_BOSS_PHASE_3_INTRO,
+    MUSIC_BOSS_PHASE_3_LOOP
 }

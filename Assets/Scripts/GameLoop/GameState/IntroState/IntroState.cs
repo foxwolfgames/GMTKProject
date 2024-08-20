@@ -68,6 +68,8 @@ public class IntroState : IState
         // Designate this state as inactive
         IsActive = false;
         new StopSoundEvent(Sounds.SFX_AMBIENCE_INTRO_AREA_CROWD).Invoke();
+        new StopSoundEvent(Sounds.VOICE_ANNOUNCER_LOBBY_IDLE).Invoke();
+        new StopSoundEvent(Sounds.VOICE_ANNOUNCER_ENTER_LOBBY).Invoke();
         ResetState();
     }
 
