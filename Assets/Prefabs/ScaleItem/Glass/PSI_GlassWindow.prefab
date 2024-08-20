@@ -90,6 +90,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PSI_GlassWindow
       objectReference: {fileID: 0}
+    - target: {fileID: 2228102205771661130, guid: c770c00c84d874e418618f6a0b38e7a8, type: 3}
+      propertyPath: type
+      value: 
+      objectReference: {fileID: 11400000, guid: d5a2d5f217cafbd4f8c367a6bceacf96, type: 2}
     - target: {fileID: 7238907520405702694, guid: c770c00c84d874e418618f6a0b38e7a8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

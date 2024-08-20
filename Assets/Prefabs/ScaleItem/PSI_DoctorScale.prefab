@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PSI_DoctorScale
       objectReference: {fileID: 0}
+    - target: {fileID: 5481958557469860996, guid: 2ccefb50a44a946a998590afc6fba966, type: 3}
+      propertyPath: type
+      value: 
+      objectReference: {fileID: 11400000, guid: 06f11c8587cd36b4db88d57277359adc, type: 2}
     - target: {fileID: 6160267751744478975, guid: 2ccefb50a44a946a998590afc6fba966, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.121
