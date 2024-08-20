@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,10 +17,8 @@ public class PlatformScaleSide : MonoBehaviour
 
     private void OnScaleDetectionZoneEnterEvent(object _, ScaleDetectionZoneEnterEvent @event)
     {
-        if (@event.SideData != type)
-        {
-            return;
-        }
+        if (@event.SideData != type) return;
+        if (!@event.Collider.attachedRigidbody) return;
 
         GameObject obj = @event.Collider.attachedRigidbody.gameObject;
         if (obj.TryGetComponent<ScaleItem>(out ScaleItem item))
@@ -36,10 +35,8 @@ public class PlatformScaleSide : MonoBehaviour
 
     private void OnScaleDetectionZoneExitEvent(object _, ScaleDetectionZoneExitEvent @event)
     {
-        if (@event.SideData != type)
-        {
-            return;
-        }
+        if (@event.SideData != type) return;
+        if (!@event.Collider.attachedRigidbody) return;
 
         GameObject obj = @event.Collider.attachedRigidbody.gameObject;
         if (obj.TryGetComponent<ScaleItem>(out ScaleItem item))

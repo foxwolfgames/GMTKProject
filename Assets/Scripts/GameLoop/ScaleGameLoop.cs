@@ -13,6 +13,7 @@ public class ScaleGameLoop
         _menuState = new MenuState();
         _introState = new IntroState();
         _inGameState = new InGameState();
+        _inGameState.Awake();
         _pauseState = new PauseState();
 
         // Initialize transitions

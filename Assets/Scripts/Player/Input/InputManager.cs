@@ -35,6 +35,7 @@ public class InputManager : MonoBehaviour
         playerInteraction.GrabAction.performed += ctx => pickupScript.TryGrabObject();
         playerInteraction.GrabAction.canceled += ctx => pickupScript.ReleaseObject(true);
         playerInteraction.ThrowAction.performed += ctx => pickupScript.ThrowObject();
+        playerInteraction.PressRedButtonAction.performed += _ => new AttemptPressRedButtonEvent().Invoke();
 
         canPauseActions.PauseGame.performed += _ => new PauseEvent().Invoke();
         inPauseMenuActions.UnpauseGame.performed += _ => new UnpauseEvent().Invoke();

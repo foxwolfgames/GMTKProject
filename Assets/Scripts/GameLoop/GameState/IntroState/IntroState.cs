@@ -43,7 +43,7 @@ public class IntroState : IState
         // Designate this state as active in-game state
         IsActive = true;
         new GameStartEvent().Invoke();
-        SceneManager.LoadScene((int) Scenes.LOBBY);
+        ScaleGame.Instance.LoadSceneAsyncAndStopAllAudioSources(Scenes.LOBBY);
         ScaleGame.Instance.Audio.PlaySound(Sounds.SFX_AMBIENCE_INTRO_AREA_CROWD, _crowdAmbiencePosition);
     }
 
