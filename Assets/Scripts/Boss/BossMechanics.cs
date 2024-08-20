@@ -26,6 +26,7 @@ public class BossMechanics : MonoBehaviour
         print(healthPoints);
         if (healthPoints <= phase2Threshold)
         {
+            new BossAdvanceEvent().Invoke();
             if (bossItemSpawnScript)
             {
                 bossItemSpawnScript.spawnInterval = 4f;
@@ -34,10 +35,15 @@ public class BossMechanics : MonoBehaviour
         }
         else if (healthPoints <= phase3Threshold)
         {
+            new BossAdvanceEvent().Invoke();
             if (bossItemSpawnScript)
             {
                 bossItemSpawnScript.spawnInterval = 3f;
             }
+        }
+        else if (healthPoints <= 0)
+        {
+            new BossAdvanceEvent().Invoke();
         }
     }
 }

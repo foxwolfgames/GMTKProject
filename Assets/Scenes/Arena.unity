@@ -1048,6 +1048,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossScale
       objectReference: {fileID: 0}
+    - target: {fileID: 8556416152979180971, guid: 5032880b899dab74abee50f33b7f8de5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9163638541035037856, guid: 5032880b899dab74abee50f33b7f8de5, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1061,6 +1065,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5032880b899dab74abee50f33b7f8de5, type: 3}
+--- !u!1 &271073311 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7128429121973856734, guid: 5032880b899dab74abee50f33b7f8de5, type: 3}
+  m_PrefabInstance: {fileID: 271073310}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &295672488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8684,6 +8693,7 @@ MonoBehaviour:
   dialogueController: {fileID: 824971568}
   gameOverMenu: {fileID: 833006576}
   itemLauncher: {fileID: 1474937193}
+  boss: {fileID: 271073311}
 --- !u!4 &1838982101
 Transform:
   m_ObjectHideFlags: 0

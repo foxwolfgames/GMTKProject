@@ -278,4 +278,17 @@ public class EventRegister
     {
         OnGameOverEvent(@event);
     }
+    
+    // Gameplay: Boss advance event
+    public event EventHandler<BossAdvanceEvent> BossAdvanceEventHandler;
+    
+    protected virtual void OnBossAdvanceEvent(BossAdvanceEvent @event)
+    {
+        BossAdvanceEventHandler?.Invoke(this, @event);
+    }
+    
+    public void InvokeBossAdvanceEvent(BossAdvanceEvent @event)
+    {
+        OnBossAdvanceEvent(@event);
+    }
 }

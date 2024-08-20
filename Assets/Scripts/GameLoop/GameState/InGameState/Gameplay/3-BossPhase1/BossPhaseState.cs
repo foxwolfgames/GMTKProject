@@ -26,10 +26,12 @@ public class BossPhaseState : IState
     public void OnEnter()
     {
         ScaleGame.Instance.EventRegister.SoundFinishedEventHandler += OnSoundFinishedEvent;
+        ScaleGame.Instance.EventRegister.BossAdvanceEventHandler += OnBossAdvanceEvent;
         ScaleGame.Instance.Audio.PlaySound(Sounds.MUSIC_BOSS_PHASE_1_INTRO);
         
         // TODO: Run beginning logic to spawn in boss (PHASE 1)
         // (right here coco)
+        _gameManager.ArenaOrchestrator.boss.SetActive(true);
         
         // TODO: REMOVE THIS LINE!!! (this auto transitions)
         ScaleGame.Instance.DelayedDelegate(40, NextPhase);
@@ -39,6 +41,7 @@ public class BossPhaseState : IState
     {
         ResetState();
         ScaleGame.Instance.EventRegister.SoundFinishedEventHandler -= OnSoundFinishedEvent;
+        ScaleGame.Instance.EventRegister.BossAdvanceEventHandler -= OnBossAdvanceEvent;
         StopAllSounds();
     }
 
@@ -62,22 +65,10 @@ public class BossPhaseState : IState
             case 1:
                 new StopSoundEvent(Sounds.MUSIC_BOSS_PHASE_1_LOOP).Invoke();
                 ScaleGame.Instance.Audio.PlaySound(Sounds.MUSIC_BOSS_PHASE_2_INTRO);
-                
-                // TODO: Run logic to spawn in phase 2 boss (PHASE 2)
-                // (right here coco)
-                
-                // TODO: REMOVE THIS LINE!!! (auto-transition)
-                ScaleGame.Instance.DelayedDelegate(40, NextPhase);
                 break;
             case 2:
                 new StopSoundEvent(Sounds.MUSIC_BOSS_PHASE_2_LOOP).Invoke();
                 ScaleGame.Instance.Audio.PlaySound(Sounds.MUSIC_BOSS_PHASE_3_INTRO);
-                
-                // TODO: Run logic to spawn in phase 3 boss (PHASE 3)
-                // (right here coco)
-                
-                // TODO: REMOVE THIS LINE!!! (auto-transition)
-                ScaleGame.Instance.DelayedDelegate(40, NextPhase);
                 break;
             case 3:
                 // Clean up the boss here (you win!!!)
@@ -109,5 +100,10 @@ public class BossPhaseState : IState
         {
             ScaleGame.Instance.Audio.PlaySound(Sounds.MUSIC_BOSS_PHASE_3_LOOP);
         }
+    }
+    
+    private void OnBossAdvanceEvent(object _, BossAdvanceEvent @event)
+    {
+        NextPhase();
     }
 }
