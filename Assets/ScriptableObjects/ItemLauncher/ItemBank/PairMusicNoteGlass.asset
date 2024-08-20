@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc690e7c7eb42f6aceb1372739549f5, type: 3}
+  m_Name: PairMusicNoteGlass
+  m_EditorClassIdentifier: 
+  itemPrefabs:
+  - {fileID: 4615197528832878971, guid: 196d7e5ce13dfec41b3fe7815abbc851, type: 3}
+  - {fileID: 2016743639917621101, guid: c770c00c84d874e418618f6a0b38e7a8, type: 3}

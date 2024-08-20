@@ -35,6 +35,7 @@ public class SurvivalState : IState
     public void OnExit()
     {
         ResetState();
+        new StopSoundEvent(Sounds.MUSIC_GAME_PHASE_0).Invoke();
     }
 
     public void ResetState()

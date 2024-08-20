@@ -15,4 +15,12 @@ public class ScaleItem : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.mass = mass;
     }
+
+    void Update()
+    {
+        if (transform.position.y < -100)
+        {
+            gameObject.SetActive(false);
+        }
+    }
 }
