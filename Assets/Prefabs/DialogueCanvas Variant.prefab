@@ -166,7 +166,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1327341500725880706, guid: 5683528b70735a9478dfff25e0123650, type: 3}
       propertyPath: m_Text
-      value: Pick up with LMB and throw an object with E or RMB.
+      value: Pick up by holding LMB and throw an object with E or RMB.
       objectReference: {fileID: 0}
     - target: {fileID: 1329198737640188388, guid: 5683528b70735a9478dfff25e0123650, type: 3}
       propertyPath: m_Pivot.x
