@@ -7,7 +7,7 @@ public class MusicNoteShatter : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         // Check if the collided object has a different tag
-        if (!collision.gameObject.CompareTag("MusicNote"))
+        if (!collision.gameObject.CompareTag("Cannon") && !collision.gameObject.CompareTag("Player"))
         {
             new NoteShatterEvent(transform.position, shatterRadius).Invoke();
             gameObject.SetActive(false);
