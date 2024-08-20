@@ -101,6 +101,9 @@ MonoBehaviour:
   jumpCooldown: 0.25
   airMultiplier: 0.4
   jumpCount: 1
+  isJumpInput: 0
+  isJumping: 0
+  isJumpOffCD: 1
   playerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -321,7 +324,7 @@ GameObject:
   - component: {fileID: 6538903747300165317}
   m_Layer: 8
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

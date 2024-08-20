@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AbacusSpawnScript : MonoBehaviour
@@ -17,20 +15,20 @@ public class AbacusSpawnScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if(timer < spawnRate)
-       {
-           timer += Time.deltaTime;
-       }
-       else
-       {
-           spawnAbacus();
-           timer = 0;
-       }
+        if (timer < spawnRate)
+        {
+            timer += Time.deltaTime;
+        }
+        else
+        {
+            spawnAbacus();
+            timer = 0;
+        }
     }
 
     void spawnAbacus()
     {
-        Instantiate(abacus, new Vector3(Random.Range(-22.0f, 22.0f), 30.0f, Random.Range(15.0f, -28.0f)), transform.rotation);
+        Instantiate(abacus, new Vector3(Random.Range(-22.0f, 22.0f), 30.0f, Random.Range(15.0f, -28.0f)),
+            transform.rotation);
     }
-
 }

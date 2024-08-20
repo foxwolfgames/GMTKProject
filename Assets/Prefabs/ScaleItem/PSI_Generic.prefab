@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 5481958557469860996}
   - component: {fileID: 6589293737726958920}
   m_Layer: 10
-  m_Name: ScaleItemGeneric
+  m_Name: PSI_Generic
   m_TagString: GrabbableObject
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

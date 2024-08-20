@@ -6,6 +6,7 @@ public class ScaleItem : MonoBehaviour
 
     [Tooltip("Current mass, can be influenced by grow/shrink.")]
     public float mass;
+
     public Rigidbody rb;
 
     void Start()

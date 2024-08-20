@@ -1,12 +1,11 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 public class ScaleGame : MonoBehaviour
 {
-    public const string GrabbableObjectTag = "GrabbableObject";
-    
     public readonly EventRegister EventRegister = new();
-    
+    public readonly ScaleGameLoop GameLoop = new();
+    public AudioManager Audio;
+
     public static ScaleGame Instance;
 
     private void Awake()
@@ -14,11 +13,19 @@ public class ScaleGame : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
+            Audio = GetComponent<AudioManager>();
+            GameLoop.Awake();
         }
         else
         {
             // Destroy any other instances of this
             Destroy(gameObject);
         }
+    }
+
+    void Update()
+    {
+        GameLoop.Update();
     }
 }
