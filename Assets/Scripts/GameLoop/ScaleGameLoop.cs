@@ -24,6 +24,7 @@ public class ScaleGameLoop
         GameStateMachine.AddTransition(_pauseState, _inGameState, () => _pauseState.CanTransitionUnpause(_inGameState));
         GameStateMachine.AddTransition(_pauseState, _menuState, _pauseState.CanTransitionQuitToMenu);
         GameStateMachine.AddTransition(_introState, _inGameState, _introState.CanTransitionDevEnterArena);
+        GameStateMachine.AddTransition(_inGameState, _menuState, _inGameState.CanTransitionGameOverQuitToMenu);
 
         // Set initial state
         GameStateMachine.SetState(_menuState);

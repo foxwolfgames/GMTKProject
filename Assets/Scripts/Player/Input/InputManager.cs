@@ -51,6 +51,7 @@ public class InputManager : MonoBehaviour
         ScaleGame.Instance.EventRegister.UnpauseEventHandler += OnUnpauseEvent;
         ScaleGame.Instance.EventRegister.GameStartEventHandler += OnGameStartEvent;
         ScaleGame.Instance.EventRegister.GameStopEventHandler += OnGameStopEvent;
+        ScaleGame.Instance.EventRegister.GameOverEventHandler += OnGameOverEvent;
     }
 
     private void SetupInGameControls()
@@ -93,6 +94,7 @@ public class InputManager : MonoBehaviour
         ScaleGame.Instance.EventRegister.UnpauseEventHandler -= OnUnpauseEvent;
         ScaleGame.Instance.EventRegister.GameStartEventHandler -= OnGameStartEvent;
         ScaleGame.Instance.EventRegister.GameStopEventHandler -= OnGameStopEvent;
+        ScaleGame.Instance.EventRegister.GameOverEventHandler -= OnGameOverEvent;
     }
 
     private void OnPauseEvent(object _, PauseEvent @event)
@@ -115,5 +117,13 @@ public class InputManager : MonoBehaviour
     {
         Debug.Log("InputManager disabled (game stop)");
         controls.Disable();
+    }
+    
+    private void OnGameOverEvent(object _, GameOverEvent @event)
+    {
+        Debug.Log("InputManager disabled (game over)");
+        controls.Disable();
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

@@ -252,4 +252,30 @@ public class EventRegister
     {
         OnSoundFinishedEvent(@event);
     }
+    
+    // Gameplay: Fell into void
+    public event EventHandler<FallIntoVoidEvent> FallIntoVoidEventHandler;
+    
+    protected virtual void OnFallIntoVoidEvent(FallIntoVoidEvent @event)
+    {
+        FallIntoVoidEventHandler?.Invoke(this, @event);
+    }
+    
+    public void InvokeFallIntoVoidEvent(FallIntoVoidEvent @event)
+    {
+        OnFallIntoVoidEvent(@event);
+    }
+    
+    // Gameplay: Game over event
+    public event EventHandler<GameOverEvent> GameOverEventHandler;
+    
+    protected virtual void OnGameOverEvent(GameOverEvent @event)
+    {
+        GameOverEventHandler?.Invoke(this, @event);
+    }
+    
+    public void InvokeGameOverEvent(GameOverEvent @event)
+    {
+        OnGameOverEvent(@event);
+    }
 }
