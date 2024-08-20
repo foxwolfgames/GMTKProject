@@ -174,13 +174,22 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "PressRedButtonAction",
+                    "type": "Button",
+                    "id": "03836fe4-5ee9-49cf-a7cd-48cef98d13e9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "ceec53de-2126-41d3-8dca-d8de98088ab7",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -202,11 +211,22 @@
                 {
                     "name": "",
                     "id": "de7129b7-4e58-49d8-a706-82847b8b1fa8",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "ThrowAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ba8a1554-693e-479c-bb92-cfed093d94e1",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PressRedButtonAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

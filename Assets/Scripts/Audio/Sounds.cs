@@ -28,5 +28,20 @@ public enum Sounds
     SFX_GAMEPLAY_PICKUP_DROP,
     
     // SFX: Arena crowd ambience
-    SFX_AMBIENCE_ARENA_CROWD
+    SFX_AMBIENCE_ARENA_CROWD,
+    
+    // Music: Game tutorial music
+    MUSIC_GAME_TUTORIAL,
+    
+    // Music: Game phase 0 music
+    MUSIC_GAME_PHASE_0,
+    
+    // Music: Game over explicit (unused)
+    MUSIC_GAME_OVER_EXPLICIT,
+    
+    // SFX: Arena bridge lowering
+    SFX_ARENA_BRIDGE_LOWERING,
+    
+    // SFX: Press tutorial red button
+    SFX_GAMEPLAY_RED_BUTTON_PRESS
 }
