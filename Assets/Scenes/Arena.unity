@@ -8683,6 +8683,7 @@ MonoBehaviour:
   player: {fileID: 180170696}
   dialogueController: {fileID: 824971568}
   gameOverMenu: {fileID: 833006576}
+  itemLauncher: {fileID: 1474937193}
 --- !u!4 &1838982101
 Transform:
   m_ObjectHideFlags: 0

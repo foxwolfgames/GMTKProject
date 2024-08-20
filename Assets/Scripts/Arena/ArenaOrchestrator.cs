@@ -7,6 +7,7 @@ public class ArenaOrchestrator : MonoBehaviour
     public GameObject player;
     public DialogueController dialogueController;
     public GameOverMenu gameOverMenu;
+    public ItemLauncher itemLauncher;
     
     public void Start()
     {
