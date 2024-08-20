@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
@@ -15,9 +16,16 @@ public class BossItemSpawn : MonoBehaviour
 
     public Transform Pivot;
     public Transform scaleLeft;
-    public Transform spawnPointLeft;
     public Transform scaleRight;
+    public Transform spawnPointLeft;
     public Transform spawnPointRight;
+    public Transform cannonLeft;
+    public Transform cannonRight;
+    public GameObject cannonScriptObjectL;
+    public GameObject cannonScriptObjectR;
+
+    private CannonSlot cannonScriptL;
+    private CannonSlot cannonScriptR;
 
     private List<GameObject> bossItemPool;
     private List<GameObject> activeItemLeft;
@@ -32,9 +40,12 @@ public class BossItemSpawn : MonoBehaviour
     private int maxWeightDifference = 4;
     [SerializeField] private float changeProgress = 0f;
 
-    public int Left;
-    public int Right;
+    [Header("Cannon Settings")]
+    //[SerializeField] private float offset = .5f;
 
+    [SerializeField] private float threshold = 0.001f;
+    private int Left;
+    private int Right;
     [SerializeField] private float leftCurrentHeight;
     [SerializeField] private float leftTargetHeight;
     [SerializeField] private float rightCurrentHeight;
@@ -43,9 +54,8 @@ public class BossItemSpawn : MonoBehaviour
     [SerializeField] private float leftStartingYPosition;
     [SerializeField] private float rightStartingYPosition;
 
-    private Quaternion startingRotation;
+    private Quaternion startingPivotRotation;
 
-    [SerializeField] private float threshold = 0.001f;
 
     void Start()
     {
@@ -76,7 +86,12 @@ public class BossItemSpawn : MonoBehaviour
         leftTargetHeight = leftStartingYPosition;
         rightTargetHeight = rightStartingYPosition;
 
-        startingRotation = Pivot.rotation;
+        startingPivotRotation = Pivot.rotation;
+
+        if (cannonScriptObjectL)
+            cannonScriptL = cannonScriptObjectL.GetComponent<CannonSlot>();
+        if(cannonScriptObjectR)
+            cannonScriptR = cannonScriptObjectR.GetComponent<CannonSlot>();
     }
 
     void Update()
@@ -89,7 +104,7 @@ public class BossItemSpawn : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
+        // Change height of scales
         if (Mathf.Abs(leftTargetHeight - leftCurrentHeight) > threshold)
         {
             changeProgress += Time.fixedDeltaTime * 0.01f;
@@ -119,11 +134,19 @@ public class BossItemSpawn : MonoBehaviour
         scaleLeft.position = new Vector3(scaleLeft.position.x, leftCurrentHeight, scaleLeft.position.z);
         scaleRight.position = new Vector3(scaleRight.position.x, rightCurrentHeight, scaleRight.position.z);
 
-
+        // Rotate (pivot) the bar in the middle
         float slope = (spawnPointRight.position.y - spawnPointLeft.position.y) / (spawnPointRight.position.x - spawnPointLeft.position.x);
-        float angle = Mathf.Atan(slope) * Mathf.Rad2Deg;
+        float pivotAngle = Mathf.Atan(slope) * Mathf.Rad2Deg;
+        Pivot.localRotation = startingPivotRotation * Quaternion.Euler(0, 0, pivotAngle);
 
-        Pivot.rotation = startingRotation * Quaternion.Euler(0, 0, angle);
+        // Rotate the cannons toward bottom item
+        if(cannonScriptL && cannonScriptR)
+        {
+            float cannonAngleL = CalculateLaunchAngle(spawnPointLeft, cannonLeft, cannonScriptL.fireForce, Physics.gravity.y);
+            cannonLeft.localRotation = Quaternion.Euler(cannonAngleL, 0f, 0f);
+            float cannonAngleR = CalculateLaunchAngle(spawnPointRight, cannonRight, cannonScriptR.fireForce, Physics.gravity.y);
+            cannonRight.localRotation = Quaternion.Euler(cannonAngleR, 0f, 0f);
+        }
 
     }
     private float EaseIn(float x)
@@ -196,7 +219,6 @@ public class BossItemSpawn : MonoBehaviour
     }
     private void ChangeHeight()
     {
-        print("Change height");
         Left = activeItemLeft.Count;
         Right = activeItemRight.Count;
         if (Mathf.Abs(Left - Right) > maxWeightDifference)
@@ -212,4 +234,33 @@ public class BossItemSpawn : MonoBehaviour
             rightTargetHeight = rightStartingYPosition - (Right - Left) * weightImpact;
         }
     }
+
+    private float CalculateLaunchAngle(Transform target, Transform start, float initialVelocity, float gravity)
+    {
+        // Calculate the distances
+        float deltaY = target.position.y + effectiveItemSize * 3f - start.position.y;
+        float deltaZ = target.position.z - start.position.z;
+
+        // Calculate the discriminant
+        float velocitySquared = initialVelocity * initialVelocity;
+        float discriminant = velocitySquared * velocitySquared - gravity * (gravity * deltaZ * deltaZ + 2 * deltaY * velocitySquared);
+
+        if (discriminant >= 0)
+        {
+            // Calculate the angle using the positive root
+            float sqrtDiscriminant = Mathf.Sqrt(discriminant);
+            float tanTheta = -(velocitySquared - sqrtDiscriminant) / (gravity * deltaZ);
+
+            // Convert to angle in degrees
+            float angle = Mathf.Atan(tanTheta) * Mathf.Rad2Deg;
+
+            return angle;
+        }
+        else
+        {
+            Debug.LogWarning("Cannon is out of range");
+            return 18f;
+        }
+    }
+
 }

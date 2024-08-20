@@ -12,7 +12,7 @@ public class CannonSlot : MonoBehaviour
     public int objectLayer = 10;
     public string playerTag = "Player";
     public Transform firePoint;
-    [SerializeField] private float fireForce = 100f;
+     public float fireForce = 50f;
     [SerializeField] private ForceMode forceMode = ForceMode.VelocityChange;
     private void OnTriggerEnter(Collider other)
     {
