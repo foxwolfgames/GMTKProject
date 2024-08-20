@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 200e49e4b5a81482ea2994424f6c1764
+guid: 1afca33dd52f64989bc80746fe007902
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -8,17 +8,17 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material
-    second: {fileID: 2100000, guid: 05d747a967d38aa4096cffb8a933f795, type: 2}
+    second: {fileID: 2100000, guid: 7a70697ebca342f4197794dc2181bcdf, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.004
-    second: {fileID: 2100000, guid: 53e78bd189f3ec846af9b0f295cdb162, type: 2}
+      name: Material.001
+    second: {fileID: 2100000, guid: f5f7d167e98886b4c891d76787666727, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.005
-    second: {fileID: 2100000, guid: 32a5af30c18de2546a81cc17e5b1b2a8, type: 2}
+      name: Sprinkle
+    second: {fileID: 2100000, guid: 3af6f262a3d969e4aacb554e6d06391e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

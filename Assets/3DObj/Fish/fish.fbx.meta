@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 200e49e4b5a81482ea2994424f6c1764
+guid: 97038b50010544a6f99aeae8a7833799
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,18 +7,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: 05d747a967d38aa4096cffb8a933f795, type: 2}
+      name: Material.002
+    second: {fileID: 2100000, guid: 2f173bd23d05c8041b8f52096dca606f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.004
-    second: {fileID: 2100000, guid: 53e78bd189f3ec846af9b0f295cdb162, type: 2}
+      name: Material.003
+    second: {fileID: 2100000, guid: 003ed39876b9b79448448fffcd3a494d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.005
-    second: {fileID: 2100000, guid: 32a5af30c18de2546a81cc17e5b1b2a8, type: 2}
+      name: blueteal
+    second: {fileID: 2100000, guid: eacaf57bfc344124999088f19a157778, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: scales
+    second: {fileID: 2100000, guid: f366cd2e1108f054985e30202fc27592, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
