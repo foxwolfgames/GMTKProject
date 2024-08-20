@@ -58,4 +58,15 @@ public class ScaleGame : MonoBehaviour
             yield return null;
         }
     }
+
+    public void DelayedDelegate(int seconds, System.Action method)
+    {
+        StartCoroutine(DelayedDelegateCoroutine(seconds, method));
+    }
+    
+    IEnumerator DelayedDelegateCoroutine(int seconds, System.Action method)
+    {
+        yield return new WaitForSeconds(seconds);
+        method();
+    }
 }

@@ -15,5 +15,6 @@ MonoBehaviour:
   strategies:
   - {fileID: 11400000, guid: 5b42036f738d040d48ffca86508a5b41, type: 2}
   - {fileID: 11400000, guid: b82388c2158af4e669b7d4485a3fb082, type: 2}
-  - {fileID: 11400000, guid: 455051e402bd4408baea69eafc5c7771, type: 2}
   - {fileID: 11400000, guid: a3606cb5836024833b264cfeadbd0873, type: 2}
+  - {fileID: 11400000, guid: 2fc6484965a3c4f218922b389959293f, type: 2}
+  - {fileID: 11400000, guid: ed2418bb793964236ae766df2b5eadbf, type: 2}

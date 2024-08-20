@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ScaleItemGoldBar
   m_EditorClassIdentifier: 
   itemName: Gold Bar
-  baseMass: 10
+  baseMass: 8
   isGlass: 0

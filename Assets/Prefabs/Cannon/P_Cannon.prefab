@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 3579683445249114913}
   m_Layer: 0
   m_Name: P_Cannon
-  m_TagString: Untagged
+  m_TagString: Cannon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 4169415807384006323}
   m_Layer: 0
   m_Name: ObjectSlot
-  m_TagString: Untagged
+  m_TagString: Cannon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

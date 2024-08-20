@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -5,9 +6,13 @@ public class IntroState : IState
 {
     private Vector3 _crowdAmbiencePosition = new(0, 10, 0);
     
+    private const float TimeBetweenVoiceLines = 10f;
     public bool IsActive = false;
     public bool IsPaused = false;
     public bool Dev_ShouldEnterArena = false;
+    private float _timeSinceLastVoiceLine = 0f;
+    private float _timeElapsed = 0f;
+    private bool _hasPlayedFirstVoiceLine = false;
     
     public IntroState()
     {
@@ -23,6 +28,20 @@ public class IntroState : IState
         
         // Stop ticking if this state is not active
         if (!IsActive) return;
+        
+        _timeElapsed += Time.deltaTime;
+        if (_timeElapsed > 2f && !_hasPlayedFirstVoiceLine)
+        {
+            _hasPlayedFirstVoiceLine = true;
+            ScaleGame.Instance.Audio.PlaySound(Sounds.VOICE_ANNOUNCER_ENTER_LOBBY, _crowdAmbiencePosition);
+        }
+        
+        _timeSinceLastVoiceLine += Time.deltaTime;
+        if (_timeSinceLastVoiceLine >= TimeBetweenVoiceLines)
+        {
+            _timeSinceLastVoiceLine = 0f;
+            ScaleGame.Instance.Audio.PlaySound(Sounds.VOICE_ANNOUNCER_LOBBY_IDLE, _crowdAmbiencePosition);
+        }
     }
 
     public void OnEnter()
@@ -57,6 +76,8 @@ public class IntroState : IState
         // Designate this state as inactive
         IsActive = false;
         new StopSoundEvent(Sounds.SFX_AMBIENCE_INTRO_AREA_CROWD).Invoke();
+        new StopSoundEvent(Sounds.VOICE_ANNOUNCER_LOBBY_IDLE).Invoke();
+        new StopSoundEvent(Sounds.VOICE_ANNOUNCER_ENTER_LOBBY).Invoke();
         ResetState();
     }
 
@@ -65,6 +86,9 @@ public class IntroState : IState
         IsActive = false;
         IsPaused = false;
         Dev_ShouldEnterArena = false;
+        _timeSinceLastVoiceLine = 0f;
+        _timeElapsed = 0f;
+        _hasPlayedFirstVoiceLine = false;
     }
 
     public bool CanTransitionPause(PauseState pauseState)
@@ -93,6 +117,8 @@ public class IntroState : IState
     {
         ResetState();
         new StopSoundEvent(Sounds.SFX_AMBIENCE_INTRO_AREA_CROWD).Invoke();
+        new StopSoundEvent(Sounds.VOICE_ANNOUNCER_LOBBY_IDLE).Invoke();
+        new StopSoundEvent(Sounds.VOICE_ANNOUNCER_ENTER_LOBBY).Invoke();
     }
 
     public void OnDevEnterArenaEvent(object _, DevEnterArenaEvent @event)
