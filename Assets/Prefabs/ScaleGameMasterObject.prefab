@@ -273,6 +273,8 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 497227e0e6c034fa2b8d48a991561e3f, type: 3}
     - {fileID: 8300000, guid: ee121f3a9724b44b880cb9a6ea9ba7f9, type: 3}
     - {fileID: 8300000, guid: 3d3ecbbbb18254e629aaa11d7fb1c76f, type: 3}
+    - {fileID: 8300000, guid: b3d25e5c992b54ea58452fc8d89cde7a, type: 3}
+    - {fileID: 8300000, guid: 661f80212862842f38b73e83cb7678bf, type: 3}
     loop: 0
     volume: 1
     pitch: 1
@@ -386,6 +388,18 @@ MonoBehaviour:
     pitch: 1
     ignorePause: 0
     dimensionality: 0
+    useLowPassFilter: 0
+    lowPassFilterCutoffFrequency: 2000
+    soundClipStrategy: 0
+  - name: 27
+    audioType: 3
+    clips:
+    - {fileID: 8300000, guid: d5f5a2ce1bb334c9f8a8b59f34183e5c, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    ignorePause: 0
+    dimensionality: 0.3
     useLowPassFilter: 0
     lowPassFilterCutoffFrequency: 2000
     soundClipStrategy: 0
