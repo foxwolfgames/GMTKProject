@@ -90,6 +90,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PSI_GlassFlask
       objectReference: {fileID: 0}
+    - target: {fileID: 2228102205771661130, guid: c770c00c84d874e418618f6a0b38e7a8, type: 3}
+      propertyPath: type
+      value: 
+      objectReference: {fileID: 11400000, guid: 0e318adf6b9dbf94586317dc4f397fd4, type: 2}
     - target: {fileID: 4578175338376436948, guid: c770c00c84d874e418618f6a0b38e7a8, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
