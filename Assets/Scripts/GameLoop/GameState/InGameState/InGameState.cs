@@ -7,6 +7,7 @@ public class InGameState : IState
     public GameManager MainGameManager;
     public bool IsActive = false;
     public bool IsPaused = false;
+    public static bool IsGameOverAndQuit = false;
     
     public InGameState()
     {
@@ -65,6 +66,7 @@ public class InGameState : IState
         MainGameManager.ResetState();
         IsActive = false;
         IsPaused = false;
+        IsGameOverAndQuit = false;
     }
 
     public bool CanTransitionPause(PauseState pauseState)
@@ -75,6 +77,11 @@ public class InGameState : IState
         // Set the destination state for when we unpause
         pauseState.PreviousState = this;
         return true;
+    }
+
+    public bool CanTransitionGameOverQuitToMenu()
+    {
+        return IsGameOverAndQuit;
     }
     
     private void OnPauseEvent(object _, PauseEvent @event)

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerPickUp : MonoBehaviour
 {
@@ -41,6 +42,11 @@ public class PlayerPickUp : MonoBehaviour
     [Header("Grab Cooldown")] public float grabCooldown = .25f;
     public bool isGrabOffCD = true;
 
+    [Header("Item Tooltip")]
+    [SerializeField] private Text itemTooltip;
+
+    private bool objectThrown = false;
+
     private void Update()
     {
         HoldingForces();
@@ -62,6 +68,23 @@ public class PlayerPickUp : MonoBehaviour
             force = Vector3.ClampMagnitude(force, maxHoldForce);
 
             targetRB.AddForce(force, holdForceMode);
+        }
+    }
+        private void ShowObjectTooltip()
+    {
+        if (!targetRB && !triedGrabbing && isGrabOffCD)
+        {
+            if (Physics.SphereCast(transform.position, 1f, transform.forward, out RaycastHit hit, rayTraceDistance,
+                    traceMask)) 
+            {
+                targetRB = hit.collider.attachedRigidbody;
+                itemTooltip.text = "Press E to pickup " + targetRB.name;
+                itemTooltip.color = new Color(itemTooltip.color.r, itemTooltip.color.g, itemTooltip.color.b, 1f);
+            }
+            else
+            {
+                itemTooltip.color = new Color(itemTooltip.color.r, itemTooltip.color.g, itemTooltip.color.b, 0f);  
+            }
         }
     }
 
@@ -132,6 +155,13 @@ public class PlayerPickUp : MonoBehaviour
             
             ReleaseObject(false);
         }
+        objectThrown = true;
+        Debug.Log("player pickup thrown");
+    }
+
+    public bool checkThrown()
+    {
+        return objectThrown;
     }
 
     private void ResetGrabCooldown()

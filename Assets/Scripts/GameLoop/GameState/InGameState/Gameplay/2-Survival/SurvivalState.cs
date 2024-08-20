@@ -19,6 +19,7 @@ public class SurvivalState : IState
         TimeElapsed += Time.deltaTime;
         if (IsWindingUp) return;
 
+        _gameManager.ArenaOrchestrator.itemLauncher.isLaunching = true;
         // Main game loop
         float timeRemaining = SurvivalTime - (TimeElapsed - WindupTime);
         int seconds = Mathf.FloorToInt(timeRemaining % SurvivalTime);
