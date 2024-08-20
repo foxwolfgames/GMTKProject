@@ -16,15 +16,9 @@ public class GameOverState : IState
 
     public void OnEnter()
     {
-        Debug.Log("GAME OVER!");
-        if (_gameManager.IsVictory)
-        {
-            Debug.Log("VICTORY!");
-        }
-        else
-        {
-            Debug.Log("DEFEAT!");
-        }
+        _gameManager.ArenaOrchestrator.gameOverMenu.Show(_gameManager.IsVictory);
+        // Disable controls
+        new GameOverEvent().Invoke();
     }
 
     public void OnExit()

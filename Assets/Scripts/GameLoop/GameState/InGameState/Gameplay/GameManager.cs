@@ -42,6 +42,7 @@ public class GameManager
     {
         StateMachine.SetState(_preTutorialState);
         ScaleGame.Instance.EventRegister.ArenaOrchestratorRegisterEventHandler += OnArenaOrchestratorRegisterEvent;
+        ScaleGame.Instance.EventRegister.FallIntoVoidEventHandler += OnFallIntoVoidEvent;
     }
 
     public void Update()
@@ -70,5 +71,13 @@ public class GameManager
     private void OnGameStopEvent(object _, GameStopEvent @event)
     {
         StateMachine.SetState(_preGameState);
+    }
+    
+    private void OnFallIntoVoidEvent(object _, FallIntoVoidEvent @event)
+    {
+        // Ignore any subsequent calls if game is already over
+        if (IsGameOver) return;
+        IsVictory = false;
+        IsGameOver = true;
     }
 }

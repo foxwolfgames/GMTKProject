@@ -49,23 +49,23 @@ public class DialogueController : MonoBehaviour
     }
 
     // event listeners for inputs for pause/skip
-    // private void Update()
-    // {
-    //     if (currentPanel < 0 || currentPanel >= panelList.Count)
-    //         // || Time.timeScale == 0f)
-    //     {
-    //         return;
-    //     }
+    private void Update()
+    {
+        if (currentPanel < 0 || currentPanel >= panelList.Count)
+            // || Time.timeScale == 0f)
+        {
+            return;
+        }
 
-    //     if (Input.GetMouseButtonDown(0))
-    //     {
-    //         AdvancePanel();
-    //     }
-    //     else if (Input.GetKeyDown(KeyCode.Escape))
-    //     {
-    //         TogglePause();
-    //     }    
-    // }
+        if (Input.GetMouseButtonDown(0))
+        {
+            AdvancePanel();
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePause();
+        }    
+    }
 
     public void PlayNarrative()
     {
