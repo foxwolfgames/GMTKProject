@@ -196,7 +196,7 @@ MonoBehaviour:
     audioType: 1
     clips:
     - {fileID: 8300000, guid: a090a8052be8649118684173f271a48d, type: 3}
-    loop: 1
+    loop: 0
     volume: 0.75
     pitch: 1
     ignorePause: 0
