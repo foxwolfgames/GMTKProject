@@ -18,7 +18,7 @@ public class CannonSlot : MonoBehaviour
     {
         if(other.attachedRigidbody)
         {
-            if (!launchObject && other.gameObject.tag != playerTag)
+            if (!launchObject && other.gameObject.tag != playerTag && !other.isTrigger)
             {
                 launchObject = other;
             }

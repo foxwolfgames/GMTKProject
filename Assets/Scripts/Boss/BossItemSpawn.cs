@@ -14,6 +14,10 @@ public class BossItemSpawn : MonoBehaviour
     [SerializeField] private float itemScale;
     private float effectiveItemSize;
 
+    public Transform heart;
+    public Transform heartStartPosition;
+    private Vector3 targetPosition;
+
     public Transform Pivot;
     public Transform scaleLeft;
     public Transform scaleRight;
@@ -55,6 +59,10 @@ public class BossItemSpawn : MonoBehaviour
     [SerializeField] private float rightStartingYPosition;
 
     private Quaternion startingPivotRotation;
+
+    [Header("Spawn Settings")]
+    public float spawnInterval = 5f;
+    private float spawnTimer;
 
 
     void Start()
@@ -104,6 +112,14 @@ public class BossItemSpawn : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Temp spawner
+        spawnTimer += Time.fixedDeltaTime;
+        if (spawnTimer >= spawnInterval)
+        {
+            SpawnItem();
+            spawnTimer = 0f;
+        }
+
         // Change height of scales
         if (Mathf.Abs(leftTargetHeight - leftCurrentHeight) > threshold)
         {
@@ -147,7 +163,17 @@ public class BossItemSpawn : MonoBehaviour
             float cannonAngleR = CalculateLaunchAngle(spawnPointRight, cannonRight, cannonScriptR.fireForce, Physics.gravity.y);
             cannonRight.localRotation = Quaternion.Euler(cannonAngleR, 0f, 0f);
         }
-
+        if(Math.Abs(Left - Right) < 2)
+        {
+            //heart.position = heartStartPosition.position + new Vector3(0, 9, 0);
+            targetPosition = heartStartPosition.position + new Vector3(0, 9, 0);
+        }
+        else
+        {
+            //heart.position = heartStartPosition.position;
+            targetPosition = heartStartPosition.position;
+        }
+        heart.position = Vector3.Lerp(heart.position, targetPosition, Time.deltaTime * 2f);
     }
     private float EaseIn(float x)
     {
