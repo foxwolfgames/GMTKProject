@@ -1,5 +1,3 @@
-using System;
-
 public class GameManager
 {
     public readonly StateMachine StateMachine;
@@ -8,6 +6,13 @@ public class GameManager
     private PreGameState _preGameState;
     private PreTutorialState _preTutorialState;
     private TutorialState _tutorialState;
+    private SurvivalState _survivalState;
+    private BossPhaseState _bossPhaseState;
+    private GameOverState _gameOverState;
+
+    // Set to true or false depending on result before setting IsGameOver
+    public bool IsVictory = false;
+    public bool IsGameOver = false;
 
     public GameManager()
     {
@@ -21,9 +26,15 @@ public class GameManager
         _preGameState = new PreGameState();
         _preTutorialState = new PreTutorialState(this);
         _tutorialState = new TutorialState(this);
+        _survivalState = new SurvivalState(this);
+        _bossPhaseState = new BossPhaseState(this);
+        _gameOverState = new GameOverState(this);
 
         // Initialize transitions
         StateMachine.AddTransition(_preTutorialState, _tutorialState, _preTutorialState.CanTransitionEnterPlatform);
+        StateMachine.AddTransition(_tutorialState, _survivalState, _tutorialState.CanTransitionRedButtonPressed);
+
+        StateMachine.AddAnyTransition(_gameOverState, CanTransitionGameOver);
     }
 
     public void Start()
@@ -39,8 +50,15 @@ public class GameManager
 
     public void ResetState()
     {
+        IsVictory = false;
+        IsGameOver = false;
         _preTutorialState.ResetState();
         _tutorialState.ResetState();
+    }
+
+    private bool CanTransitionGameOver()
+    {
+        return IsGameOver;
     }
 
     private void OnArenaOrchestratorRegisterEvent(object _, ArenaOrchestratorRegisterEvent @event)

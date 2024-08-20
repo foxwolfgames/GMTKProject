@@ -41,4 +41,7 @@ public enum Sounds
     
     // SFX: Arena bridge lowering
     SFX_ARENA_BRIDGE_LOWERING,
+    
+    // SFX: Press tutorial red button
+    SFX_GAMEPLAY_RED_BUTTON_PRESS
 }

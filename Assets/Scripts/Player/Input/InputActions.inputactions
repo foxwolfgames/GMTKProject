@@ -174,6 +174,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "PressRedButtonAction",
+                    "type": "Button",
+                    "id": "03836fe4-5ee9-49cf-a7cd-48cef98d13e9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -207,6 +216,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ThrowAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ba8a1554-693e-479c-bb92-cfed093d94e1",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PressRedButtonAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

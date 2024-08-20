@@ -196,6 +196,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PressRedButtonAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""03836fe4-5ee9-49cf-a7cd-48cef98d13e9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -229,6 +238,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ThrowAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ba8a1554-693e-479c-bb92-cfed093d94e1"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PressRedButtonAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -304,6 +324,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_PlayerInteraction = asset.FindActionMap("PlayerInteraction", throwIfNotFound: true);
         m_PlayerInteraction_GrabAction = m_PlayerInteraction.FindAction("GrabAction", throwIfNotFound: true);
         m_PlayerInteraction_ThrowAction = m_PlayerInteraction.FindAction("ThrowAction", throwIfNotFound: true);
+        m_PlayerInteraction_PressRedButtonAction = m_PlayerInteraction.FindAction("PressRedButtonAction", throwIfNotFound: true);
         // CanPauseActions
         m_CanPauseActions = asset.FindActionMap("CanPauseActions", throwIfNotFound: true);
         m_CanPauseActions_PauseGame = m_CanPauseActions.FindAction("PauseGame", throwIfNotFound: true);
@@ -451,12 +472,14 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private List<IPlayerInteractionActions> m_PlayerInteractionActionsCallbackInterfaces = new List<IPlayerInteractionActions>();
     private readonly InputAction m_PlayerInteraction_GrabAction;
     private readonly InputAction m_PlayerInteraction_ThrowAction;
+    private readonly InputAction m_PlayerInteraction_PressRedButtonAction;
     public struct PlayerInteractionActions
     {
         private @InputActions m_Wrapper;
         public PlayerInteractionActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @GrabAction => m_Wrapper.m_PlayerInteraction_GrabAction;
         public InputAction @ThrowAction => m_Wrapper.m_PlayerInteraction_ThrowAction;
+        public InputAction @PressRedButtonAction => m_Wrapper.m_PlayerInteraction_PressRedButtonAction;
         public InputActionMap Get() { return m_Wrapper.m_PlayerInteraction; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -472,6 +495,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @ThrowAction.started += instance.OnThrowAction;
             @ThrowAction.performed += instance.OnThrowAction;
             @ThrowAction.canceled += instance.OnThrowAction;
+            @PressRedButtonAction.started += instance.OnPressRedButtonAction;
+            @PressRedButtonAction.performed += instance.OnPressRedButtonAction;
+            @PressRedButtonAction.canceled += instance.OnPressRedButtonAction;
         }
 
         private void UnregisterCallbacks(IPlayerInteractionActions instance)
@@ -482,6 +508,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @ThrowAction.started -= instance.OnThrowAction;
             @ThrowAction.performed -= instance.OnThrowAction;
             @ThrowAction.canceled -= instance.OnThrowAction;
+            @PressRedButtonAction.started -= instance.OnPressRedButtonAction;
+            @PressRedButtonAction.performed -= instance.OnPressRedButtonAction;
+            @PressRedButtonAction.canceled -= instance.OnPressRedButtonAction;
         }
 
         public void RemoveCallbacks(IPlayerInteractionActions instance)
@@ -603,6 +632,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     {
         void OnGrabAction(InputAction.CallbackContext context);
         void OnThrowAction(InputAction.CallbackContext context);
+        void OnPressRedButtonAction(InputAction.CallbackContext context);
     }
     public interface ICanPauseActionsActions
     {
