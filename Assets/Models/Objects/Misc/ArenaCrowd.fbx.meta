@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dffdc65baa078104694492a24d7aa86b
+guid: 71ef6df52df83834d928e94538adb586
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: PolySphere
-    second: {fileID: 2100000, guid: fda6e5f78ea61ea41a79dbde3a4440e1, type: 2}
+      name: blinn1
+    second: {fileID: 2100000, guid: dc6408ad7810222428494636a2085821, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
