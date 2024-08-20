@@ -365,3 +365,27 @@ MonoBehaviour:
     useLowPassFilter: 0
     lowPassFilterCutoffFrequency: 2000
     soundClipStrategy: 0
+  - name: 25
+    audioType: 1
+    clips:
+    - {fileID: 8300000, guid: ff13b5d86e9f415429ac9a5512d4596f, type: 3}
+    loop: 1
+    volume: 0.75
+    pitch: 1
+    ignorePause: 0
+    dimensionality: 0
+    useLowPassFilter: 0
+    lowPassFilterCutoffFrequency: 2000
+    soundClipStrategy: 0
+  - name: 26
+    audioType: 2
+    clips:
+    - {fileID: 8300000, guid: fa88a8914d117224fab860dcbc576e7b, type: 3}
+    loop: 0
+    volume: 0.994
+    pitch: 1
+    ignorePause: 0
+    dimensionality: 0
+    useLowPassFilter: 0
+    lowPassFilterCutoffFrequency: 2000
+    soundClipStrategy: 0
