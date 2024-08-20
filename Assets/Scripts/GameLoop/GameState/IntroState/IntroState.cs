@@ -11,6 +11,8 @@ public class IntroState : IState
     public bool IsPaused = false;
     public bool Dev_ShouldEnterArena = false;
     private float _timeSinceLastVoiceLine = 0f;
+    private float _timeElapsed = 0f;
+    private bool _hasPlayedFirstVoiceLine = false;
     
     public IntroState()
     {
@@ -26,6 +28,13 @@ public class IntroState : IState
         
         // Stop ticking if this state is not active
         if (!IsActive) return;
+        
+        _timeElapsed += Time.deltaTime;
+        if (_timeElapsed > 2f && !_hasPlayedFirstVoiceLine)
+        {
+            _hasPlayedFirstVoiceLine = true;
+            ScaleGame.Instance.Audio.PlaySound(Sounds.VOICE_ANNOUNCER_ENTER_LOBBY, _crowdAmbiencePosition);
+        }
         
         _timeSinceLastVoiceLine += Time.deltaTime;
         if (_timeSinceLastVoiceLine >= TimeBetweenVoiceLines)
@@ -55,7 +64,6 @@ public class IntroState : IState
         new GameStartEvent().Invoke();
         ScaleGame.Instance.LoadSceneAsyncAndStopAllAudioSources(Scenes.LOBBY);
         ScaleGame.Instance.Audio.PlaySound(Sounds.SFX_AMBIENCE_INTRO_AREA_CROWD, _crowdAmbiencePosition);
-        ScaleGame.Instance.DelayedDelegate(2, () => ScaleGame.Instance.Audio.PlaySound(Sounds.VOICE_ANNOUNCER_ENTER_LOBBY, _crowdAmbiencePosition));
     }
 
     public void OnExit()
@@ -78,6 +86,9 @@ public class IntroState : IState
         IsActive = false;
         IsPaused = false;
         Dev_ShouldEnterArena = false;
+        _timeSinceLastVoiceLine = 0f;
+        _timeElapsed = 0f;
+        _hasPlayedFirstVoiceLine = false;
     }
 
     public bool CanTransitionPause(PauseState pauseState)
