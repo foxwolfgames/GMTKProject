@@ -29,6 +29,7 @@ public class SurvivalState : IState
     public void OnEnter()
     {
         ScaleGame.Instance.Audio.PlaySound(Sounds.MUSIC_GAME_PHASE_0);
+        ScaleGame.Instance.Audio.PlaySound(Sounds.VOICE_ANNOUNCER_SURVIVAL_ENTRY);
         _gameManager.ArenaOrchestrator.platform.SetRedButtonPosition(RedButtonPositions.INACTIVE);
         _gameManager.ArenaOrchestrator.platform.SetPlatformCanRotate(true);
     }
@@ -37,6 +38,7 @@ public class SurvivalState : IState
     {
         ResetState();
         new StopSoundEvent(Sounds.MUSIC_GAME_PHASE_0).Invoke();
+        new StopSoundEvent(Sounds.VOICE_ANNOUNCER_SURVIVAL_ENTRY).Invoke();
     }
 
     public void ResetState()
