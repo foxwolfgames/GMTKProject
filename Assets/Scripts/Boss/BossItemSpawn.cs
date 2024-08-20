@@ -238,7 +238,7 @@ public class BossItemSpawn : MonoBehaviour
     private float CalculateLaunchAngle(Transform target, Transform start, float initialVelocity, float gravity)
     {
         // Calculate the distances
-        float deltaY = target.position.y + effectiveItemSize * 3f - start.position.y;
+        float deltaY = target.position.y + effectiveItemSize * 2.5f - start.position.y;
         float deltaZ = target.position.z - start.position.z;
 
         // Calculate the discriminant
