@@ -174,4 +174,69 @@ public class EventRegister
     {
         OnDevEnterArenaEvent(@event);
     }
+    
+    // Gameplay // Pre-tutorial // enter main platform from bridge
+    public event EventHandler<PreTutorialEnterPlatformEvent> PreTutorialEnterPlatformEventHandler;
+    
+    protected virtual void OnPreTutorialEnterPlatformEvent(PreTutorialEnterPlatformEvent @event)
+    {
+        PreTutorialEnterPlatformEventHandler?.Invoke(this, @event);
+    }
+    
+    public void InvokePreTutorialEnterPlatformEvent(PreTutorialEnterPlatformEvent @event)
+    {
+        OnPreTutorialEnterPlatformEvent(@event);
+    }
+    
+    // Gameplay: When arena orchestrator Start() is called, register arena orchestrator
+    public event EventHandler<ArenaOrchestratorRegisterEvent> ArenaOrchestratorRegisterEventHandler;
+    
+    protected virtual void OnArenaOrchestatorRegisterEvent(ArenaOrchestratorRegisterEvent @event)
+    {
+        ArenaOrchestratorRegisterEventHandler?.Invoke(this, @event);
+    }
+    
+    public void InvokeArenaOrchestratorRegisterEvent(ArenaOrchestratorRegisterEvent @event)
+    {
+        OnArenaOrchestatorRegisterEvent(@event);
+    }
+    
+    // Gameplay: Fire event when arena bridge is lowered after entering tutorial zone
+    public event EventHandler<ArenaBridgeLoweringCompletedEvent> ArenaBridgeLoweringCompletedEventHandler;
+    
+    protected virtual void OnArenaBridgeLoweringCompletedEvent(ArenaBridgeLoweringCompletedEvent @event)
+    {
+        ArenaBridgeLoweringCompletedEventHandler?.Invoke(this, @event);
+    }
+    
+    public void InvokeArenaBridgeLoweringCompletedEvent(ArenaBridgeLoweringCompletedEvent @event)
+    {
+        OnArenaBridgeLoweringCompletedEvent(@event);
+    }
+    
+    // Gameplay: Fire when the user attempts to press the red button (E)
+    public event EventHandler<AttemptPressRedButtonEvent> AttemptPressRedButtonEventHandler;
+    
+    protected virtual void OnAttemptPressRedButtonEvent(AttemptPressRedButtonEvent @event)
+    {
+        AttemptPressRedButtonEventHandler?.Invoke(this, @event);
+    }
+    
+    public void InvokeAttemptPressRedButtonEvent(AttemptPressRedButtonEvent @event)
+    {
+        OnAttemptPressRedButtonEvent(@event);
+    }
+    
+    // Gameplay: Fire event when the red button is pressed in the tutorial
+    public event EventHandler<TutorialRedButtonPressedEvent> TutorialRedButtonPressedEventHandler;
+    
+    protected virtual void OnTutorialRedButtonPressedEvent(TutorialRedButtonPressedEvent @event)
+    {
+        TutorialRedButtonPressedEventHandler?.Invoke(this, @event);
+    }
+    
+    public void InvokeTutorialRedButtonPressedEvent(TutorialRedButtonPressedEvent @event)
+    {
+        OnTutorialRedButtonPressedEvent(@event);
+    }
 }

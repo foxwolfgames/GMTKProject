@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class GlassBehavior : MonoBehaviour
+public class GlassBehavior : BossItemBehavior
 {
-    private void Start()
+    protected override void Start()
     {
         ScaleGame.Instance.EventRegister.NoteShatterEventHandler += OnNoteShatterEvent;
     }
 
-    private void OnDisable()
+    protected override void OnDisable()
     {
         ScaleGame.Instance.EventRegister.NoteShatterEventHandler -= OnNoteShatterEvent;
     }
@@ -17,7 +17,9 @@ public class GlassBehavior : MonoBehaviour
         if (Vector3.Distance(transform.position, @event.Position) <= @event.Radius)
         {
             print("Destroying");
-            Destroy(gameObject);
+            if(spawnScript)
+                spawnScript.RemoveItem(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

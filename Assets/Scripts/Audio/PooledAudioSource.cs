@@ -5,6 +5,7 @@ public class PooledAudioSource : MonoBehaviour
     public SoundClip currentSoundClip;
     public AudioSource audioSource;
     public AudioLowPassFilter lowPassFilter;
+    [SerializeField] private Transform trackedParent;
     private bool _isPlaying;
     // Second flag to prevent the object from being deactivated when audio source is paused
     private bool _isPaused;
@@ -19,10 +20,15 @@ public class PooledAudioSource : MonoBehaviour
 
     void Update()
     {
+        if (trackedParent)
+        {
+            transform.position = trackedParent.position;
+        }
+
         if (_isPlaying && !audioSource.isPlaying && !_isPaused)
         {
+            trackedParent = null;
             gameObject.SetActive(false);
-            transform.parent = null;
         }
     }
 
@@ -34,8 +40,12 @@ public class PooledAudioSource : MonoBehaviour
         // Set the parent if it exists
         if (parent)
         {
+            trackedParent = parent;
             transform.position = parent.position;
-            transform.SetParent(parent);
+        }
+        else
+        {
+            trackedParent = null;
         }
         
         _isPaused = false;

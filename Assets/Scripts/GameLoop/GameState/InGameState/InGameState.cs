@@ -4,19 +4,27 @@ using UnityEngine.SceneManagement;
 
 public class InGameState : IState
 {
+    public GameManager MainGameManager;
     public bool IsActive = false;
     public bool IsPaused = false;
     
     public InGameState()
     {
+        MainGameManager = new GameManager();
         ScaleGame.Instance.EventRegister.PauseEventHandler += OnPauseEvent;
         ScaleGame.Instance.EventRegister.GameStopEventHandler += OnGameStopEvent;
+    }
+
+    public void Awake()
+    {
+        MainGameManager.Awake();
     }
     
     public void Tick()
     {
         if (IsPaused) return;
         if (!IsActive) return;
+        MainGameManager.Update();
     }
 
     public void OnEnter()
@@ -36,7 +44,8 @@ public class InGameState : IState
         
         // Designate this state as active in-game state
         IsActive = true;
-        SceneManager.LoadScene((int) Scenes.ARENA);
+        MainGameManager.Start();
+        ScaleGame.Instance.LoadSceneAsyncAndStopAllAudioSources(Scenes.ARENA);
         ScaleGame.Instance.Audio.PlaySound(Sounds.SFX_AMBIENCE_ARENA_CROWD, Vector3.zero);
     }
 
@@ -53,6 +62,7 @@ public class InGameState : IState
 
     private void ResetState()
     {
+        MainGameManager.ResetState();
         IsActive = false;
         IsPaused = false;
     }
