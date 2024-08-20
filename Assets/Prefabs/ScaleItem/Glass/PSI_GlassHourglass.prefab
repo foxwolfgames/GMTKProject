@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PSI_GlassHourglass
       objectReference: {fileID: 0}
+    - target: {fileID: 2228102205771661130, guid: c770c00c84d874e418618f6a0b38e7a8, type: 3}
+      propertyPath: type
+      value: 
+      objectReference: {fileID: 11400000, guid: 9f000f19b9a5b444f8126af021a50ab8, type: 2}
     - target: {fileID: 7238907520405702694, guid: c770c00c84d874e418618f6a0b38e7a8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -60,7 +64,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4578175338376436948, guid: c770c00c84d874e418618f6a0b38e7a8, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5460301749880503314}
+      addedObject: {fileID: 663979889425576163}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5980976776035362320, guid: c770c00c84d874e418618f6a0b38e7a8, type: 3}
       insertIndex: -1
@@ -170,8 +174,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 163c3d7ea471a16458e248899717c5b0, type: 3}
---- !u!4 &5460301749880503314 stripped
+--- !u!4 &663979889425576163 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 163c3d7ea471a16458e248899717c5b0, type: 3}
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 163c3d7ea471a16458e248899717c5b0, type: 3}
   m_PrefabInstance: {fileID: 5497869298635332601}
   m_PrefabAsset: {fileID: 0}

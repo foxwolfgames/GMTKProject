@@ -146,6 +146,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PSI_Donut
       objectReference: {fileID: 0}
+    - target: {fileID: 6678416700248554959, guid: 5dc16362270cb41b5a430c46a1c1a37c, type: 3}
+      propertyPath: type
+      value: 
+      objectReference: {fileID: 11400000, guid: e1fab679c2eb896428938b50408e7eb9, type: 2}
     m_RemovedComponents:
     - {fileID: 422603424599745955, guid: 5dc16362270cb41b5a430c46a1c1a37c, type: 3}
     m_RemovedGameObjects:
