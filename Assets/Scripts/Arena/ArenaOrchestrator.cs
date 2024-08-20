@@ -4,6 +4,7 @@ public class ArenaOrchestrator : MonoBehaviour
 {
     public ArenaPlatform platform;
     public ArenaBridge bridge;
+    public GameObject player;
     
     public void Start()
     {
