@@ -11,6 +11,7 @@ public class TestItemScaleBoard : MonoBehaviour
         {
             _textMesh = GetComponent<TextMeshPro>();
         }
+
         ScaleGame.Instance.EventRegister.TestItemScaleBoardUpdateEventHandler += OnUpdateEvent;
     }
 

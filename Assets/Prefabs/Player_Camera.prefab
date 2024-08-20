@@ -355,6 +355,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5243799349721131006}
     - target: {fileID: 5298734983602192634, guid: de0a18331e0687c488264d3f37ff0815, type: 3}
+      propertyPath: throwForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5298734983602192634, guid: de0a18331e0687c488264d3f37ff0815, type: 3}
       propertyPath: playerLayer
       value: 8
       objectReference: {fileID: 0}

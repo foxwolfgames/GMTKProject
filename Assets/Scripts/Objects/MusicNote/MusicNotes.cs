@@ -1,16 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MusicNotes : MonoBehaviour
 {
-    [Header("Spawns")]
-    public GameObject musicNote;
+    [Header("Spawns")] public GameObject musicNote;
     public GameObject musicNoteShatter;
     public int number = 7;
     private int currNumber;
     public float spawnCooldown1 = .25f;
     public float spawnCooldown2 = .5f;
+
     void Start()
     {
         currNumber = number;

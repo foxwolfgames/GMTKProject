@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MusicNoteBehavior : MonoBehaviour
@@ -8,7 +7,14 @@ public class MusicNoteBehavior : MonoBehaviour
     {
         if (!collision.gameObject.CompareTag("MusicNote"))
         {
-            Destroy(gameObject);
+            foreach (Transform childObject in gameObject.transform)
+            {
+                if(childObject.TryGetComponent<PooledAudioSource>(out PooledAudioSource _))
+                {
+                    childObject.transform.parent = null;
+                }
+            }
+            gameObject.SetActive(false);
         }
     }
 }
