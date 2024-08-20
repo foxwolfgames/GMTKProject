@@ -8,6 +8,7 @@ TagManager:
   - Glass
   - MusicNote
   - SkyboxCamera
+  - Cannon
   layers:
   - Default
   - TransparentFX
