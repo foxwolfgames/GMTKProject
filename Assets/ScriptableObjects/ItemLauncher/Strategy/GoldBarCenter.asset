@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6db8b1efeff741e6a075269cf9461c70, type: 3}
-  m_Name: AllRandom
+  m_Name: GoldBarCenter
   m_EditorClassIdentifier: 
   possibleItemBanks:
-  - {fileID: 11400000, guid: ea133cb1046d94b3baa5534583697615, type: 2}
+  - {fileID: 11400000, guid: c1c6ba855577c460ab0dd84dfd153975, type: 2}
   chooseItemStrategy: 0
-  locationStrategy: 1
+  locationStrategy: 0
