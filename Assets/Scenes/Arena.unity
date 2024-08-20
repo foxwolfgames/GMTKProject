@@ -4443,10 +4443,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef8a7bd92d2e2d949bdbaee71a0b6012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossItem: {fileID: 5967214200447305834, guid: 51587791d96399046a79d6d833d9a6d3, type: 3}
+  bossItems: []
   itemHeight: 3.75
-  spawnPoint: {fileID: 598429264}
-  listSize: 10
+  itemScale: 0
+  Pivot: {fileID: 0}
+  scaleLeft: {fileID: 0}
+  scaleRight: {fileID: 0}
+  spawnPointLeft: {fileID: 0}
+  spawnPointRight: {fileID: 0}
+  cannonLeft: {fileID: 0}
+  cannonRight: {fileID: 0}
+  cannonScriptObjectL: {fileID: 0}
+  cannonScriptObjectR: {fileID: 0}
+  weightImpact: 1
+  maxWeightDifference: 4
+  changeProgress: 0
+  threshold: 0.001
+  leftCurrentHeight: 0
+  leftTargetHeight: 0
+  rightCurrentHeight: 0
+  rightTargetHeight: 0
+  leftStartingYPosition: 0
+  rightStartingYPosition: 0
 --- !u!1001 &1341982655
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4918,10 +4936,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemLauncherPhysical: {fileID: 0}
-  itemLauncherScriptableObject: {fileID: 11400000, guid: eb0b8f6ddaac14d31bc57c8703c41093, type: 2}
+  itemLauncherScriptableObject: {fileID: 11400000, guid: 029ff1281370648c1911dbb740f88fda, type: 2}
   arenaOrchestrator: {fileID: 1838982100}
-  launchInterval: 5
-  yLevel: 20
+  launchInterval: 0.5
+  yLevel: 30
   isLaunching: 0
 --- !u!4 &1474937194
 Transform:
