@@ -1,3 +1,5 @@
+using FWGameLib.Common.EventSystem;
+
 public class PreTutorialEnterPlatformEvent : IEvent
 {
     public void Invoke()

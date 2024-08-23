@@ -1,3 +1,5 @@
+using FWGameLib.Common.EventSystem;
+
 public class PauseEvent : IEvent
 {
     public void Invoke()

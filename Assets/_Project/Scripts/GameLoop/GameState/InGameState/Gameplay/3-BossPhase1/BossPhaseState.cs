@@ -1,3 +1,4 @@
+using FWGameLib.Common.StateMachine;
 using UnityEngine;
 
 public class BossPhaseState : IState

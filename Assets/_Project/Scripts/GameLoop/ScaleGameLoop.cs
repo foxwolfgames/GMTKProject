@@ -1,3 +1,5 @@
+using FWGameLib.Common.StateMachine;
+
 public class ScaleGameLoop
 {
     public readonly StateMachine GameStateMachine = new();

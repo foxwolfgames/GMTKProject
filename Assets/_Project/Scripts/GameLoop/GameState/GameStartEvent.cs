@@ -1,3 +1,5 @@
+using FWGameLib.Common.EventSystem;
+
 /// <summary>
 /// When we enter a state that contains a player controller, invoke this event
 /// </summary>

@@ -1,3 +1,4 @@
+using FWGameLib.Common.EventSystem;
 using UnityEngine;
 
 public class ScaleDetectionZoneExitEvent : IEvent

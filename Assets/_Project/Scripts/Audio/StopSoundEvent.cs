@@ -1,3 +1,5 @@
+using FWGameLib.Common.EventSystem;
+
 public class StopSoundEvent : IEvent
 {
     public Sounds SoundName;

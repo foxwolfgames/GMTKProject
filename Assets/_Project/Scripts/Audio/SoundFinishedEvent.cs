@@ -1,3 +1,5 @@
+using FWGameLib.Common.EventSystem;
+
 public class SoundFinishedEvent : IEvent
 {
     public Sounds Sound;

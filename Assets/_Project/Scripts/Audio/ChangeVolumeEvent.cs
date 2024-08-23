@@ -1,3 +1,5 @@
+using FWGameLib.Common.EventSystem;
+
 public class ChangeVolumeEvent : IEvent
 {
     public readonly AudioType AudioType;

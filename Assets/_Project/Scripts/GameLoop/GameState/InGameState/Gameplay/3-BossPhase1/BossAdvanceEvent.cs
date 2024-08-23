@@ -1,3 +1,5 @@
+using FWGameLib.Common.EventSystem;
+
 public class BossAdvanceEvent : IEvent
 {
     public void Invoke()

@@ -1,3 +1,5 @@
+using FWGameLib.Common.EventSystem;
+
 public class TestItemScaleBoardUpdateEvent : IEvent
 {
     public readonly int NumItems;

@@ -1,3 +1,5 @@
+using FWGameLib.Common.StateMachine;
+
 public class GameManager
 {
     public readonly StateMachine StateMachine;
