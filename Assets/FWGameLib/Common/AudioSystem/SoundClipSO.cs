@@ -18,7 +18,7 @@ namespace FWGameLib.Common.AudioSystem
 
         [Header("Properties")]
         
-        [Tooltip("The volume of the sound.")] [Range(0f, 1f)] 
+        [Tooltip("The volume of the sound.")] [Range(0f, 1f)]
         public float volume = 1f;
         [Tooltip("The pitch of the sound.")] [Range(.1f, 3f)]
         public float pitch = 1f;

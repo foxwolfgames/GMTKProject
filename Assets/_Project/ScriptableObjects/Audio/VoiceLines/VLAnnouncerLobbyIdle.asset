@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f19b6fd7d03941cba8022a47612cab00, type: 3}
+  m_Name: VLAnnouncerLobbyIdle
+  m_EditorClassIdentifier: 
+  soundName: 15
+  audioVolumeType: 3
+  clips:
+  - {fileID: 8300000, guid: 19d36041b9c094b59990b5a151afe387, type: 3}
+  - {fileID: 8300000, guid: 5bab0288535534bb2ba0c4ceae7d0560, type: 3}
+  - {fileID: 8300000, guid: 0b7c58ff2ac5943b79547fe0f05a34c7, type: 3}
+  volume: 1
+  pitch: 1
+  dimensionality: 0.3
+  useLowPassFilter: 1
+  lowPassFilterCutoffFrequency: 2000
+  loop: 0
+  audioClipStrategy: 1
+  ignorePause: 0
