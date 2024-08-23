@@ -1,12 +1,14 @@
 using System.Collections;
+using FWGameLib.Common.AudioSystem;
+using FWGameLib.InProject.EventSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ScaleGame : MonoBehaviour
 {
-    public readonly EventRegister EventRegister = new();
-    public readonly ScaleGameLoop GameLoop = new();
-    public AudioManager Audio;
+    public EventRegister EventRegister { get; private set; }
+    public ScaleGameLoop GameLoop { get; private set; }
+    public AudioManager Audio { get; private set; }
 
     public static ScaleGame Instance;
 
@@ -16,6 +18,8 @@ public class ScaleGame : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            EventRegister = new EventRegister();
+            GameLoop = new ScaleGameLoop();
             Audio = GetComponent<AudioManager>();
             GameLoop.Awake();
         }

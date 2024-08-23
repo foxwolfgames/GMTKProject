@@ -1,3 +1,6 @@
+using FWGameLib.Common.AudioSystem.Event;
+using FWGameLib.InProject.AudioSystem;
+using FWGameLib.InProject.EventSystem;
 using UnityEngine;
 using UnityEngine.UI;
 

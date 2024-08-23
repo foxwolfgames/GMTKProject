@@ -1,4 +1,6 @@
+using FWGameLib.Common.AudioSystem.Event;
 using FWGameLib.Common.StateMachine;
+using FWGameLib.InProject.AudioSystem;
 using UnityEngine;
 
 public class SurvivalState : IState
