@@ -3,14 +3,14 @@ using FWGameLib.InProject.EventSystem;
 
 namespace FWGameLib.Common.AudioSystem.Event
 {
-    public class ChangeVolumeEvent : IEvent
+    public class FWGLChangeVolumeEvent : IEvent
     {
         public readonly AudioVolumeType AudioVolumeType;
 
         // From 0.0f -> 1.0f;
         public readonly float VolumePercentage;
 
-        public ChangeVolumeEvent(AudioVolumeType audioVolumeType, float volumePercentage)
+        public FWGLChangeVolumeEvent(AudioVolumeType audioVolumeType, float volumePercentage)
         {
             AudioVolumeType = audioVolumeType;
             VolumePercentage = volumePercentage;
@@ -18,7 +18,7 @@ namespace FWGameLib.Common.AudioSystem.Event
 
         public void Invoke()
         {
-            EventRegister.Instance.InvokeChangeVolumeEvent(this);
+            EventRegister.Instance.Invoke(this);
         }
     }
 }

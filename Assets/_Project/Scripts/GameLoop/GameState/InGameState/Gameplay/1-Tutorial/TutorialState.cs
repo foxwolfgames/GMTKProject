@@ -49,7 +49,7 @@ public class TutorialState : IState
     public void OnExit()
     {
         ResetState();
-        new StopSoundEvent(Sounds.MUSIC_GAME_TUTORIAL).Invoke();
+        new FWGLStopSoundEvent(Sounds.MUSIC_GAME_TUTORIAL).Invoke();
         ScaleGame.Instance.EventRegister.GameStopEventHandler -= OnGameStopEvent;
         ScaleGame.Instance.EventRegister.ArenaBridgeLoweringCompletedEventHandler -= OnBridgeLoweringCompletedEvent;
         ScaleGame.Instance.EventRegister.TutorialRedButtonPressedEventHandler -= OnTutorialRedButtonPressedEvent;
@@ -83,6 +83,6 @@ public class TutorialState : IState
     
     private void OnGameStopEvent(object _, GameStopEvent @event)
     {
-        new StopSoundEvent(Sounds.VOICE_ANNOUNCER_TUTORIAL_IDLE).Invoke();
+        new FWGLStopSoundEvent(Sounds.VOICE_ANNOUNCER_TUTORIAL_IDLE).Invoke();
     }
 }

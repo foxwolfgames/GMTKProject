@@ -16,10 +16,10 @@ namespace FWGameLib.Common.AudioSystem
 
         void Start()
         {
-            EventRegister.Instance.ChangeVolumeEventHandler += OnChangeVolumeEvent;
-            EventRegister.Instance.StopSoundEventHandler += OnStopSoundEvent;
-            EventRegister.Instance.PauseEventHandler += OnPauseEvent;
-            EventRegister.Instance.UnpauseEventHandler += OnUnpauseEvent;
+            EventRegister.Instance.FWGLChangeVolumeEventHandler += OnChangeVolumeEvent;
+            EventRegister.Instance.FWGLStopSoundEventHandler += OnStopSoundEvent;
+            EventRegister.Instance.FWGLAudioPauseEventHandler += OnPauseEvent;
+            EventRegister.Instance.FWGLAudioUnpauseEventHandler += OnUnpauseEvent;
         }
 
         void Update()
@@ -31,7 +31,7 @@ namespace FWGameLib.Common.AudioSystem
 
             if (_isPlaying && !audioSource.isPlaying && !_isPaused)
             {
-                new SoundFinishedEvent(currentSoundClip.name).Invoke();
+                new FWGLSoundFinishedEvent(currentSoundClip.Data.soundName).Invoke();
                 trackedParent = null;
                 gameObject.SetActive(false);
             }
@@ -57,35 +57,35 @@ namespace FWGameLib.Common.AudioSystem
             currentSoundClip = clip;
             // Update the audio source
             AssignDefaultVolume();
-            audioSource.pitch = currentSoundClip.pitch;
-            audioSource.spatialBlend = currentSoundClip.dimensionality;
+            audioSource.pitch = currentSoundClip.Data.pitch;
+            audioSource.spatialBlend = currentSoundClip.Data.dimensionality;
             audioSource.clip = currentSoundClip.NextClip();
-            audioSource.loop = currentSoundClip.loop;
-            audioSource.ignoreListenerPause = currentSoundClip.ignorePause;
+            audioSource.loop = currentSoundClip.Data.loop;
+            audioSource.ignoreListenerPause = currentSoundClip.Data.ignorePause;
 
-            lowPassFilter.enabled = currentSoundClip.useLowPassFilter;
-            lowPassFilter.cutoffFrequency = currentSoundClip.lowPassFilterCutoffFrequency;
+            lowPassFilter.enabled = currentSoundClip.Data.useLowPassFilter;
+            lowPassFilter.cutoffFrequency = currentSoundClip.Data.lowPassFilterCutoffFrequency;
 
             audioSource.Play();
             // Flag as playing
             _isPlaying = true;
         }
 
-        private void OnChangeVolumeEvent(object _, ChangeVolumeEvent @event)
+        private void OnChangeVolumeEvent(object _, FWGLChangeVolumeEvent @event)
         {
             if (!_isPlaying) return;
 
-            if (@event.AudioVolumeType == currentSoundClip.audioVolumeType)
+            if (@event.AudioVolumeType == currentSoundClip.Data.audioVolumeType)
             {
-                audioSource.AssignVolume(@event.VolumePercentage, currentSoundClip.volume);
+                audioSource.AssignVolume(@event.VolumePercentage, currentSoundClip.Data.volume);
             }
         }
 
-        private void OnStopSoundEvent(object _, StopSoundEvent @event)
+        private void OnStopSoundEvent(object _, FWGLStopSoundEvent @event)
         {
             if (!_isPlaying) return;
 
-            if (currentSoundClip.name == @event.SoundName)
+            if (currentSoundClip.Data.soundName == @event.SoundName)
             {
                 // Update loop will take care of deactivating the object
                 _isPaused = false;
@@ -93,26 +93,26 @@ namespace FWGameLib.Common.AudioSystem
             }
         }
 
-        private void OnPauseEvent(object _, PauseEvent @event)
+        private void OnPauseEvent(object _, FWGLAudioPauseEvent @event)
         {
             if (!_isPlaying) return;
-            if (currentSoundClip.ignorePause) return;
+            if (currentSoundClip.Data.ignorePause) return;
             _isPaused = true;
             audioSource.Pause();
         }
 
-        private void OnUnpauseEvent(object _, UnpauseEvent @event)
+        private void OnUnpauseEvent(object _, FWGLAudioUnpauseEvent @event)
         {
             if (!_isPlaying) return;
-            if (currentSoundClip.ignorePause) return;
+            if (currentSoundClip.Data.ignorePause) return;
             _isPaused = false;
             audioSource.UnPause();
         }
 
         private void AssignDefaultVolume()
         {
-            audioSource.AssignVolume(AudioManager.Instance.VolumeValues[currentSoundClip.audioVolumeType],
-                currentSoundClip.volume);
+            audioSource.AssignVolume(AudioManager.Instance.VolumeValues[currentSoundClip.Data.audioVolumeType],
+                currentSoundClip.Data.volume);
         }
     }
 }

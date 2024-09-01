@@ -12,20 +12,14 @@ namespace FWGameLib.Common.AudioSystem
     {
         public static AudioManager Instance { get; private set; }
 
-        private const int AudioSourcePoolSize = 30;
-        private const float DefaultVolume = 0.5f;
-        public GameObject pooledAudioSourcePrefab;
-        private List<GameObject> _pooledAudioSources = new();
-
-        public readonly Dictionary<AudioVolumeType, float> VolumeValues = new();
-        public float VolumeMasterPercentage => VolumeValues[AudioVolumeType.Master];
-        public float VolumeMusicPercentage => VolumeValues[AudioVolumeType.Music];
-        public float VolumeSfxPercentage => VolumeValues[AudioVolumeType.SFX];
-        public float VolumeVoiceLinePercentage => VolumeValues[AudioVolumeType.VoiceLines];
-
+        public int audioSourcePoolSize = 30;
+        public float defaultVolume = 0.5f;
         // Initialize all sounds in inspector
-        public SoundClip[] soundClips;
+        public GameObject pooledAudioSourcePrefab;
+        [Tooltip("Sounds scriptable objects")] public List<SoundClipSO> clipData;
+        public readonly Dictionary<AudioVolumeType, float> VolumeValues = new();
 
+        private readonly List<GameObject> _pooledAudioSources = new();
         /// <summary>
         /// Sound lookup table, initialized based on soundClips
         /// </summary>
@@ -41,7 +35,7 @@ namespace FWGameLib.Common.AudioSystem
                         VolumeValues.Add(audioType, 0.85f);
                         break;
                     default:
-                        VolumeValues.Add(audioType, DefaultVolume);
+                        VolumeValues.Add(audioType, defaultVolume);
                         break;
                 }
             }
@@ -63,7 +57,7 @@ namespace FWGameLib.Common.AudioSystem
 
         void Start()
         {
-            EventRegister.Instance.ChangeVolumeEventHandler += OnChangeVolumeEvent;
+            EventRegister.Instance.FWGLChangeVolumeEventHandler += OnChangeVolumeEvent;
         }
 
         /// <summary>
@@ -121,22 +115,22 @@ namespace FWGameLib.Common.AudioSystem
             return _sounds[clipName];
         }
 
-        private void OnChangeVolumeEvent(object _, ChangeVolumeEvent @event)
+        private void OnChangeVolumeEvent(object _, FWGLChangeVolumeEvent @event)
         {
             VolumeValues[@event.AudioVolumeType] = @event.VolumePercentage;
         }
 
         private void InitializeSoundsFromInspectorValues()
         {
-            foreach (SoundClip soundClip in soundClips)
+            foreach (SoundClipSO soundClipData in clipData)
             {
-                _sounds.Add(soundClip.name, soundClip);
+                _sounds.Add(soundClipData.soundName, new SoundClip(soundClipData));
             }
         }
 
         private void InitializeAudioSourcePool()
         {
-            for (int i = 0; i < AudioSourcePoolSize; i++)
+            for (int i = 0; i < audioSourcePoolSize; i++)
             {
                 GameObject pooledAudioSource = Instantiate(pooledAudioSourcePrefab);
                 pooledAudioSource.SetActive(false);

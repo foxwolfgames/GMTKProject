@@ -1,3 +1,4 @@
+using FWGameLib.Common.AudioSystem.Event;
 using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
@@ -38,12 +39,14 @@ public class PauseMenu : MonoBehaviour
     
     public void OnPauseEvent(object _, PauseEvent @event)
     {
+        new FWGLAudioPauseEvent().Invoke();
         canvas.enabled = true;
     }
     
     public void OnUnpauseEvent(object _, UnpauseEvent @event)
     {
         canvas.enabled = false;
+        new FWGLAudioUnpauseEvent().Invoke();
     }
     
     public void OnQuitToMenuEvent(object _, QuitToMenuEvent @event)

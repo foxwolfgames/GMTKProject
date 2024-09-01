@@ -40,8 +40,8 @@ public class SurvivalState : IState
     public void OnExit()
     {
         ResetState();
-        new StopSoundEvent(Sounds.MUSIC_GAME_PHASE_0).Invoke();
-        new StopSoundEvent(Sounds.VOICE_ANNOUNCER_SURVIVAL_ENTRY).Invoke();
+        new FWGLStopSoundEvent(Sounds.MUSIC_GAME_PHASE_0).Invoke();
+        new FWGLStopSoundEvent(Sounds.VOICE_ANNOUNCER_SURVIVAL_ENTRY).Invoke();
     }
 
     public void ResetState()

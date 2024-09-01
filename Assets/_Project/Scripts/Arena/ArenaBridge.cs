@@ -21,7 +21,7 @@ public class ArenaBridge : MonoBehaviour
             {
                 IsLowering = false;
                 IsLowered = true;
-                new StopSoundEvent(Sounds.SFX_ARENA_BRIDGE_LOWERING).Invoke();
+                new FWGLStopSoundEvent(Sounds.SFX_ARENA_BRIDGE_LOWERING).Invoke();
                 BridgeAnchor.transform.localPosition -= Vector3.down * 1000f;
                 new ArenaBridgeLoweringCompletedEvent(this).Invoke();
             }

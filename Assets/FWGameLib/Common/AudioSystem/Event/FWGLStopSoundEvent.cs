@@ -4,18 +4,18 @@ using FWGameLib.InProject.EventSystem;
 
 namespace FWGameLib.Common.AudioSystem.Event
 {
-    public class StopSoundEvent : IEvent
+    public class FWGLStopSoundEvent : IEvent
     {
         public Sounds SoundName;
 
-        public StopSoundEvent(Sounds soundName)
+        public FWGLStopSoundEvent(Sounds soundName)
         {
             SoundName = soundName;
         }
 
         public void Invoke()
         {
-            EventRegister.Instance.InvokeStopSoundEvent(this);
+            EventRegister.Instance.Invoke(this);
         }
     }
 }

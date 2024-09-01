@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f19b6fd7d03941cba8022a47612cab00, type: 3}
   m_Name: VLAnnouncerSurvivalStart
   m_EditorClassIdentifier: 
-  soundName: 18
+  soundName: 27
   audioVolumeType: 3
   clips:
-  - {fileID: 8300000, guid: 2daea8e3108ec46a2be8b0b1dfe1cca7, type: 3}
+  - {fileID: 8300000, guid: d5f5a2ce1bb334c9f8a8b59f34183e5c, type: 3}
   volume: 1
   pitch: 1
   dimensionality: 0.15

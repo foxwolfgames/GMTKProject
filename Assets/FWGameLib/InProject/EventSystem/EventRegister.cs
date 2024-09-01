@@ -23,6 +23,56 @@ namespace FWGameLib.InProject.EventSystem
             }
         }
         
+        /// <summary>
+        /// Changing the volume on a volume slider
+        /// FWGL built-in event
+        /// </summary>
+        public event EventHandler<FWGLChangeVolumeEvent> FWGLChangeVolumeEventHandler;
+        public void Invoke(FWGLChangeVolumeEvent @event)
+        {
+            FWGLChangeVolumeEventHandler?.Invoke(this, @event);
+        }
+        
+        /// <summary>
+        /// AudioSystem: Fired when a audio source is finished
+        /// FWGL built-in event
+        /// </summary>
+        public event EventHandler<FWGLSoundFinishedEvent> FWGLSoundFinishedEventHandler;
+        public void Invoke(FWGLSoundFinishedEvent @event)
+        {
+            FWGLSoundFinishedEventHandler?.Invoke(this, @event);
+        }
+        
+        /// <summary>
+        /// AudioSystem: Forcefully stop a sound
+        /// FWGL built-in event
+        /// </summary>
+        public event EventHandler<FWGLStopSoundEvent> FWGLStopSoundEventHandler;
+        public void Invoke(FWGLStopSoundEvent @event)
+        {
+            FWGLStopSoundEventHandler?.Invoke(this, @event);
+        }
+        
+        /// <summary>
+        /// AudioSystem: Call when pausing audio that is paused with the game
+        /// FWGL built-in event
+        /// </summary>
+        public event EventHandler<FWGLAudioPauseEvent> FWGLAudioPauseEventHandler;
+        public void Invoke(FWGLAudioPauseEvent @event)
+        {
+            FWGLAudioPauseEventHandler?.Invoke(this, @event);
+        }
+        
+        /// <summary>
+        /// AudioSystem: Call when unpausing audio that is paused with the game
+        /// FWGL built-in event
+        /// </summary>
+        public event EventHandler<FWGLAudioUnpauseEvent> FWGLAudioUnpauseEventHandler;
+        public void Invoke(FWGLAudioUnpauseEvent @event)
+        {
+            FWGLAudioUnpauseEventHandler?.Invoke(this, @event);
+        }
+        
         // 
         public event EventHandler<TestItemScaleBoardUpdateEvent> TestItemScaleBoardUpdateEventHandler;
 
@@ -86,32 +136,6 @@ namespace FWGameLib.InProject.EventSystem
         public void InvokePressPlayEvent(PressPlayEvent @event)
         {
             OnPressPlayEvent(@event);
-        }
-
-        // Changing the volume on a volume slider
-        public event EventHandler<ChangeVolumeEvent> ChangeVolumeEventHandler;
-
-        protected virtual void OnChangeVolumeEvent(ChangeVolumeEvent @event)
-        {
-            ChangeVolumeEventHandler?.Invoke(this, @event);
-        }
-
-        public void InvokeChangeVolumeEvent(ChangeVolumeEvent @event)
-        {
-            OnChangeVolumeEvent(@event);
-        }
-
-        // Forcefully stop a sound
-        public event EventHandler<StopSoundEvent> StopSoundEventHandler;
-
-        protected virtual void OnStopSoundEvent(StopSoundEvent @event)
-        {
-            StopSoundEventHandler?.Invoke(this, @event);
-        }
-
-        public void InvokeStopSoundEvent(StopSoundEvent @event)
-        {
-            OnStopSoundEvent(@event);
         }
     
         // Unpause the game back into either intro or in-game states
@@ -257,19 +281,6 @@ namespace FWGameLib.InProject.EventSystem
         public void InvokeTutorialRedButtonPressedEvent(TutorialRedButtonPressedEvent @event)
         {
             OnTutorialRedButtonPressedEvent(@event);
-        }
-    
-        // Audio: Fired when a audio source is finished
-        public event EventHandler<SoundFinishedEvent> SoundFinishedEventHandler;
-    
-        protected virtual void OnSoundFinishedEvent(SoundFinishedEvent @event)
-        {
-            SoundFinishedEventHandler?.Invoke(this, @event);
-        }
-    
-        public void InvokeSoundFinishedEvent(SoundFinishedEvent @event)
-        {
-            OnSoundFinishedEvent(@event);
         }
     
         // Gameplay: Fell into void

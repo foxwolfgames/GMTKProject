@@ -226,6 +226,10 @@ PrefabInstance:
       propertyPath: audioType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1596271061092671761, guid: c7475da437574401c9c51c7e6a404b8d, type: 3}
+      propertyPath: audioVolumeType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5940581628865990681, guid: c7475da437574401c9c51c7e6a404b8d, type: 3}
       propertyPath: m_Name
       value: UIVolumeSlider Music
@@ -544,6 +548,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1596271061092671761, guid: c7475da437574401c9c51c7e6a404b8d, type: 3}
       propertyPath: audioType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596271061092671761, guid: c7475da437574401c9c51c7e6a404b8d, type: 3}
+      propertyPath: audioVolumeType
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5940581628865990681, guid: c7475da437574401c9c51c7e6a404b8d, type: 3}

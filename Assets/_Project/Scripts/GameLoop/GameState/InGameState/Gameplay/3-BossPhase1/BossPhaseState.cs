@@ -28,7 +28,7 @@ public class BossPhaseState : IState
 
     public void OnEnter()
     {
-        ScaleGame.Instance.EventRegister.SoundFinishedEventHandler += OnSoundFinishedEvent;
+        ScaleGame.Instance.EventRegister.FWGLSoundFinishedEventHandler += OnSoundFinishedEvent;
         ScaleGame.Instance.EventRegister.BossAdvanceEventHandler += OnBossAdvanceEvent;
         ScaleGame.Instance.Audio.PlaySound(Sounds.MUSIC_BOSS_PHASE_1_INTRO);
         
@@ -43,19 +43,19 @@ public class BossPhaseState : IState
     public void OnExit()
     {
         ResetState();
-        ScaleGame.Instance.EventRegister.SoundFinishedEventHandler -= OnSoundFinishedEvent;
+        ScaleGame.Instance.EventRegister.FWGLSoundFinishedEventHandler -= OnSoundFinishedEvent;
         ScaleGame.Instance.EventRegister.BossAdvanceEventHandler -= OnBossAdvanceEvent;
         StopAllSounds();
     }
 
     private void StopAllSounds()
     {
-        new StopSoundEvent(Sounds.MUSIC_BOSS_PHASE_1_INTRO).Invoke();
-        new StopSoundEvent(Sounds.MUSIC_BOSS_PHASE_1_LOOP).Invoke();
-        new StopSoundEvent(Sounds.MUSIC_BOSS_PHASE_2_INTRO).Invoke();
-        new StopSoundEvent(Sounds.MUSIC_BOSS_PHASE_2_LOOP).Invoke();
-        new StopSoundEvent(Sounds.MUSIC_BOSS_PHASE_3_INTRO).Invoke();
-        new StopSoundEvent(Sounds.MUSIC_BOSS_PHASE_3_LOOP).Invoke();
+        new FWGLStopSoundEvent(Sounds.MUSIC_BOSS_PHASE_1_INTRO).Invoke();
+        new FWGLStopSoundEvent(Sounds.MUSIC_BOSS_PHASE_1_LOOP).Invoke();
+        new FWGLStopSoundEvent(Sounds.MUSIC_BOSS_PHASE_2_INTRO).Invoke();
+        new FWGLStopSoundEvent(Sounds.MUSIC_BOSS_PHASE_2_LOOP).Invoke();
+        new FWGLStopSoundEvent(Sounds.MUSIC_BOSS_PHASE_3_INTRO).Invoke();
+        new FWGLStopSoundEvent(Sounds.MUSIC_BOSS_PHASE_3_LOOP).Invoke();
     }
 
     // Call this method when you either
@@ -66,17 +66,17 @@ public class BossPhaseState : IState
         switch (Phase)
         {
             case 1:
-                new StopSoundEvent(Sounds.MUSIC_BOSS_PHASE_1_LOOP).Invoke();
+                new FWGLStopSoundEvent(Sounds.MUSIC_BOSS_PHASE_1_LOOP).Invoke();
                 ScaleGame.Instance.Audio.PlaySound(Sounds.MUSIC_BOSS_PHASE_2_INTRO);
                 break;
             case 2:
-                new StopSoundEvent(Sounds.MUSIC_BOSS_PHASE_2_LOOP).Invoke();
+                new FWGLStopSoundEvent(Sounds.MUSIC_BOSS_PHASE_2_LOOP).Invoke();
                 ScaleGame.Instance.Audio.PlaySound(Sounds.MUSIC_BOSS_PHASE_3_INTRO);
                 break;
             case 3:
                 // Clean up the boss here (you win!!!)
                 
-                new StopSoundEvent(Sounds.MUSIC_BOSS_PHASE_3_LOOP).Invoke();
+                new FWGLStopSoundEvent(Sounds.MUSIC_BOSS_PHASE_3_LOOP).Invoke();
                 // Winning logic
                 _gameManager.IsVictory = true;
                 _gameManager.IsGameOver = true;
@@ -92,7 +92,7 @@ public class BossPhaseState : IState
         _timeElapsed = 0f;
     }
     
-    private void OnSoundFinishedEvent(object _, SoundFinishedEvent @event)
+    private void OnSoundFinishedEvent(object _, FWGLSoundFinishedEvent @event)
     {
         if (@event.Sound == Sounds.MUSIC_BOSS_PHASE_2_INTRO)
         {

@@ -23,7 +23,7 @@ public class MenuState : IState
     {
         Debug.Log("MenuState OnExit");
         ScaleGame.Instance.EventRegister.PressPlayEventHandler -= OnPressPlayEvent;
-        new StopSoundEvent(Sounds.MUSIC_TITLE).Invoke();
+        new FWGLStopSoundEvent(Sounds.MUSIC_TITLE).Invoke();
         ResetMenuState();
     }
 

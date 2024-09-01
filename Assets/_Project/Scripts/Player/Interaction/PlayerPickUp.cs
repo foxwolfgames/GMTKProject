@@ -134,7 +134,7 @@ public class PlayerPickUp : MonoBehaviour
             {
                 ScaleGame.Instance.Audio.PlaySound(Sounds.SFX_GAMEPLAY_PICKUP_DROP, targetRB.transform);
             }
-            new StopSoundEvent(Sounds.SFX_GAMEPLAY_PICKUP_HOLDING).Invoke();
+            new FWGLStopSoundEvent(Sounds.SFX_GAMEPLAY_PICKUP_HOLDING).Invoke();
 
             rbAngularDrag = 0f;
             targetRB = null;

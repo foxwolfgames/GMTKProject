@@ -48,6 +48,6 @@ public class PreTutorialState : IState
     
     private void OnGameStopEvent(object _, GameStopEvent @event)
     {
-        new StopSoundEvent(Sounds.VOICE_ANNOUNCER_ENTER_ARENA).Invoke();
+        new FWGLStopSoundEvent(Sounds.VOICE_ANNOUNCER_ENTER_ARENA).Invoke();
     }
 }

@@ -24,6 +24,6 @@ public class UIVolumeSlider : MonoBehaviour
 
     private void OnValueChange(float newValue)
     {
-        new ChangeVolumeEvent(audioVolumeType, newValue).Invoke();
+        new FWGLChangeVolumeEvent(audioVolumeType, newValue).Invoke();
     }
 }

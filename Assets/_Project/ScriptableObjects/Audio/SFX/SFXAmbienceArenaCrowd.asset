@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f19b6fd7d03941cba8022a47612cab00, type: 3}
   m_Name: SFXAmbienceArenaCrowd
   m_EditorClassIdentifier: 
-  soundName: 0
-  audioVolumeType: 0
-  clips: []
-  volume: 1
+  soundName: 9
+  audioVolumeType: 2
+  clips:
+  - {fileID: 8300000, guid: 2292c2c2ac1564858a3d14b230c3d792, type: 3}
+  volume: 0.7
   pitch: 1
-  dimensionality: 0.5
+  dimensionality: 0.1
   useLowPassFilter: 0
   lowPassFilterCutoffFrequency: 1000
-  loop: 0
+  loop: 1
   audioClipStrategy: 0
   ignorePause: 0

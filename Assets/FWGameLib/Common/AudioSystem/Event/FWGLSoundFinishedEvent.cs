@@ -4,18 +4,18 @@ using FWGameLib.InProject.EventSystem;
 
 namespace FWGameLib.Common.AudioSystem.Event
 {
-    public class SoundFinishedEvent : IEvent
+    public class FWGLSoundFinishedEvent : IEvent
     {
         public Sounds Sound;
     
-        public SoundFinishedEvent(Sounds sound)
+        public FWGLSoundFinishedEvent(Sounds sound)
         {
             Sound = sound;
         }
     
         public void Invoke()
         {
-            EventRegister.Instance.InvokeSoundFinishedEvent(this);
+            EventRegister.Instance.Invoke(this);
         }
     }
 }

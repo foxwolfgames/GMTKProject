@@ -78,9 +78,9 @@ public class IntroState : IState
 
         // Designate this state as inactive
         IsActive = false;
-        new StopSoundEvent(Sounds.SFX_AMBIENCE_INTRO_AREA_CROWD).Invoke();
-        new StopSoundEvent(Sounds.VOICE_ANNOUNCER_LOBBY_IDLE).Invoke();
-        new StopSoundEvent(Sounds.VOICE_ANNOUNCER_ENTER_LOBBY).Invoke();
+        new FWGLStopSoundEvent(Sounds.SFX_AMBIENCE_INTRO_AREA_CROWD).Invoke();
+        new FWGLStopSoundEvent(Sounds.VOICE_ANNOUNCER_LOBBY_IDLE).Invoke();
+        new FWGLStopSoundEvent(Sounds.VOICE_ANNOUNCER_ENTER_LOBBY).Invoke();
         ResetState();
     }
 
@@ -119,9 +119,9 @@ public class IntroState : IState
     private void OnGameStopEvent(object _, GameStopEvent @event)
     {
         ResetState();
-        new StopSoundEvent(Sounds.SFX_AMBIENCE_INTRO_AREA_CROWD).Invoke();
-        new StopSoundEvent(Sounds.VOICE_ANNOUNCER_LOBBY_IDLE).Invoke();
-        new StopSoundEvent(Sounds.VOICE_ANNOUNCER_ENTER_LOBBY).Invoke();
+        new FWGLStopSoundEvent(Sounds.SFX_AMBIENCE_INTRO_AREA_CROWD).Invoke();
+        new FWGLStopSoundEvent(Sounds.VOICE_ANNOUNCER_LOBBY_IDLE).Invoke();
+        new FWGLStopSoundEvent(Sounds.VOICE_ANNOUNCER_ENTER_LOBBY).Invoke();
     }
 
     public void OnDevEnterArenaEvent(object _, DevEnterArenaEvent @event)

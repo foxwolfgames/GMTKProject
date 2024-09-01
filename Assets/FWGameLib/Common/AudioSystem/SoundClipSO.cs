@@ -1,6 +1,5 @@
 using FWGameLib.InProject.AudioSystem;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace FWGameLib.Common.AudioSystem
 {

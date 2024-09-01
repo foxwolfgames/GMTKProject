@@ -97,6 +97,6 @@ public class InGameState : IState
     private void OnGameStopEvent(object _, GameStopEvent @event)
     {
         ResetState();
-        new StopSoundEvent(Sounds.SFX_AMBIENCE_ARENA_CROWD).Invoke();
+        new FWGLStopSoundEvent(Sounds.SFX_AMBIENCE_ARENA_CROWD).Invoke();
     }
 }
