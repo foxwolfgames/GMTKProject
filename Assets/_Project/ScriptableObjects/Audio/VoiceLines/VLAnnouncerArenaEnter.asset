@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f19b6fd7d03941cba8022a47612cab00, type: 3}
   m_Name: VLAnnouncerArenaEnter
   m_EditorClassIdentifier: 
-  soundName: 18
+  soundName: 16
   audioVolumeType: 3
   clips:
   - {fileID: 8300000, guid: 2daea8e3108ec46a2be8b0b1dfe1cca7, type: 3}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f19b6fd7d03941cba8022a47612cab00, type: 3}
   m_Name: MusicGameBossPhase3Loop
   m_EditorClassIdentifier: 
-  soundName: 21
+  soundName: 24
   audioVolumeType: 1
   clips:
   - {fileID: 8300000, guid: 5e364b5abe3e64ae392204e958146ca7, type: 3}
