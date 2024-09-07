@@ -35,9 +35,6 @@ public class BossPhaseState : IState
         // TODO: Run beginning logic to spawn in boss (PHASE 1)
         // (right here coco)
         _gameManager.ArenaOrchestrator.boss.SetActive(true);
-        
-        // TODO: REMOVE THIS LINE!!! (this auto transitions)
-        ScaleGame.Instance.DelayedDelegate(40, NextPhase);
     }
 
     public void OnExit()
